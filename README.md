@@ -114,6 +114,5 @@ Physics-Aware-3D-VAE/
 
 ## Notes
 
-- This folder is synchronized from `3dvae/` for public release packaging.
-- Relative path assumptions were intentionally preserved to avoid behavior changes.
-- If you move this folder outside the original repository layout, update data and output paths in config/CLI arguments.
+- Virtual Prior Dataset (Public): We provide the 5,000 synthesized virtual geological datasets via Baidu Netdisk. You can download them here: https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p (Extraction Code: gq2p).
+
