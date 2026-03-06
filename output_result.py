@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -44,7 +44,7 @@ def _set_cn_font():
         "font.family": "sans-serif",
         "font.sans-serif": ["DejaVu Sans"],
     })
-    print("⚠️ 未找到中文字体，已回退到 DejaVu Sans，可能出现缺字提示。建议安装 fonts-noto-cjk。")
+    print("⚠️ translated_text, translated_text DejaVu Sans, translated_text.translated_text fonts-noto-cjk.")
     return "DejaVu Sans"
 
 
@@ -79,13 +79,13 @@ def write_ply_mesh(path, verts, faces, colors=None):
             for face in faces:
                 f.write(f'3 {int(face[0])} {int(face[1])} {int(face[2])}\n')
     except Exception as e:
-        print(f'⚠️  写入PLY网格失败 {path}: {e}')
+        print(f'⚠️  translated_textPLYtranslated_text {path}: {e}')
 
 
 def save_mesh_ply(path, vox, vmin, vmax, threshold=0.5, color=None):
     """Documentation translated to English for open-source release."""
     if not HAS_SKIMAGE:
-        print("⚠️  未安装 scikit-image，无法生成 Mesh PLY，回退到点云。")
+        print("⚠️  translated_text scikit-image, translated_text Mesh PLY, translated_text.")
         pts = vox_to_pointcloud(vox, threshold)
         # English comment for public release.
         pts_world = pts * (vmax - vmin) + vmin
@@ -200,7 +200,7 @@ def write_ply_points(path, points, colors=None):
                 else:
                     f.write(f'{x} {y} {z}\n')
     except Exception as e:
-        print(f'⚠️  写入PLY文件失败 {path}: {e}')
+        print(f'⚠️  translated_textPLYtranslated_text {path}: {e}')
 
 
 
@@ -349,8 +349,8 @@ def save_xy_comparison(recon_pts, gt_pts, vmin, vmax, output_dir, epoch, save_sv
         ax.set_ylim(ymin - margin_y, ymax + margin_y)
         ax.set_aspect('equal')
         ax.ticklabel_format(style='plain', axis='both')
-        plt.colorbar(sc, ax=ax, label='密度')
-        ax.set_title(f'重建结果 Epoch {epoch}')
+        plt.colorbar(sc, ax=ax, label='translated_text')
+        ax.set_title(f'translated_text Epoch {epoch}')
         plt.savefig(os.path.join(output_dir, f'recon_epoch_{epoch}_xy.png'), dpi=150)
         if save_svg:
             plt.savefig(os.path.join(output_dir, f'recon_epoch_{epoch}_xy.svg'))
@@ -369,8 +369,8 @@ def save_xy_comparison(recon_pts, gt_pts, vmin, vmax, output_dir, epoch, save_sv
         ax.set_ylim(ymin - margin_y, ymax + margin_y)
         ax.set_aspect('equal')
         ax.ticklabel_format(style='plain', axis='both')
-        plt.colorbar(sc, ax=ax, label='密度')
-        ax.set_title(f'GT 目标 Epoch {epoch}')
+        plt.colorbar(sc, ax=ax, label='translated_text')
+        ax.set_title(f'GT translated_text Epoch {epoch}')
         plt.savefig(os.path.join(output_dir, f'GT_epoch_{epoch}_xy.png'), dpi=150)
         if save_svg:
             plt.savefig(os.path.join(output_dir, f'GT_epoch_{epoch}_xy.svg'))
@@ -386,7 +386,7 @@ def save_xy_comparison(recon_pts, gt_pts, vmin, vmax, output_dir, epoch, save_sv
         ax.set_ylim(ymin - margin_y, ymax + margin_y)
         ax.set_aspect('equal')
         ax.ticklabel_format(style='plain', axis='both')
-        ax.set_title(f'重建 Epoch {epoch}')
+        ax.set_title(f'translated_text Epoch {epoch}')
         # GT
         ax = axes[1]
         ax.scatter(gt_pts[:, 0], gt_pts[:, 1], s=2, c='red', alpha=0.6)
@@ -444,7 +444,7 @@ def generate_epoch_outputs(recon_vox, gt_vox, vmin, vmax, output_dir, epoch, thr
         
         # English comment for public release.
         if recon_vox.shape != gt_vox.shape:
-            print(f'⚠️  体素形状不匹配: recon={recon_vox.shape}, gt={gt_vox.shape}')
+            print(f'⚠️  translated_text: recon={recon_vox.shape}, gt={gt_vox.shape}')
             return None, None
         
         # English comment for public release.
@@ -463,18 +463,18 @@ def generate_epoch_outputs(recon_vox, gt_vox, vmin, vmax, output_dir, epoch, thr
         try:
             save_xy_comparison(recon_pts_world, gt_pts_world, vmin, vmax, output_dir, epoch, save_svg)
         except Exception as e:
-            print(f'⚠️  XY对比图生成失败: {e}')
+            print(f'⚠️  XYtranslated_text: {e}')
         
         # English comment for public release.
         try:
             save_area_plot(recon_pts_world, vmin, vmax, output_dir, epoch, prefix='recon', save_svg=save_svg)
             save_area_plot(gt_pts_world, vmin, vmax, output_dir, epoch, prefix='GT', save_svg=save_svg)
         except Exception as e:
-            print(f'⚠️  区域图生成失败: {e}')
+            print(f'⚠️  translated_text: {e}')
 
         return recon_pts_world, gt_pts_world
     except Exception as e:
-        print(f'❌ Epoch 输出生成失败: {e}')
+        print(f'❌ Epoch translated_text: {e}')
         return None, None
 
 
@@ -531,7 +531,7 @@ def get_cube_mesh(center, size):
 def save_combined_scene(path, recon_vox, gt_vox, drill_traces, vmin, vmax, threshold=0.5, orig_verts=None, orig_faces=None):
     """Documentation translated to English for open-source release."""
     if not HAS_SKIMAGE:
-        print("⚠️  未安装 scikit-image，无法生成综合场景 Mesh。")
+        print("⚠️  translated_text scikit-image, translated_text Mesh.")
         return
 
     all_verts = []
@@ -681,7 +681,7 @@ def save_combined_scene(path, recon_vox, gt_vox, drill_traces, vmin, vmax, thres
                     f.write(f'{int(edge[0])} {int(edge[1])} 255 0 0 255\n')
                     
     except Exception as e:
-        print(f'⚠️  写入综合场景 PLY 失败 {path}: {e}')
+        print(f'⚠️  translated_text PLY translated_text {path}: {e}')
 
 
 def save_downsampled_points(path, vox, vmin, vmax, threshold=0.3, max_points=60000):
@@ -695,11 +695,12 @@ def save_downsampled_points(path, vox, vmin, vmax, threshold=0.3, max_points=600
         limit = None if max_points is None or max_points <= 0 else int(max_points)
         pts_norm = vox_to_pointcloud(vox, threshold=threshold, max_points=limit)
         if pts_norm.size == 0:
-            print(f'⚠️  下采样后体素为空，跳过 {path}')
+            print(f'⚠️  translated_text, translated_text {path}')
             return
         scale = (vmax - vmin).astype(np.float32)
         scale = np.where(scale == 0.0, 1e-8, scale)
         points = vmin + pts_norm * scale
         write_ply_points(path, points)
     except Exception as e:
-        print(f'⚠️  保存下采样点云失败 {path}: {e}')
+        print(f'⚠️  translated_text {path}: {e}')
+

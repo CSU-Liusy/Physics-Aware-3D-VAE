@@ -1,4 +1,4 @@
-import torch
+﻿import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -74,3 +74,4 @@ class UNet3D(nn.Module):
             nn.BatchNorm3d(num_features=features),
             nn.ReLU(inplace=True),
         )
+

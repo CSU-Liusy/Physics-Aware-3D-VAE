@@ -1,4 +1,4 @@
-import os
+﻿import os
 import warnings
 import numpy as np
 try:
@@ -170,3 +170,4 @@ class IDWModel(BaseInterpolator):
         pred_vol = pred_vals.reshape(self.D, self.H, self.W)
         pred_vol = np.clip(pred_vol, 0.0, 1.0)
         return pred_vol[None, ...]
+

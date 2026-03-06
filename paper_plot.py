@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import os
 import argparse

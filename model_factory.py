@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import torch
 import torch.optim as optim
@@ -28,13 +28,13 @@ def create_model(
     is_brief = (log_mode == 'brief')
     if not is_brief:
         print("\n" + "="*70)
-        print("🚀 模型配置向导")
+        print("🚀 translated_text")
         print("="*70)
     
     # English comment for public release.
     if model_type.lower() == 'octree':
         if not is_brief:
-            print(f"📦 模型类型: 八叉树 VAE (稀疏优化)")
+            print(f"📦 translated_text: translated_text VAE (translated_text)")
         model = OctreeVAE3D(
             in_channels=2,
             grid_size=grid_size,
@@ -44,7 +44,7 @@ def create_model(
         )
     elif model_type.lower() == 'standard':
         if not is_brief:
-            print(f"📦 模型类型: 标准 3D VAE")
+            print(f"📦 translated_text: translated_text 3D VAE")
         model = ConvVAE3D(
             in_channels=2,
             grid_size=grid_size,
@@ -52,19 +52,19 @@ def create_model(
             base_channels=base_channels
         )
     else:
-        raise ValueError(f"未知模型类型: {model_type}。可选: 'standard', 'octree'")
+        raise ValueError(f"translated_text: {model_type}.translated_text: 'standard', 'octree'")
     
     model = model.to(device)
     
     # English comment for public release.
     base_params = sum(p.numel() for p in model.parameters())
     if not is_brief:
-        print(f"   - 网格分辨率: {grid_size}")
-        print(f"   - 潜在维度: {latent_dim}")
-        print(f"   - 基础通道数: {base_channels}")
+        print(f"   - translated_text: {grid_size}")
+        print(f"   - translated_text: {latent_dim}")
+        print(f"   - translated_text: {base_channels}")
         if model_type.lower() == 'octree':
-            print(f"   - 八叉树层数: {num_levels}")
-        print(f"   - 基础参数量: {base_params:,}")
+            print(f"   - translated_text: {num_levels}")
+        print(f"   - translated_text: {base_params:,}")
     
     # English comment for public release.
     lora_params = None
@@ -72,7 +72,7 @@ def create_model(
     decoder_param_count = 0
     if use_lora:
         if not is_brief:
-            print(f"\n⚡ 应用 LoRA 优化: 预设 '{lora_preset}'")
+            print(f"\n⚡ translated_text LoRA translated_text: translated_text '{lora_preset}'")
         model, lora_params = apply_lora_preset(model, preset=lora_preset)
         if not is_brief:
             print_lora_statistics(model)
@@ -81,22 +81,22 @@ def create_model(
         reduction = (1 - trainable_params / base_params) * 100
         
         if not is_brief:
-            print(f"✅ LoRA 已应用:")
-            print(f"   - 可训练参数: {trainable_params:,} (减少 {reduction:.1f}%)")
-            print(f"   - 预计训练速度提升: 2-3x")
-            print(f"   - 预计显存节省: 40-60%")
+            print(f"✅ LoRA translated_text:")
+            print(f"   - translated_text: {trainable_params:,} (translated_text {reduction:.1f}%)")
+            print(f"   - translated_text: 2-3x")
+            print(f"   - translated_text: 40-60%")
     else:
         trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
         if not is_brief:
-            print(f"\n📊 未使用 LoRA 优化 (全量训练)")
-            print(f"   - 可训练参数: {trainable_params:,}")
+            print(f"\n📊 translated_text LoRA translated_text (translated_text)")
+            print(f"   - translated_text: {trainable_params:,}")
     
     # English comment for public release.
     if use_lora and lora_params is not None:
         # English comment for public release.
         optimizer = optim.AdamW(lora_params, lr=lr, weight_decay=weight_decay)
         if not is_brief:
-            print(f"\n🔧 优化器: AdamW (仅 LoRA 参数)")
+            print(f"\n🔧 translated_text: AdamW (translated_text LoRA translated_text)")
     else:
         # English comment for public release.
         encoder_params = []
@@ -117,9 +117,9 @@ def create_model(
         encoder_param_count = sum(p.numel() for p in encoder_params)
         decoder_param_count = sum(p.numel() for p in decoder_params)
         if not is_brief:
-            print(f"\n🔧 优化器: 分离优化 (Encoder + Decoder)")
-            print(f"   - Encoder 参数: {encoder_param_count:,}")
-            print(f"   - Decoder 参数: {decoder_param_count:,}")
+            print(f"\n🔧 translated_text: translated_text (Encoder + Decoder)")
+            print(f"   - Encoder translated_text: {encoder_param_count:,}")
+            print(f"   - Decoder translated_text: {decoder_param_count:,}")
     
     # English comment for public release.
     model_info = {
@@ -154,9 +154,9 @@ def get_model_recommendations(num_samples, gpu_memory_gb, grid_size):
                 'lora_preset': 'light',
                 'base_channels': 32
             },
-            'reason': '数据集小或显存受限，推荐轻量配置',
+            'reason': 'translated_text, translated_text',
             'expected_memory': '~4GB',
-            'expected_speed': '快 (3-5x)',
+            'expected_speed': 'translated_text (3-5x)',
             'priority': 'high'
         })
     
@@ -168,9 +168,9 @@ def get_model_recommendations(num_samples, gpu_memory_gb, grid_size):
                 'use_lora': False,
                 'base_channels': 32
             },
-            'reason': '中等数据集，八叉树稀疏优化',
+            'reason': 'translated_text, translated_text',
             'expected_memory': '~5GB',
-            'expected_speed': '中等 (2-3x)',
+            'expected_speed': 'translated_text (2-3x)',
             'priority': 'medium'
         })
         
@@ -182,9 +182,9 @@ def get_model_recommendations(num_samples, gpu_memory_gb, grid_size):
                     'lora_preset': 'light',
                     'base_channels': 48
                 },
-                'reason': '标准模型 + LoRA，平衡精度与效率',
+                'reason': 'translated_text + LoRA, translated_text',
                 'expected_memory': '~6GB',
-                'expected_speed': '中等 (2x)',
+                'expected_speed': 'translated_text (2x)',
                 'priority': 'medium'
             })
     
@@ -196,9 +196,9 @@ def get_model_recommendations(num_samples, gpu_memory_gb, grid_size):
                 'use_lora': False,
                 'base_channels': 64
             },
-            'reason': '大数据集，追求最高精度',
+            'reason': 'translated_text, translated_text',
             'expected_memory': '~8-10GB',
-            'expected_speed': '基准',
+            'expected_speed': 'translated_text',
             'priority': 'low'
         })
     
@@ -211,9 +211,9 @@ def get_model_recommendations(num_samples, gpu_memory_gb, grid_size):
                 'lora_preset': 'minimal',
                 'base_channels': 16
             },
-            'reason': '大网格分辨率，必须使用优化',
+            'reason': 'translated_text, translated_text',
             'expected_memory': '~6GB',
-            'expected_speed': '快 (4-6x)',
+            'expected_speed': 'translated_text (4-6x)',
             'priority': 'critical'
         })
     
@@ -230,27 +230,27 @@ def print_recommendations(num_samples, gpu_memory_gb, grid_size, log_mode='full'
         best = recs[0]
         cfg = best['config']
         print(
-            f"推荐配置: {cfg} | 理由: {best['reason']} | 显存: {best['expected_memory']} | 速度: {best['expected_speed']}"
+            f"translated_text: {cfg} | translated_text: {best['reason']} | translated_text: {best['expected_memory']} | translated_text: {best['expected_speed']}"
         )
         return
     
     print("\n" + "="*70)
-    print("💡 模型配置推荐")
+    print("💡 translated_text")
     print("="*70)
-    print(f"数据集信息: {num_samples} 个样本, 网格 {grid_size}, GPU {gpu_memory_gb}GB")
+    print(f"translated_text: {num_samples} translated_text, translated_text {grid_size}, GPU {gpu_memory_gb}GB")
     print()
     
     for i, rec in enumerate(recs, 1):
         priority = rec['priority']
         emoji = '🔥' if priority == 'critical' else '⭐' if priority == 'high' else '✓'
         
-        print(f"{emoji} 推荐 {i}: {rec['reason']}")
-        print(f"   配置: {rec['config']}")
-        print(f"   预计显存: {rec['expected_memory']}")
-        print(f"   预计速度: {rec['expected_speed']}")
+        print(f"{emoji} translated_text {i}: {rec['reason']}")
+        print(f"   translated_text: {rec['config']}")
+        print(f"   translated_text: {rec['expected_memory']}")
+        print(f"   translated_text: {rec['expected_speed']}")
         print()
     
-    print("使用方法:")
+    print("translated_text:")
     print("  model, optimizer, info = create_model(**recommendations[0]['config'])")
     print("="*70 + "\n")
 
@@ -313,18 +313,19 @@ def create_standard_model(grid_size=(64, 64, 64), latent_dim=512, lr=1e-4, devic
 
 
 if __name__ == '__main__':
-    print("=== 模型工厂测试 ===\n")
+    print("=== translated_text ===\n")
     
     # English comment for public release.
-    print("1. 测试轻量配置 (Octree + LoRA minimal)")
+    print("1. translated_text (Octree + LoRA minimal)")
     model, optimizer, info = create_lightweight_model(device='cpu')
     
     # English comment for public release.
-    print("\n2. 测试推荐配置 (Octree + LoRA light)")
+    print("\n2. translated_text (Octree + LoRA light)")
     model, optimizer, info = create_balanced_model(device='cpu')
     
     # English comment for public release.
-    print("\n3. 测试配置推荐系统")
+    print("\n3. translated_text")
     print_recommendations(num_samples=1510, gpu_memory_gb=8, grid_size=(64, 64, 64))
     
-    print("\n✅ 所有测试通过！")
+    print("\n✅ translated_text!")
+

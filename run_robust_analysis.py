@@ -1,4 +1,4 @@
-
+﻿
 import os
 import torch
 import numpy as np
@@ -57,22 +57,22 @@ def run_robustness_analysis(args):
     2. Noise (Data inaccuracy perturbation)
     """
     print(f"==================================================")
-    print(f"启动鲁棒性分析 (Robustness Analysis)")
+    print(f"translated_text (Robustness Analysis)")
     print(f"==================================================")
 
     device = torch.device('cuda' if args.cuda and torch.cuda.is_available() else 'cpu')
     
     if not args.checkpoint:
-        print("错误: 鲁棒性分析模式必须提供 --checkpoint 参数指向已训练模型。")
+        print("translated_text: translated_text --checkpoint translated_text.")
         return
 
     checkpoint_path = os.path.abspath(args.checkpoint)
     if not os.path.exists(checkpoint_path):
-        print(f"错误: 找不到模型文件 {checkpoint_path}")
+        print(f"translated_text: translated_text {checkpoint_path}")
         return
 
     # Load Model
-    print(f"加载模型: {checkpoint_path}")
+    print(f"translated_text: {checkpoint_path}")
     checkpoint = torch.load(checkpoint_path, map_location=device)
     
     # Extract model config from checkpoint if available, or use args
@@ -111,9 +111,9 @@ def run_robustness_analysis(args):
     # Ensure we use test split or a specific file
     
     # --- Experiment A: Sparsity ---
-    print("\n--- 实验 A: 数据稀疏性 (Sparsity) ---")
+    print("\n--- translated_text A: translated_text (Sparsity) ---")
     for holes in sparsity_levels:
-        print(f"测试钻孔数量: {holes}")
+        print(f"translated_text: {holes}")
         
         # Re-initialize dataset with specific hole count
         # Force cache regeneration (?) No, dataset generation logic in __getitem__ 
@@ -172,7 +172,7 @@ def run_robustness_analysis(args):
     # --- Experiment B: Noise ---
     # Fix holes to standard (e.g., 8) and vary noise
     default_holes = 8
-    print(f"\n--- 实验 B: 数据噪声 (Noise, 固定 Holes={default_holes}) ---")
+    print(f"\n--- translated_text B: translated_text (Noise, translated_text Holes={default_holes}) ---")
     
     ds_noise = MiningDataset(
         ply_dir=ply_dir,
@@ -187,7 +187,7 @@ def run_robustness_analysis(args):
     loader_noise = DataLoader(ds_noise, batch_size=1, shuffle=False, num_workers=0)
     
     for nl in noise_levels:
-        print(f"测试噪声水平: {nl*100}%")
+        print(f"translated_text: {nl*100}%")
         ious = []
         
         with torch.no_grad():
@@ -226,7 +226,7 @@ def run_robustness_analysis(args):
     out_dir = os.path.dirname(checkpoint_path)
     csv_path = os.path.join(out_dir, 'robustness_results.csv')
     df.to_csv(csv_path, index=False)
-    print(f"\n鲁棒性数据已保存: {csv_path}")
+    print(f"\ntranslated_text: {csv_path}")
     
     # Plotting
     plot_robustness(df, out_dir)
@@ -247,8 +247,8 @@ def plot_robustness(df, out_dir):
     sparsity_df = df[df['Type'] == 'Sparsity']
     if not sparsity_df.empty:
         axes[0].plot(sparsity_df['Level'], sparsity_df['IoU'], marker='o', linewidth=2, color='tab:blue')
-        axes[0].set_title("稀疏性分析: 钻孔数量 vs IoU")
-        axes[0].set_xlabel("钻孔数量 (Number of Holes)")
+        axes[0].set_title("translated_text: translated_text vs IoU")
+        axes[0].set_xlabel("translated_text (Number of Holes)")
         axes[0].set_ylabel("Mean IoU")
         axes[0].invert_xaxis() # 8 -> 1
         axes[0].grid(True)
@@ -260,8 +260,8 @@ def plot_robustness(df, out_dir):
     noise_df = df[df['Type'] == 'Noise']
     if not noise_df.empty:
         axes[1].plot(noise_df['Level'], noise_df['IoU'], marker='s', linewidth=2, color='tab:red')
-        axes[1].set_title("噪声敏感度: 输入噪声 vs IoU")
-        axes[1].set_xlabel("噪声水平 (Noise Probability)")
+        axes[1].set_title("translated_text: translated_text vs IoU")
+        axes[1].set_xlabel("translated_text (Noise Probability)")
         axes[1].set_ylabel("Mean IoU")
         axes[1].grid(True)
         for x, y in zip(noise_df['Level'], noise_df['IoU']):
@@ -269,4 +269,5 @@ def plot_robustness(df, out_dir):
 
     plt.tight_layout()
     plt.savefig(os.path.join(out_dir, 'robustness_analysis_plot.png'), dpi=300)
-    print(f"鲁棒性图表已生成: {os.path.join(out_dir, 'robustness_analysis_plot.png')}")
+    print(f"translated_text: {os.path.join(out_dir, 'robustness_analysis_plot.png')}")
+

@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import os
 import datetime
@@ -50,7 +50,7 @@ def render_outputs_to_vis(
     vis_dir = os.path.join(vis_root, ts_dir)
     os.makedirs(vis_dir, exist_ok=True)
 
-    print(f'发现 {len(ply_list)} 个 PLY，开始生成可视化...')
+    print(f'translated_text {len(ply_list)} translated_text PLY, translated_text...')
 
     def _job(ply_path: str):
         try:
@@ -85,7 +85,7 @@ def train(args):
     if getattr(args, 'checkpoint', None):
         ckpt_path = os.path.abspath(args.checkpoint)
         if not os.path.exists(ckpt_path):
-            raise FileNotFoundError(f'未找到指定的 checkpoint: {ckpt_path}')
+            raise FileNotFoundError(f'translated_text checkpoint: {ckpt_path}')
         try:
             # English comment for public release.
             try:
@@ -121,18 +121,18 @@ def train(args):
                     else:
                         new_state_dict[k] = v
                 if has_module_prefix:
-                    vprint("检测到 'module.' 前缀，已自动去除以匹配当前模型结构。")
+                    vprint("translated_text 'module.' translated_text, translated_text.")
                     loaded_state_dict = new_state_dict
 
         except Exception as e:
-            raise RuntimeError(f'加载 checkpoint 失败: {ckpt_path} ({e})')
+            raise RuntimeError(f'translated_text checkpoint translated_text: {ckpt_path} ({e})')
 
         if loaded_hparams:
             # English comment for public release.
             for k, v in loaded_hparams.items():
                 if hasattr(args, k):
                     setattr(args, k, v)
-            vprint(f'已使用 checkpoint 超参覆盖初始化参数: {ckpt_path}')
+            vprint(f'translated_text checkpoint translated_text: {ckpt_path}')
         elif loaded_state_dict is not None:
             # English comment for public release.
             inferred_latent_dim = None
@@ -142,17 +142,17 @@ def train(args):
                 inferred_latent_dim = int(loaded_state_dict['fc_mu.weight'].shape[0])
 
             if inferred_latent_dim is not None and hasattr(args, 'latent_dim') and int(args.latent_dim) != inferred_latent_dim:
-                print(f"检测到 checkpoint latent_dim={inferred_latent_dim}，覆盖当前参数 latent_dim={args.latent_dim}")
+                print(f"translated_text checkpoint latent_dim={inferred_latent_dim}, translated_text latent_dim={args.latent_dim}")
                 args.latent_dim = inferred_latent_dim
         # English comment for public release.
         if _ckpt_saved_epoch > 0 and getattr(args, 'start_epoch', 0) == 0:
             args.start_epoch = _ckpt_saved_epoch
-            print(f"从 checkpoint 检测到已训练至第 {_ckpt_saved_epoch} 轮，KL退火/Curriculum Learning 自动从第 {_ckpt_saved_epoch + 1} 轮继续")
+            print(f"translated_text checkpoint translated_text {_ckpt_saved_epoch} translated_text, KLtranslated_text/Curriculum Learning translated_text {_ckpt_saved_epoch + 1} translated_text")
     # English comment for public release.
     if args.epochs <= 0:
-        raise ValueError('--epochs 必须大于0')
+        raise ValueError('--epochs translated_text0')
     if args.max_batch_size <= 0:
-        raise ValueError('--max-batch-size 必须大于0')
+        raise ValueError('--max-batch-size translated_text0')
 
     # English comment for public release.
     if isinstance(args.grid_size, int):
@@ -160,12 +160,12 @@ def train(args):
     elif len(args.grid_size) == 1:
         args.grid_size = [args.grid_size[0]] * 3
     elif len(args.grid_size) != 3:
-        raise ValueError('--grid-size 必须提供 1 个或 3 个整数')
+        raise ValueError('--grid-size translated_text 1 translated_text 3 translated_text')
     if any(d <= 0 or d % 16 != 0 for d in args.grid_size):
-        raise ValueError(f'--grid-size 的每个维度必须为正且是 16 的倍数 (当前: {args.grid_size})')
+        raise ValueError(f'--grid-size translated_text 16 translated_text (translated_text: {args.grid_size})')
 
     if args.latent_dim <= 0:
-        raise ValueError('--latent-dim 必须大于0')
+        raise ValueError('--latent-dim translated_text0')
 
     # English comment for public release.
     log_mode = getattr(args, 'verbosity', None) or getattr(args, 'log_mode', 'full')
@@ -177,10 +177,10 @@ def train(args):
 
     # English comment for public release.
     device = torch.device('cuda' if args.cuda and torch.cuda.is_available() else 'cpu')
-    vprint(f'使用设备：{device}')
+    vprint(f'translated_text: {device}')
     if device.type == 'cuda':
         vprint(f'GPU: {torch.cuda.get_device_name(0)}')
-        vprint(f'可用显存: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f} GB')
+        vprint(f'translated_text: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f} GB')
 
     ply_dir = os.path.abspath(args.ply_dir)
     target_file = os.path.abspath(args.ply_file) if args.ply_file else None
@@ -201,7 +201,7 @@ def train(args):
     os.makedirs(outputs_dir, exist_ok=True)
     os.makedirs(logs_dir, exist_ok=True)
     os.makedirs(model_root_dir, exist_ok=True)
-    vprint(f'结果输出目录: {base_out}')
+    vprint(f'translated_text: {base_out}')
 
     writer = SummaryWriter(log_dir=logs_dir)
     history = {'loss': [], 'bce': [], 'kld': [], 'dice': []}
@@ -209,12 +209,12 @@ def train(args):
     # English comment for public release.
     if args.generate_only:
         if target_file is None or not os.path.exists(target_file):
-            raise RuntimeError('未提供有效的 --ply-file 参数')
-        vprint(f'正在从 {target_file} 生成 {args.num_samples} 个虚拟钻井样本...')
+            raise RuntimeError('translated_text --ply-file translated_text')
+        vprint(f'translated_text {target_file} translated_text {args.num_samples} translated_text...')
         verts, faces = read_ply(target_file)
         vmin = verts.min(axis=0)
         vmax = verts.max(axis=0)
-        for si in tqdm(range(args.num_samples), desc='生成钻井样本'):
+        for si in tqdm(range(args.num_samples), desc='translated_text'):
             pts = []
             for h in range(args.num_holes):
                 cx = float(np.random.uniform(vmin[0], vmax[0]))
@@ -232,12 +232,12 @@ def train(args):
             colors[labels == 0] = [0, 0, 255]
             outpath = os.path.join(outputs_dir, f'drill_sample_{si+1:02d}.ply')
             write_ply_points(outpath, pts, colors=colors)
-        vprint(f'钻井样本已保存到: {outputs_dir}')
+        vprint(f'translated_text: {outputs_dir}')
         if not args.train_after_generate:
             return
 
     # English comment for public release.
-    vprint('-----开始加载数据-----')
+    vprint('-----translated_text-----')
     try:
         ds = MiningDataset(
             ply_dir,
@@ -257,26 +257,26 @@ def train(args):
             split_seed=args.split_seed,
         )
     except Exception as e:
-        print(f'数据加载失败: {e}')
+        print(f'translated_text: {e}')
         raise
 
     # English comment for public release.
     split_txt = os.path.join(base_out, 'train_test_split.txt')
     try:
         with open(split_txt, 'w', encoding='utf-8') as f:
-            f.write(f"训练样本: {getattr(ds, 'train_sample_count', 0)}\n")
+            f.write(f"translated_text: {getattr(ds, 'train_sample_count', 0)}\n")
             for p in getattr(ds, 'files', []):
                 cnt = getattr(ds, 'file_train_counts', {}).get(p, 0)
                 if cnt > 0:
                     f.write(f"  - {os.path.basename(p)}: {cnt}\n")
-            f.write(f"\n测试样本: {getattr(ds, 'test_sample_count', 0)}\n")
+            f.write(f"\ntranslated_text: {getattr(ds, 'test_sample_count', 0)}\n")
             for p in getattr(ds, 'files', []):
                 cnt = getattr(ds, 'file_test_counts', {}).get(p, 0)
                 if cnt > 0:
                     f.write(f"  - {os.path.basename(p)}: {cnt}\n")
         
     except Exception as e:
-        vprint(f'写入训练/测试列表失败: {e}')
+        vprint(f'translated_text/translated_text: {e}')
 
     # English comment for public release.
     num_workers = args.num_workers if hasattr(args, 'num_workers') else 0
@@ -305,8 +305,8 @@ def train(args):
     # English comment for public release.
     allocated_memory_bytes = available_memo_bytes * mem_frac
     
-    vprint(f"[显存管理] 设备总显存: {total_bytes/1024**3:.2f} GB, 当前可用: {available_memo_bytes/1024**3:.2f} GB")
-    vprint(f"[显存管理] 目标占用比例: {mem_frac:.2f}, 计划分配: {allocated_memory_bytes/1024**3:.2f} GB")
+    vprint(f"[translated_text] translated_text: {total_bytes/1024**3:.2f} GB, translated_text: {available_memo_bytes/1024**3:.2f} GB")
+    vprint(f"[translated_text] translated_text: {mem_frac:.2f}, translated_text: {allocated_memory_bytes/1024**3:.2f} GB")
 
     def measure_single_batch_usage(grid_size):
         """Documentation translated to English for open-source release."""
@@ -356,7 +356,7 @@ def train(args):
             return used_mem
             
         except Exception as e:
-            vprint(f"[显存管理] 测量单 Batch 显存失败: {e}，回退到估算模式")
+            vprint(f"[translated_text] translated_text Batch translated_text: {e}, translated_text")
             return None
 
     # English comment for public release.
@@ -367,13 +367,13 @@ def train(args):
         # English comment for public release.
         single_batch_bytes = 500 * 1024 * 1024 
     
-    vprint(f"[显存管理] 单样本(Batch=1) 显存开销: {single_batch_bytes/1024**2:.2f} MB")
+    vprint(f"[translated_text] translated_text(Batch=1) translated_text: {single_batch_bytes/1024**2:.2f} MB")
 
     # English comment for public release.
     if single_batch_bytes > allocated_memory_bytes:
         raise RuntimeError(
-            f"单样本显存需求 ({single_batch_bytes/1024**3:.2f} GB) 已超过分配显存限制 ({allocated_memory_bytes/1024**3:.2f} GB)！"
-            f"请降低 --grid-size，减小网络规模，或增加 --batch-to-mem 比例。"
+            f"translated_text ({single_batch_bytes/1024**3:.2f} GB) translated_text ({allocated_memory_bytes/1024**3:.2f} GB)!"
+            f"translated_text --grid-size, translated_text, translated_text --batch-to-mem translated_text."
         )
 
     # English comment for public release.
@@ -391,8 +391,8 @@ def train(args):
     # English comment for public release.
     final_bs = max(1, final_bs)
     
-    vprint(f"[显存管理] 理论最大BS: {calc_bs}, 限制上限: {args.max_batch_size}")
-    vprint(f"[显存管理] 最终决定 Batch Size: {final_bs}")
+    vprint(f"[translated_text] translated_textBS: {calc_bs}, translated_text: {args.max_batch_size}")
+    vprint(f"[translated_text] translated_text Batch Size: {final_bs}")
     
     chosen_batch_size = final_bs
     estimated_batch_size = chosen_batch_size
@@ -428,16 +428,16 @@ def train(args):
                             except Exception:
                                 pass
                         new_bs = bs // 2
-                        print(f"BS大小 {bs} {('pin' if pin_flag else 'no-pin')} OOM，尝试减半到 {new_bs}")
+                        print(f"BStranslated_text {bs} {('pin' if pin_flag else 'no-pin')} OOM, translated_text {new_bs}")
                         bs = new_bs
                         continue
                     raise
-        raise RuntimeError(f'无法构建 DataLoader（最小批次仍 OOM）: {last_err}')
+        raise RuntimeError(f'translated_text DataLoader(translated_text OOM): {last_err}')
 
     # Build and verify loader
     chosen_batch_size, loader, fixed_batch = build_loader_safely(chosen_batch_size)
     if chosen_batch_size != estimated_batch_size:
-        vprint(f'实际使用BS大小 {chosen_batch_size}（因 OOM 自动调小）')
+        vprint(f'translated_textBStranslated_text {chosen_batch_size}(translated_text OOM translated_text)')
     data_grid_size = tuple(fixed_batch[0].shape[2:])
     if tuple(args.grid_size) != data_grid_size:
         args.grid_size = list(data_grid_size)
@@ -473,20 +473,20 @@ def train(args):
 
         missing, unexpected = model.load_state_dict(compatible_state, strict=False)
         print(
-            f"已加载 checkpoint 权重: loaded={len(compatible_state)}, "
+            f"translated_text checkpoint translated_text: loaded={len(compatible_state)}, "
             f"missing={len(missing)}, unexpected={len(unexpected)}, "
             f"shape_mismatch_skipped={len(skipped_shape_mismatch)}"
         )
         if len(missing) > 0:
-            print(f'警告: 有 {len(missing)} 个键未在 checkpoint 中找到 (可能是新添加的层或结构变更)')
+            print(f'translated_text: translated_text {len(missing)} translated_text checkpoint translated_text (translated_text)')
             if len(missing) > 10:
-                print(f'部分缺失键示例: {missing[:5]} ...')
+                print(f'translated_text: {missing[:5]} ...')
         if len(skipped_shape_mismatch) > 0:
-            print(f'警告: 有 {len(skipped_shape_mismatch)} 个键因形状不匹配被跳过')
+            print(f'translated_text: translated_text {len(skipped_shape_mismatch)} translated_text')
             if len(skipped_shape_mismatch) > 10:
-                print(f'形状不匹配键示例: {skipped_shape_mismatch[:5]} ...')
+                print(f'translated_text: {skipped_shape_mismatch[:5]} ...')
     
-    vprint(f'-----数据加载完成----- 样本总数={len(ds)}  BS大小={chosen_batch_size}')
+    vprint(f'-----translated_text----- translated_text={len(ds)}  BStranslated_text={chosen_batch_size}')
 
 
 
@@ -512,7 +512,7 @@ def train(args):
         scheduler_dec = None
         using_multi_optimizer = False
 
-    vprint('-----开始训练-----')
+    vprint('-----translated_text-----')
     # English comment for public release.
     use_amp = args.amp
     scaler = torch.amp.GradScaler('cuda', enabled=use_amp)
@@ -554,7 +554,7 @@ def train(args):
         if is_new_kl_cycle:
             patience_counter = 0
             best_bce = float('inf')  # English comment for public release.
-            vprint(f'[KL周期重置] 第 {global_epoch} 轮进入新 KL 退火周期，patience 与 BCE 基准已重置')
+            vprint(f'[KLtranslated_text] translated_text {global_epoch} translated_text KL translated_text, patience translated_text BCE translated_text')
 
         model.train()
         running_loss = 0.0
@@ -632,7 +632,7 @@ def train(args):
                     continue
 
                 if torch.isnan(loss) or torch.isinf(loss):
-                    vprint(f'批次 {batch_idx} 损失异常 (NaN/Inf)，跳过此批次')
+                    vprint(f'translated_text {batch_idx} translated_text (NaN/Inf), translated_text')
                     continue
 
                 if using_multi_optimizer:
@@ -677,7 +677,7 @@ def train(args):
 
                 del obs, vox, mu, logvar, logits, loss, bce, kld, dice
             except Exception as e:
-                vprint(f'❌ 批次 {batch_idx} 处理失败: {e}')
+                vprint(f'❌ translated_text {batch_idx} translated_text: {e}')
                 vprint(traceback.format_exc())
                 continue
 
@@ -691,7 +691,7 @@ def train(args):
             avg_bce = float('inf')
             avg_kld = float('inf')
             avg_dice = float('inf')
-            print(f'Epoch {epoch} 无有效批次')
+            print(f'Epoch {epoch} translated_text')
 
         writer.add_scalar('Train/Total_Loss', avg_loss, global_epoch)
         writer.add_scalar('Train/BCE_Loss', avg_bce, global_epoch)
@@ -739,7 +739,7 @@ def train(args):
 
         epoch_elapsed = time.time() - epoch_start
         log_msg = (
-            f'第{global_epoch}轮 用时={epoch_elapsed:.1f}s 平均损失={avg_loss:.4f} '
+            f'translated_text{global_epoch}translated_text translated_text={epoch_elapsed:.1f}s translated_text={avg_loss:.4f} '
             f'BCE={avg_bce:.2f}(best={best_bce:.2f}) KL={avg_kld:.2f} β={beta:.2f} [patience: {patience_str}]'
         )
         vprint(log_msg)
@@ -756,10 +756,10 @@ def train(args):
                 noisy_indices.clear()
                 recent_klds.clear()
             except Exception as e:
-                print(f'处理噪声样本失败: {e}')
+                print(f'translated_text: {e}')
 
         if patience_counter >= max_patience:
-            print(f'{max_patience}个epoch无改进，停止训练')
+            print(f'{max_patience}translated_textepochtranslated_text, translated_text')
             log_file.write(f'Early stopping at epoch {epoch}\n')
             break
 
@@ -786,15 +786,15 @@ def train(args):
     plt.grid(True)
     plt.savefig(os.path.join(logs_dir, 'loss_curve.png'))
     plt.close()
-    print(f'损失曲线已保存至: {os.path.join(logs_dir, "loss_curve.png")}')
+    print(f'translated_text: {os.path.join(logs_dir, "loss_curve.png")}')
 
     log_file.close()
 
     # English comment for public release.
-    print("-----开始生成最终全量评估结果-----")
+    print("-----translated_text-----")
     best_model_path = os.path.join(checkpoints_dir, 'best_model.pth')
     if os.path.exists(best_model_path):
-        print(f"加载最佳模型: {best_model_path}")
+        print(f"translated_text: {best_model_path}")
         try:
             model.load_state_dict(torch.load(best_model_path, weights_only=True))
         except TypeError:
@@ -804,11 +804,11 @@ def train(args):
         try:
             global_best_path = os.path.join(model_root_dir, f'3dvae_best_{ts}.pth')
             shutil.copyfile(best_model_path, global_best_path)
-            print(f'最佳模型已保存到全局目录: {global_best_path}')
+            print(f'translated_text: {global_best_path}')
         except Exception as e:
-            print(f'无法复制最佳模型到全局目录: {e}')
+            print(f'translated_text: {e}')
     else:
-        print("未找到最佳模型，使用当前模型权重")
+        print("translated_text, translated_text")
 
     model.eval()
     metrics_records = []
@@ -991,7 +991,7 @@ def train(args):
                         _output_job(recon_probs, gt_vox, vmin_np, vmax_np, name_prefix, drill_traces, orig_verts, orig_faces)
 
             except Exception as e:
-                print(f"处理样本 {split_name}:{sample_idx} 失败: {e}")
+                print(f"translated_text {split_name}:{sample_idx} translated_text: {e}")
         return local_records
 
     metrics_records.extend(eval_split('train'))
@@ -1009,9 +1009,9 @@ def train(args):
                 f.write('name,total_points,gt_points,correct_gt(tp),over_pred(fp),miss(fn),iou,drill_acc\n')
                 for line in output_summaries:
                     f.write(line + '\n')
-            print(f'输出统计已写入: {stats_path}')
+            print(f'translated_text: {stats_path}')
         except Exception as e:
-            print(f'写入输出统计失败: {e}')
+            print(f'translated_text: {e}')
 
     if metrics_records:
         metrics_csv = os.path.join(base_out, 'metrics_summary.csv')
@@ -1022,9 +1022,9 @@ def train(args):
                     f.write(
                         f"{m['file']},{m['sample_id']},{m['split']},{m['dice']:.4f},{m['iou']:.4f},{m['precision']:.4f},{m['recall']:.4f},{m['accuracy']:.4f},{m['tp']},{m['fp']},{m['fn']},{m['tn']}\n"
                     )
-            print(f'预测指标已写入: {metrics_csv}')
+            print(f'translated_text: {metrics_csv}')
         except Exception as e:
-            print(f'保存指标CSV失败: {e}')
+            print(f'translated_textCSVtranslated_text: {e}')
 
         try:
             ensure_cn_font()
@@ -1041,16 +1041,16 @@ def train(args):
             plt.xticks(idx, [f"{m['file']}-s{m['sample_id']:04d} ({'T' if m['split']=='train' else 'E'})" for m in metrics_records], rotation=45, ha='right')
             plt.ylim(0, 1.05)
             plt.ylabel('Score')
-            plt.title('预测准确性指标曲线（按样本）')
+            plt.title('translated_text(translated_text)')
             plt.legend()
             plt.grid(True, alpha=0.3)
             plt.tight_layout()
             acc_plot_path = os.path.join(base_out, 'accuracy_multiline.png')
             plt.savefig(acc_plot_path, dpi=150)
             plt.close()
-            print(f'预测指标曲线已保存至: {acc_plot_path}')
+            print(f'translated_text: {acc_plot_path}')
         except Exception as e:
-            print(f'保存预测指标图失败: {e}')
+            print(f'translated_text: {e}')
 
     # English comment for public release.
     try:
@@ -1066,18 +1066,19 @@ def train(args):
                 pass
 
         if getattr(args, 'skip_vis', False):
-            print('配置为跳过可视化生成 (--skip-vis)')
+            print('translated_text (--skip-vis)')
         else:
             vis_root = os.path.join(os.path.dirname(__file__), '..', 'results', 'vis')
             # English comment for public release.
             vis_dir = render_outputs_to_vis(outputs_dir, vis_root, frames=60, elev=35.0, dpi=600, workers=os.cpu_count())
             if vis_dir is None:
-                print('未生成可视化：未找到输出 PLY 或目录不存在')
+                print('translated_text: translated_text PLY translated_text')
             else:
-                print(f'旋转可视化已生成到: {vis_dir}')
+                print(f'translated_text: {vis_dir}')
     except Exception as e:
-        print(f'生成可视化失败: {e}')
+        print(f'translated_text: {e}')
 
-    print(f'-----训练与评估完成----- 结果保存于: {base_out}')
+    print(f'-----translated_text----- translated_text: {base_out}')
+
 
 

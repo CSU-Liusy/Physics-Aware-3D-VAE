@@ -1,4 +1,4 @@
-import os
+﻿import os
 import sys
 import ezdxf
 from tqdm import tqdm
@@ -21,7 +21,7 @@ def convert_dxf_to_ply(dxf_path, ply_path):
         doc = ezdxf.readfile(dxf_path)
         msp = doc.modelspace()
     except Exception as e:
-        print(f"❌ 读取失败 {dxf_path}: {e}")
+        print(f"❌ translated_text {dxf_path}: {e}")
         return False
 
     vertices = []
@@ -69,7 +69,7 @@ def convert_dxf_to_ply(dxf_path, ply_path):
                 # English comment for public release.
 
     if len(vertices) == 0:
-        print(f"⚠️  {os.path.basename(dxf_path)} 中未发现几何体 (仅支持 3DFACE)")
+        print(f"⚠️  {os.path.basename(dxf_path)} translated_text (translated_text 3DFACE)")
         return False
 
     # English comment for public release.
@@ -93,7 +93,7 @@ def convert_dxf_to_ply(dxf_path, ply_path):
                 indices = " ".join(map(str, face[1:]))
                 f.write(f"{face[0]} {indices}\n")
     except Exception as e:
-        print(f"❌ 写入 PLY 失败: {e}")
+        print(f"❌ translated_text PLY translated_text: {e}")
         return False
             
     return True
@@ -105,22 +105,22 @@ if __name__ == "__main__":
     output_dir = os.path.join(current_dir, '..', 'data', 'mining_ply_pretrains')
     
     if not os.path.exists(data_dir):
-        print(f"❌ 数据目录不存在: {data_dir}")
+        print(f"❌ translated_text: {data_dir}")
         sys.exit(1)
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-        print(f"📂 创建输出目录: {output_dir}")
+        print(f"📂 translated_text: {output_dir}")
         
     files = [f for f in os.listdir(data_dir) if f.lower().endswith('.dxf')]
-    print(f"📂 在 {data_dir} 中发现 {len(files)} 个 DXF 文件")
+    print(f"📂 translated_text {data_dir} translated_text {len(files)} translated_text DXF translated_text")
     
     if len(files) == 0:
-        print("没有需要转换的文件。")
+        print("translated_text.")
         sys.exit(0)
     
     success_count = 0
-    for f in tqdm(files, desc="正在转换"):
+    for f in tqdm(files, desc="translated_text"):
         dxf_path = os.path.join(data_dir, f)
         ply_name = os.path.splitext(f)[0] + '.ply'
         ply_path = os.path.join(output_dir, ply_name)
@@ -129,5 +129,6 @@ if __name__ == "__main__":
         if convert_dxf_to_ply(dxf_path, ply_path):
             success_count += 1
             
-    print(f"✅ 转换完成! 成功: {success_count}/{len(files)}")
-    print(f"📄 输出目录: {output_dir}")
+    print(f"✅ translated_text! translated_text: {success_count}/{len(files)}")
+    print(f"📄 translated_text: {output_dir}")
+

@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import os
 import sys
@@ -144,8 +144,8 @@ def _load_or_train_unet(unet_ckpt: str, train_data_dir: str,
     ckpt_path = os.path.abspath(unet_ckpt)
 
     if not os.path.exists(ckpt_path):
-        print(f"[U-Net] 未找到权重: {ckpt_path}")
-        print(f"[U-Net] 自动训练基础模型（epochs={unet_epochs}）...")
+        print(f"[U-Net] translated_text: {ckpt_path}")
+        print(f"[U-Net] translated_text(epochs={unet_epochs})...")
         os.makedirs(os.path.dirname(ckpt_path), exist_ok=True)
         from types import SimpleNamespace
         train_args = SimpleNamespace(
@@ -160,7 +160,7 @@ def _load_or_train_unet(unet_ckpt: str, train_data_dir: str,
             ckpt_path = saved_path
 
     if not os.path.exists(ckpt_path):
-        print('[U-Net] 仍未获得可用权重，跳过 U-Net 评估。')
+        print('[U-Net] translated_text, translated_text U-Net translated_text.')
         return None
 
     model = UNet3D(in_channels=2, out_channels=1).to(device)
@@ -170,7 +170,7 @@ def _load_or_train_unet(unet_ckpt: str, train_data_dir: str,
     else:
         model.load_state_dict(state, strict=False)
     model.eval()
-    print(f"[U-Net] 已加载: {ckpt_path}")
+    print(f"[U-Net] translated_text: {ckpt_path}")
     return model
 
 
@@ -200,7 +200,7 @@ def _predict_ik(obs_np: np.ndarray, grid_size: Tuple[int, int, int]) -> np.ndarr
             pred = pred[0]
         return np.clip(pred.astype(np.float32), 0.0, 1.0)
     except Exception as e:
-        print(f"[IK] 预测失败，回退全零: {e}")
+        print(f"[IK] translated_text, translated_text: {e}")
         return np.zeros(grid_size, dtype=np.float32)
 
 
@@ -212,14 +212,14 @@ def _predict_rbf(obs_np: np.ndarray, grid_size: Tuple[int, int, int], kernel: st
             pred = pred[0]
         return np.clip(pred.astype(np.float32), 0.0, 1.0)
     except Exception as e:
-        print(f"[RBF] 预测失败，回退全零: {e}")
+        print(f"[RBF] translated_text, translated_text: {e}")
         return np.zeros(grid_size, dtype=np.float32)
 
 
 def parse_args():
     repo_root = os.path.dirname(_SCRIPT_DIR)
     p = argparse.ArgumentParser(
-        description='五方法统一定量评估（IK/RBF/U-Net/基础VAE/Physics-Aware VAE）',
+        description='translated_text(IK/RBF/U-Net/translated_textVAE/Physics-Aware VAE)',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
@@ -227,9 +227,9 @@ def parse_args():
     p.add_argument('--pretrain-dir', type=str, default=os.path.join(repo_root, 'data', 'mining_ply_pretrain'))
 
     p.add_argument('--model-dir', type=str, default=os.path.join(repo_root, 'results', 'model'))
-    p.add_argument('--model-name', type=str, default='best_model.pth', help='Physics-Aware 3D-VAE 权重名（与 plot_dataset_overview 一致）')
+    p.add_argument('--model-name', type=str, default='best_model.pth', help='Physics-Aware 3D-VAE translated_text(translated_text plot_dataset_overview translated_text)')
 
-    p.add_argument('--baseline-ckpt', type=str, default=None, help='基础 3D-VAE 权重路径；为空时自动探测')
+    p.add_argument('--baseline-ckpt', type=str, default=None, help='translated_text 3D-VAE translated_text; translated_text')
     p.add_argument('--unet-ckpt', type=str, default=os.path.join(repo_root, 'results', 'comparisons', 'models', 'unet_best.pth'))
 
     p.add_argument('--grid-size', type=int, default=32)
@@ -237,13 +237,13 @@ def parse_args():
     p.add_argument('--samples-per-hole', type=int, default=16)
     p.add_argument('--threshold', type=float, default=0.5)
     p.add_argument('--seed', type=int, default=42)
-    p.add_argument('--limit', type=int, default=0, help='评估样本上限；0 表示全部')
+    p.add_argument('--limit', type=int, default=0, help='translated_text; 0 translated_text')
 
     p.add_argument('--unet-epochs', type=int, default=10)
     p.add_argument('--unet-batch-size', type=int, default=16)
     p.add_argument('--unet-lr', type=float, default=1e-3)
     p.add_argument('--show-gp-warnings', action='store_true',
-                   help='显示 IK(高斯过程) 收敛警告；默认隐藏以避免大量刷屏')
+                   help='translated_text IK(translated_text) translated_text; translated_text')
 
     p.add_argument('--out-dir', type=str, default=os.path.join(repo_root, 'results', 'figures'))
     return p.parse_args()
@@ -255,16 +255,16 @@ def run_evaluation(args):
 
     ours_ckpt = os.path.join(args.model_dir, args.model_name)
     if not os.path.isfile(ours_ckpt):
-        raise FileNotFoundError(f'未找到 Physics-Aware 3D-VAE 权重: {ours_ckpt}')
+        raise FileNotFoundError(f'translated_text Physics-Aware 3D-VAE translated_text: {ours_ckpt}')
 
     baseline_ckpt = args.baseline_ckpt
     if baseline_ckpt is None:
         baseline_ckpt = _auto_find_baseline_ckpt(repo_root, ours_ckpt)
     if baseline_ckpt is None or not os.path.isfile(baseline_ckpt):
-        raise FileNotFoundError('未找到基础 3D-VAE 权重。请通过 --baseline-ckpt 显式指定。')
+        raise FileNotFoundError('translated_text 3D-VAE translated_text.translated_text --baseline-ckpt translated_text.')
 
-    print(f"[模型] Physics-Aware 3D-VAE: {ours_ckpt}")
-    print(f"[模型] 基础 3D-VAE:         {baseline_ckpt}")
+    print(f"[translated_text] Physics-Aware 3D-VAE: {ours_ckpt}")
+    print(f"[translated_text] translated_text 3D-VAE:         {baseline_ckpt}")
 
     show_gp_warnings = bool(getattr(args, 'show_gp_warnings', False))
     os.environ['SHOW_GP_WARNINGS'] = '1' if show_gp_warnings else '0'
@@ -280,10 +280,10 @@ def run_evaluation(args):
     baseline_model, baseline_grid = _load_ours_model(baseline_ckpt, device, input_grid)
 
     if tuple(ours_grid) != tuple(baseline_grid):
-        print(f"[警告] Ours 网格 {ours_grid} 与 Baseline 网格 {baseline_grid} 不一致，评估使用 Ours 网格。")
+        print(f"[translated_text] Ours translated_text {ours_grid} translated_text Baseline translated_text {baseline_grid} translated_text, translated_text Ours translated_text.")
 
     eval_grid = tuple(ours_grid)
-    print(f"[评估] 使用网格: {eval_grid}")
+    print(f"[translated_text] translated_text: {eval_grid}")
 
     train_data_dir = args.pretrain_dir if os.path.isdir(args.pretrain_dir) else args.real_dir
     unet_model = _load_or_train_unet(
@@ -293,9 +293,9 @@ def run_evaluation(args):
     )
 
     if not os.path.isdir(args.real_dir):
-        raise FileNotFoundError(f'真实矿体目录不存在: {args.real_dir}')
+        raise FileNotFoundError(f'translated_text: {args.real_dir}')
     if not os.path.isdir(args.pretrain_dir):
-        raise FileNotFoundError(f'虚拟矿体目录不存在: {args.pretrain_dir}')
+        raise FileNotFoundError(f'translated_text: {args.pretrain_dir}')
 
     def _build_dataset(ply_dir: str, split_seed: int) -> MiningDataset:
         ds = MiningDataset(
@@ -334,20 +334,20 @@ def run_evaluation(args):
     eval_real = sum(1 for src, _ in eval_indices if src == 'real')
     eval_virtual = eval_n - eval_real
 
-    print(f"[数据] 真实矿体样本数: {total_real}")
-    print(f"[数据] 虚拟矿体样本数: {total_virtual}")
-    print(f"[数据] 合计样本数: {total_all}")
+    print(f"[translated_text] translated_text: {total_real}")
+    print(f"[translated_text] translated_text: {total_virtual}")
+    print(f"[translated_text] translated_text: {total_all}")
     if args.limit and args.limit > 0:
-        print(f"[数据] 按 --limit={args.limit} 截断后评估样本数: {eval_n} (real={eval_real}, virtual={eval_virtual})")
+        print(f"[translated_text] translated_text --limit={args.limit} translated_text: {eval_n} (real={eval_real}, virtual={eval_virtual})")
     else:
-        print(f"[数据] 全量评估样本数: {eval_n} (real={eval_real}, virtual={eval_virtual})")
+        print(f"[translated_text] translated_text: {eval_n} (real={eval_real}, virtual={eval_virtual})")
 
     method_order = [
-        ('传统方法', '指示克里金', 'IK'),
-        ('传统方法', '径向基函数', 'RBF'),
-        ('深度学习', '3D U-Net', 'UNET'),
-        ('深度学习', '基础 3D-VAE', 'BASE_VAE'),
-        ('本文方法', 'Physics-Aware 3D-VAE', 'OURS_VAE'),
+        ('translated_text', 'translated_text', 'IK'),
+        ('translated_text', 'translated_text', 'RBF'),
+        ('translated_text', '3D U-Net', 'UNET'),
+        ('translated_text', 'translated_text 3D-VAE', 'BASE_VAE'),
+        ('translated_text', 'Physics-Aware 3D-VAE', 'OURS_VAE'),
     ]
 
     metrics_map: Dict[str, Dict[str, List[float]]] = {
@@ -425,19 +425,19 @@ def run_evaluation(args):
     df.to_csv(csv_path, index=False, encoding='utf-8-sig')
 
     with open(md_path, 'w', encoding='utf-8') as f:
-        f.write('| 方法类别(Category) | 模型名称(Methods) | IoU(↑) | Dice(↑) | HD(↓) | CD(↓) |\n')
+        f.write('| translated_text(Category) | translated_text(Methods) | IoU(↑) | Dice(↑) | HD(↓) | CD(↓) |\n')
         f.write('|---|---:|---:|---:|---:|---:|\n')
         for _, r in df.iterrows():
             f.write(
                 f"| {r['Category']} | {r['Methods']} | {r['IoU']:.4f} | {r['Dice']:.4f} | {r['HD']:.3f} | {r['CD']:.3f} |\n"
             )
 
-    print('\n================ 定量评估结果 ================')
+    print('\n================ translated_text ================')
     for _, r in df.iterrows():
         print(f"{r['Category']:<8} | {r['Methods']:<24} | IoU={r['IoU']:.4f} | Dice={r['Dice']:.4f} | HD={r['HD']:.3f} | CD={r['CD']:.3f}")
     print('==============================================')
-    print(f'[保存] CSV: {csv_path}')
-    print(f'[保存] MD : {md_path}')
+    print(f'[translated_text] CSV: {csv_path}')
+    print(f'[translated_text] MD : {md_path}')
 
     return csv_path, md_path
 
@@ -449,3 +449,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import os
 import sys
@@ -121,7 +121,7 @@ def _resolve_selected_pool(directory: str,
             else:
                 matches = basename_map.get(os.path.basename(item), [])
                 if len(matches) > 1:
-                    print(f"[警告] {label} 文件名 '{item}' 匹配到多个文件，默认取第一个。")
+                    print(f"[translated_text] {label} translated_text '{item}' translated_text, translated_text.")
                 if matches:
                     chosen = matches[0]
 
@@ -132,11 +132,11 @@ def _resolve_selected_pool(directory: str,
             resolved.append(chosen)
 
     if missing:
-        print(f"[警告] {label} 指定文件未找到，已忽略: {missing}")
+        print(f"[translated_text] {label} translated_text, translated_text: {missing}")
     if not resolved:
-        raise RuntimeError(f"{label} 指定文件均无效，请检查 --selected-*-files 参数。")
+        raise RuntimeError(f"{label} translated_text, translated_text --selected-*-files translated_text.")
 
-    print(f"[样本池] {label} 使用指定池: {len(resolved)} 个")
+    print(f"[translated_text] {label} translated_text: {len(resolved)} translated_text")
     return resolved
 
 
@@ -507,7 +507,7 @@ def _resolve_state_dict(ckpt_obj) -> Tuple[dict, dict]:
                 state_dict = ckpt_obj
 
     if state_dict is None:
-        raise RuntimeError('无法从 checkpoint 中解析 state_dict')
+        raise RuntimeError('translated_text checkpoint translated_text state_dict')
 
     cleaned = {}
     for k, v in state_dict.items():
@@ -670,7 +670,7 @@ def _load_ours_model(model_path: str, device: torch.device,
                 _ = model(dummy)
 
             print(
-                f"[Ours] 模型加载成功: type={cfg['model_type']}, latent={cfg['latent_dim']}, "
+                f"[Ours] translated_text: type={cfg['model_type']}, latent={cfg['latent_dim']}, "
                 f"base={cfg['base_channels']}, grid={run_grid}, loaded={loaded_n}, skipped_mismatch={skipped_n}"
             )
             return model, run_grid
@@ -678,7 +678,7 @@ def _load_ours_model(model_path: str, device: torch.device,
             last_err = e
             continue
 
-    raise RuntimeError(f'加载 Ours 模型失败: {last_err}')
+    raise RuntimeError(f'translated_text Ours translated_text: {last_err}')
 
 
 def _load_or_train_unet(unet_ckpt: str,
@@ -690,8 +690,8 @@ def _load_or_train_unet(unet_ckpt: str,
     ckpt_path = os.path.abspath(unet_ckpt)
 
     if not os.path.exists(ckpt_path):
-        print(f"[U-Net] 未找到权重: {ckpt_path}")
-        print(f"[U-Net] 开始自动训练基础模型（epochs={unet_epochs}）...")
+        print(f"[U-Net] translated_text: {ckpt_path}")
+        print(f"[U-Net] translated_text(epochs={unet_epochs})...")
         os.makedirs(os.path.dirname(ckpt_path), exist_ok=True)
         train_args = SimpleNamespace(
             epochs=int(unet_epochs),
@@ -705,7 +705,7 @@ def _load_or_train_unet(unet_ckpt: str,
             ckpt_path = saved_path
 
     if not os.path.exists(ckpt_path):
-        print("[U-Net] 仍未获得可用权重，跳过 U-Net 列。")
+        print("[U-Net] translated_text, translated_text U-Net translated_text.")
         return None
 
     model = UNet3D(in_channels=2, out_channels=1).to(device)
@@ -715,7 +715,7 @@ def _load_or_train_unet(unet_ckpt: str,
     else:
         model.load_state_dict(state, strict=False)
     model.eval()
-    print(f"[U-Net] 已加载: {ckpt_path}")
+    print(f"[U-Net] translated_text: {ckpt_path}")
     return model
 
 
@@ -732,7 +732,7 @@ def _predict_ik(obs_np: np.ndarray, grid_size: Tuple[int, int, int]) -> np.ndarr
             pred = pred[0]
         return np.clip(pred.astype(np.float32), 0.0, 1.0)
     except Exception as e:
-        print(f"[IK] 插值失败，回退为零体素: {e}")
+        print(f"[IK] translated_text, translated_text: {e}")
         return np.zeros(grid_size, dtype=np.float32)
 
 
@@ -761,7 +761,7 @@ def _predict_ours(model, obs_np: np.ndarray) -> np.ndarray:
 def parse_args():
     repo_root = os.path.dirname(_SCRIPT_DIR)
     p = argparse.ArgumentParser(
-        description='生成全局三维重建对比矩阵图（GT / Sparse / IK / 3D U-Net / Ours）',
+        description='translated_text(GT / Sparse / IK / 3D U-Net / Ours)',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     p.add_argument('--model-dir', type=str, default=os.path.join(repo_root, 'results', 'model'))
@@ -771,17 +771,17 @@ def parse_args():
     p.add_argument('--unet-ckpt', type=str, default=os.path.join(repo_root, 'results', 'comparisons', 'models', 'unet_best.pth'))
     p.add_argument('--out-dir', type=str, default=os.path.join(repo_root, 'results', 'figures'))
 
-    p.add_argument('--rows', type=int, default=4, help='展示样本总行数')
-    p.add_argument('--real-rows', type=int, default=2, help='优先展示的真实矿体行数')
-    p.add_argument('--virtual-rows', type=int, default=2, help='优先展示的虚拟矿体行数')
+    p.add_argument('--rows', type=int, default=4, help='translated_text')
+    p.add_argument('--real-rows', type=int, default=2, help='translated_text')
+    p.add_argument('--virtual-rows', type=int, default=2, help='translated_text')
     p.add_argument('--fixed-samples', action='store_true',
-                   help='关闭随机选样，改为按文件大小固定选样')
+                   help='translated_text, translated_text')
     p.add_argument('--sample-seed', type=int, default=None,
-                   help='随机选样种子；不指定则每次运行随机变化')
+                   help='translated_text; translated_text')
     p.add_argument('--selected-virtual-files', type=str, nargs='*', default=None,
-                   help='指定用于展示的虚拟矿体文件名列表（支持逗号分隔或多值输入）')
+                   help='translated_text(translated_text)')
     p.add_argument('--selected-real-files', type=str, nargs='*', default=None,
-                   help='指定用于展示的真实矿体文件名列表（支持逗号分隔或多值输入）')
+                   help='translated_text(translated_text)')
     p.add_argument('--grid-size', type=int, default=32)
     p.add_argument('--threshold', type=float, default=0.5)
     p.add_argument('--num-holes', type=int, default=8)
@@ -804,9 +804,9 @@ def parse_args():
 def generate_uncertainty_variance_figure(args):
     model_path = os.path.join(args.model_dir, args.model_name)
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f'未找到 Ours 模型: {model_path}')
+        raise FileNotFoundError(f'translated_text Ours translated_text: {model_path}')
     if not os.path.isdir(args.pretrain_dir):
-        raise FileNotFoundError(f'未找到虚拟矿体目录: {args.pretrain_dir}')
+        raise FileNotFoundError(f'translated_text: {args.pretrain_dir}')
 
     os.makedirs(args.out_dir, exist_ok=True)
     grid_size = (args.grid_size, args.grid_size, args.grid_size)
@@ -823,7 +823,7 @@ def generate_uncertainty_variance_figure(args):
         virtual_pool = _resolve_selected_pool(args.pretrain_dir, getattr(args, 'selected_virtual_files', None), 'Virtual')
         candidate_pool = list(dict.fromkeys(real_pool + virtual_pool))
         if not candidate_pool:
-            raise RuntimeError('指定样本池为空，无法生成不确定性图。')
+            raise RuntimeError('translated_text, translated_text.')
         candidate_pool.sort(key=lambda p: os.path.getsize(p), reverse=True)
         pool_size = len(candidate_pool)
 
@@ -838,7 +838,7 @@ def generate_uncertainty_variance_figure(args):
     else:
         virtual_files = _list_ply_files(args.pretrain_dir)
         if not virtual_files:
-            raise RuntimeError(f'目录中没有可用 PLY: {args.pretrain_dir}')
+            raise RuntimeError(f'translated_text PLY: {args.pretrain_dir}')
 
         virtual_files.sort(key=lambda p: os.path.getsize(p), reverse=True)
         top_ratio = float(getattr(args, 'uncertainty_top_ratio', 0.35))
@@ -856,7 +856,7 @@ def generate_uncertainty_variance_figure(args):
             target_file = rng.choice(large_pool)
             mode_text = f'random-from-top{int(round(top_ratio * 100))}%(seed={sample_seed})'
 
-            print(f"[样本] Uncertainty 选样模式: {mode_text}, pool={pool_size}, selected={os.path.basename(target_file)}")
+            print(f"[translated_text] Uncertainty translated_text: {mode_text}, pool={pool_size}, selected={os.path.basename(target_file)}")
     source_name = os.path.splitext(os.path.basename(target_file))[0]
     ore_label = source_name
 
@@ -952,7 +952,7 @@ def generate_uncertainty_variance_figure(args):
     fig.savefig(out_pdf, format='pdf', bbox_inches='tight', facecolor='white', pad_inches=0.03)
     plt.close(fig)
 
-    print('[完成] 认知不确定性方差热力图已生成:')
+    print('[translated_text] translated_text:')
     print(f'  - {out_png}')
     print(f'  - {out_pdf}')
     return out_png, out_pdf
@@ -961,9 +961,9 @@ def generate_uncertainty_variance_figure(args):
 def generate_local_detail_figure(args):
     model_path = os.path.join(args.model_dir, args.model_name)
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f'未找到 Ours 模型: {model_path}')
+        raise FileNotFoundError(f'translated_text Ours translated_text: {model_path}')
     if not os.path.isdir(args.real_dir):
-        raise FileNotFoundError(f'未找到真实矿体目录: {args.real_dir}')
+        raise FileNotFoundError(f'translated_text: {args.real_dir}')
 
     os.makedirs(args.out_dir, exist_ok=True)
     grid_size = (args.grid_size, args.grid_size, args.grid_size)
@@ -994,13 +994,13 @@ def generate_local_detail_figure(args):
         mode_text = f'random(seed={sample_seed})' if sample_seed is not None else 'random(seed=None)'
 
     if not selected_files:
-        raise RuntimeError(f'目录中没有可用 PLY: {args.real_dir}')
+        raise RuntimeError(f'translated_text PLY: {args.real_dir}')
 
     rank = int(max(1, min(getattr(args, 'zoom_sample_rank', 1), len(selected_files))))
     target_file = selected_files[rank - 1]
     source_name = os.path.splitext(os.path.basename(target_file))[0]
     ore_label = f"Sample {rank}"
-    print(f"[样本] Local Detail 选样模式: {mode_text}, pool={len(selected_files)}, selected={os.path.basename(target_file)}")
+    print(f"[translated_text] Local Detail translated_text: {mode_text}, pool={len(selected_files)}, selected={os.path.basename(target_file)}")
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     ours_model, effective_grid = _load_ours_model(model_path, device, grid_size)
@@ -1116,7 +1116,7 @@ def generate_local_detail_figure(args):
     fig.savefig(out_pdf, format='pdf', bbox_inches='tight', facecolor='white', pad_inches=0.03)
     plt.close(fig)
 
-    print('[完成] 局部细节与伪影抑制放大对比图已生成:')
+    print('[translated_text] translated_text:')
     print(f'  - {out_png}')
     print(f'  - {out_pdf}')
     return out_png, out_pdf
@@ -1125,11 +1125,11 @@ def generate_local_detail_figure(args):
 def generate_comparison_figure(args):
     model_path = os.path.join(args.model_dir, args.model_name)
     if not os.path.exists(model_path):
-        raise FileNotFoundError(f'未找到 Ours 模型: {model_path}')
+        raise FileNotFoundError(f'translated_text Ours translated_text: {model_path}')
     if not os.path.isdir(args.real_dir):
-        raise FileNotFoundError(f'未找到真实矿体目录: {args.real_dir}')
+        raise FileNotFoundError(f'translated_text: {args.real_dir}')
     if not os.path.isdir(args.pretrain_dir):
-        raise FileNotFoundError(f'未找到虚拟矿体目录: {args.pretrain_dir}')
+        raise FileNotFoundError(f'translated_text: {args.pretrain_dir}')
 
     os.makedirs(args.out_dir, exist_ok=True)
     grid_size = (args.grid_size, args.grid_size, args.grid_size)
@@ -1149,12 +1149,12 @@ def generate_comparison_figure(args):
         virtual_files=virtual_pool,
     )
     if not selected_samples:
-        raise RuntimeError(f'目录中没有可用 PLY: real={args.real_dir}, virtual={args.pretrain_dir}')
+        raise RuntimeError(f'translated_text PLY: real={args.real_dir}, virtual={args.pretrain_dir}')
 
     n_real = sum(1 for src, _ in selected_samples if src == 'real')
     n_virtual = len(selected_samples) - n_real
     mode_text = 'random' if not bool(getattr(args, 'fixed_samples', False)) else 'fixed-largest'
-    print(f"[样本] 对比矩阵选样({mode_text}): real={n_real}, virtual={n_virtual}, total={len(selected_samples)}")
+    print(f"[translated_text] translated_text({mode_text}): real={n_real}, virtual={n_virtual}, total={len(selected_samples)}")
     for src, p in selected_samples:
         tag = 'Real' if src == 'real' else 'Virtual'
         print(f"  - [{tag}] {os.path.basename(p)} ({os.path.getsize(p)/1024:.1f} KB)")
@@ -1162,7 +1162,7 @@ def generate_comparison_figure(args):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     ours_model, effective_grid = _load_ours_model(model_path, device, grid_size)
     if tuple(effective_grid) != tuple(grid_size):
-        print(f"[Ours] 自动推断网格尺寸: {effective_grid}（覆盖命令行 --grid-size={args.grid_size}）")
+        print(f"[Ours] translated_text: {effective_grid}(translated_text --grid-size={args.grid_size})")
     grid_size = tuple(effective_grid)
     unet_model = _load_or_train_unet(
         args.unet_ckpt,
@@ -1183,7 +1183,7 @@ def generate_comparison_figure(args):
         else:
             virtual_rank += 1
             display_name = f"Virtual Ore Body {virtual_rank}"
-        print(f"[处理] {display_name} ...")
+        print(f"[translated_text] {display_name} ...")
         verts, faces = read_ply(file_path)
         verts_norm = _normalize_verts(verts)
 
@@ -1279,7 +1279,7 @@ def generate_comparison_figure(args):
     fig.savefig(out_pdf, format='pdf', bbox_inches='tight', facecolor='white', pad_inches=0.05)
     plt.close(fig)
 
-    print('[完成] 对比矩阵图已生成:')
+    print('[translated_text] translated_text:')
     print(f'  - {out_png}')
     print(f'  - {out_pdf}')
     return out_png, out_pdf
@@ -1292,3 +1292,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

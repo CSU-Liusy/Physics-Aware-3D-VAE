@@ -1,4 +1,4 @@
-import math
+﻿import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -775,7 +775,7 @@ def merge_all_lora_weights(model):
     for module in model.modules():
         if isinstance(module, (LoRALinear, LoRAConv3d)):
             module.merge_weights()
-    print("✓ 所有 LoRA 权重已合并到原始层")
+    print("✓ translated_text LoRA translated_text")
 
 
 def print_lora_statistics(model):
@@ -783,12 +783,12 @@ def print_lora_statistics(model):
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     frozen_params = total_params - trainable_params
     print("\n" + "=" * 60)
-    print("LoRA 参数统计")
+    print("LoRA translated_text")
     print("=" * 60)
-    print(f"总参数量:        {total_params:,}")
-    print(f"可训练参数:      {trainable_params:,} ({trainable_params / total_params * 100:.2f}%)")
-    print(f"冻结参数:        {frozen_params:,} ({frozen_params / total_params * 100:.2f}%)")
-    print(f"参数减少比例:    {(1 - trainable_params / total_params) * 100:.1f}%")
+    print(f"translated_text:        {total_params:,}")
+    print(f"translated_text:      {trainable_params:,} ({trainable_params / total_params * 100:.2f}%)")
+    print(f"translated_text:        {frozen_params:,} ({frozen_params / total_params * 100:.2f}%)")
+    print(f"translated_text:    {(1 - trainable_params / total_params) * 100:.1f}%")
     print("=" * 60 + "\n")
 
 
@@ -798,38 +798,38 @@ LORA_CONFIGS = {
         "alpha": 8,
         "target_modules": ["fc_mu", "fc_logvar", "fc_dec"],
         "dropout": 0.0,
-        "description": "极简配置 - 仅微调潜在空间映射层",
+        "description": "translated_text - translated_text",
     },
     "light": {
         "rank": 8,
         "alpha": 16,
         "target_modules": ["enc_down", "dec_up", "fc"],
         "dropout": 0.05,
-        "description": "轻量配置 - 微调下采样/上采样层和FC层",
+        "description": "translated_text - translated_text/translated_textFCtranslated_text",
     },
     "standard": {
         "rank": 16,
         "alpha": 32,
         "target_modules": None,
         "dropout": 0.1,
-        "description": "标准配置 - 微调所有 Linear 和 Conv3d 层",
+        "description": "translated_text - translated_text Linear translated_text Conv3d translated_text",
     },
     "aggressive": {
         "rank": 32,
         "alpha": 64,
         "target_modules": None,
         "dropout": 0.1,
-        "description": "激进配置 - 高秩 LoRA，适合复杂任务",
+        "description": "translated_text - translated_text LoRA, translated_text",
     },
 }
 
 
 def apply_lora_preset(model, preset="light"):
     if preset not in LORA_CONFIGS:
-        raise ValueError(f"未知预设: {preset}。可选: {list(LORA_CONFIGS.keys())}")
+        raise ValueError(f"translated_text: {preset}.translated_text: {list(LORA_CONFIGS.keys())}")
     config = LORA_CONFIGS[preset]
-    print(f"\n📌 应用 LoRA 预设: '{preset}'")
-    print(f"   描述: {config['description']}")
+    print(f"\n📌 translated_text LoRA translated_text: '{preset}'")
+    print(f"   translated_text: {config['description']}")
     print(f"   Rank={config['rank']}, Alpha={config['alpha']}, Dropout={config['dropout']}\n")
     model, lora_params = apply_lora_to_model(
         model,
@@ -841,7 +841,7 @@ def apply_lora_preset(model, preset="light"):
 
     # English comment for public release.
     if len(lora_params) == 0:
-        print("⚠️  预设未匹配到任何层，回退为全部 Linear/Conv3d 应用 LoRA")
+        print("⚠️  translated_text, translated_text Linear/Conv3d translated_text LoRA")
         model, lora_params = apply_lora_to_model(
             model,
             rank=config["rank"],
@@ -863,4 +863,5 @@ def create_octree_vae(config):
         base_channels=config.get("base_channels", 32),
         num_levels=config.get("num_levels", 4),
     )
+
 

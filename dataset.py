@@ -1,4 +1,4 @@
-import os
+﻿import os
 import random
 import math
 import numpy as np
@@ -175,7 +175,7 @@ def _process_file_job(args):
 			if vox.shape != (D, H, W):
 				vox = None
 		except (IOError, ValueError, OSError) as e:
-			print(f"⚠️ 缓存文件 {cache_path} 加载失败: {e}")
+			print(f"⚠️ translated_text {cache_path} translated_text: {e}")
 			vox = None
 	
 	if vox is None:
@@ -191,7 +191,7 @@ def _process_file_job(args):
 		try:
 			np.save(cache_path, vox)
 		except Exception as e:
-			print(f"⚠️ 无法保存缓存 {cache_path}: {e}")
+			print(f"⚠️ translated_text {cache_path}: {e}")
 
 	# English comment for public release.
 	# English comment for public release.
@@ -298,7 +298,7 @@ class MiningDataset(Dataset):
 		if self.is_brief:
 			print(f'MiningDataset: files={len(self.files)}, samples={sum(samples_per_file)}')
 		else:
-			print(f'MiningDataset：发现 {len(self.files)} 个 .ply 文件；按文件分配样本（总和={sum(samples_per_file)})')
+			print(f'MiningDataset: translated_text {len(self.files)} translated_text .ply translated_text; translated_text(translated_text={sum(samples_per_file)})')
 		
 		# English comment for public release.
 		cache_dir = os.path.join(os.path.dirname(ply_dir), 'cache')
@@ -306,14 +306,14 @@ class MiningDataset(Dataset):
 		
 		# English comment for public release.
 		if self.force_regen_cache:
-			msg = f'强制重新生成缓存，正在清空 {cache_dir} ...'
+			msg = f'translated_text, translated_text {cache_dir} ...'
 			print(msg)
 			for f in os.listdir(cache_dir):
 				if f.endswith('.npy'):
 					try:
 						os.remove(os.path.join(cache_dir, f))
 					except Exception as e:
-						print(f'无法删除缓存文件 {f}: {e}')
+						print(f'translated_text {f}: {e}')
 
 		from tqdm import tqdm
 		from multiprocessing import Pool, cpu_count
@@ -340,7 +340,7 @@ class MiningDataset(Dataset):
 
 		if use_parallel:
 			with Pool(processes=num_processes) as pool:
-				with tqdm(total=total_samples, desc='生成数据索引(多进程)', unit='样本', disable=self.is_brief) as pbar:
+				with tqdm(total=total_samples, desc='translated_text(translated_text)', unit='translated_text', disable=self.is_brief) as pbar:
 					for path, vox, vmin, vmax, n_s in pool.imap(_process_file_job, args_list):
 						if vox is None:
 							continue
@@ -358,7 +358,7 @@ class MiningDataset(Dataset):
 							file_sample_counters[path] += 1
 						pbar.update(n_s)
 		else:
-			with tqdm(total=total_samples, desc='生成数据索引(顺序)', unit='样本', disable=self.is_brief) as pbar:
+			with tqdm(total=total_samples, desc='translated_text(translated_text)', unit='translated_text', disable=self.is_brief) as pbar:
 				for a in args_list:
 					path, vox, vmin, vmax, n_s = _process_file_job(a)
 					if vox is None:
@@ -405,9 +405,9 @@ class MiningDataset(Dataset):
 			self.file_test_counts[fname] = self.file_test_counts.get(fname, 0) + 1
 
 		if self.is_brief:
-			print(f'MiningDataset 汇总: total={total}, train={self.train_sample_count}, test={self.test_sample_count} (按样本随机划分)')
+			print(f'MiningDataset translated_text: total={total}, train={self.train_sample_count}, test={self.test_sample_count} (translated_text)')
 		else:
-			print(f'MiningDataset 汇总：样本总数={total}，训练样本={self.train_sample_count}，测试样本={self.test_sample_count}（按样本随机划分）')
+			print(f'MiningDataset translated_text: translated_text={total}, translated_text={self.train_sample_count}, translated_text={self.test_sample_count}(translated_text)')
 
 	def _generate_obs(self, vox, vmin, vmax, seed):
 		"""

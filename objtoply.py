@@ -1,4 +1,4 @@
-import os
+﻿import os
 import sys
 from typing import List
 from tqdm import tqdm
@@ -48,11 +48,11 @@ def convert_obj_to_ply(obj_path: str, ply_path: str) -> bool:
 					idx = _parse_face_indices(parts, len(vertices))
 					faces.extend(_triangulate(idx))
 	except Exception as e:
-		print(f"❌ 读取 OBJ 失败 {obj_path}: {e}")
+		print(f"❌ translated_text OBJ translated_text {obj_path}: {e}")
 		return False
 
 	if not vertices or not faces:
-		print(f"⚠️  跳过（无有效顶点或面）: {obj_path}")
+		print(f"⚠️  translated_text(translated_text): {obj_path}")
 		return False
 
 	try:
@@ -73,7 +73,7 @@ def convert_obj_to_ply(obj_path: str, ply_path: str) -> bool:
 			for tri in faces:
 				f.write(f"3 {tri[0]} {tri[1]} {tri[2]}\n")
 	except Exception as e:
-		print(f"❌ 写入 PLY 失败 {ply_path}: {e}")
+		print(f"❌ translated_text PLY translated_text {ply_path}: {e}")
 		return False
 
 	return True
@@ -85,20 +85,20 @@ if __name__ == '__main__':
 	output_dir = os.path.join(current_dir, '..', 'data', 'mining_ply')
 
 	if not os.path.exists(data_dir):
-		print(f"❌ 数据目录不存在: {data_dir}")
+		print(f"❌ translated_text: {data_dir}")
 		sys.exit(1)
 	if not os.path.exists(output_dir):
 		os.makedirs(output_dir)
-		print(f"📂 创建输出目录: {output_dir}")
+		print(f"📂 translated_text: {output_dir}")
 
 	obj_files = [f for f in os.listdir(data_dir) if f.lower().endswith('.obj')]
-	print(f"📂 在 {data_dir} 中发现 {len(obj_files)} 个 OBJ 文件")
+	print(f"📂 translated_text {data_dir} translated_text {len(obj_files)} translated_text OBJ translated_text")
 	if not obj_files:
-		print('没有需要转换的 OBJ。')
+		print('translated_text OBJ.')
 		sys.exit(0)
 
 	success = 0
-	for fname in tqdm(sorted(obj_files), desc='正在转换 OBJ'):
+	for fname in tqdm(sorted(obj_files), desc='translated_text OBJ'):
 		obj_path = os.path.join(data_dir, fname)
 		stem = os.path.splitext(fname)[0]
 		ply_name = f"test_{stem}.ply"
@@ -106,5 +106,6 @@ if __name__ == '__main__':
 		if convert_obj_to_ply(obj_path, ply_path):
 			success += 1
 
-	print(f"✅ 转换完成: {success}/{len(obj_files)}")
-	print(f"📄 输出目录: {output_dir}")
+	print(f"✅ translated_text: {success}/{len(obj_files)}")
+	print(f"📄 translated_text: {output_dir}")
+

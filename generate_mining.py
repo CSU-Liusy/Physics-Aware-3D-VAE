@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import argparse
 import os
@@ -72,15 +72,15 @@ def get_target_face_count(base_target, temperature, shape_seed):
 def load_all_source_meshes(source_dir):
     """Documentation translated to English for open-source release."""
     if not HAS_DATASET_UTILS:
-        raise ImportError("需要 dataset.py 中的 read_ply 支持，请确保环境完整")
+        raise ImportError("translated_text dataset.py translated_text read_ply translated_text, translated_text")
     
     meshes = []
     if not os.path.isdir(source_dir):
-        print(f"警告: 源目录 {source_dir} 不存在")
+        print(f"translated_text: translated_text {source_dir} translated_text")
         return meshes
 
     files = [f for f in os.listdir(source_dir) if f.lower().endswith('.ply')]
-    print(f"正在加载 {len(files)} 个源矿体...")
+    print(f"translated_text {len(files)} translated_text...")
     for f in files:
         try:
             verts, faces = read_ply(os.path.join(source_dir, f))
@@ -92,7 +92,7 @@ def load_all_source_meshes(source_dir):
             meshes.append((verts, faces))
         except Exception:
             continue
-    print(f"成功加载 {len(meshes)} 个矿体")
+    print(f"translated_text {len(meshes)} translated_text")
     return meshes
 
 
@@ -405,7 +405,7 @@ def solve_mesh_for_target(exact_target, shape_seed, disperse, source_meshes=None
     # English comment for public release.
     
     if best_result is None or len(best_result[1]) == 0:
-        raise RuntimeError(f"无法生成有效网格 (Target: {exact_target})")
+        raise RuntimeError(f"translated_text (Target: {exact_target})")
         
     verts, faces = best_result
     
@@ -514,20 +514,20 @@ def process_single_task(job_args):
                 
                 # English comment for public release.
                 if WORKER_SOURCE_DIR is None:
-                     return False, f"ID: {idx} | Rescale 失败: Worker 未初始化源目录", idx
+                     return False, f"ID: {idx} | Rescale translated_text: Worker translated_text", idx
                 
                 fname = rescale_arg
                 fpath = os.path.join(WORKER_SOURCE_DIR, fname)
                 try:
                     src_verts, src_faces = read_ply(fpath)
                 except Exception as ex:
-                    return False, f"ID: {idx} | 无法读取 {fname}: {ex}", idx
+                    return False, f"ID: {idx} | translated_text {fname}: {ex}", idx
             
             elif WORKER_SOURCE_MESHES:
                 # English comment for public release.
                 src_verts, src_faces = WORKER_SOURCE_MESHES[rng.integers(0, len(WORKER_SOURCE_MESHES))]
             else:
-                 return False, f"ID: {idx} | Rescale 失败: 无源数据", idx
+                 return False, f"ID: {idx} | Rescale translated_text: translated_text", idx
 
             verts = src_verts.copy()
             faces = src_faces.copy()
@@ -599,21 +599,21 @@ def process_single_task(job_args):
             return True, f"ID: {idx} | Faces: {final_count} (Err {error_rate:+.1f}%) | Time: {dt:.2f}s", idx
         
     except Exception as e:
-        return False, f"ID: {idx} | 失败: {e}", idx
+        return False, f"ID: {idx} | translated_text: {e}", idx
 
 
 def main():
-    parser = argparse.ArgumentParser(description="生成随机矿体 (扁平/层状) PLY")
-    parser.add_argument("--count", type=int, default=611, help="生成文件数量")
-    parser.add_argument("--target-faces", type=int, default=7500, help="基准目标面片数")
-    parser.add_argument("--temperature", type=float, default=0.22, help="1.0=严格锁定目标数量, 越小波动越大")
-    parser.add_argument("--disperse", type=float, default=0.75, help="0=整体, 1=破碎分散")
+    parser = argparse.ArgumentParser(description="translated_text (translated_text/translated_text) PLY")
+    parser.add_argument("--count", type=int, default=611, help="translated_text")
+    parser.add_argument("--target-faces", type=int, default=7500, help="translated_text")
+    parser.add_argument("--temperature", type=float, default=0.22, help="1.0=translated_text, translated_text")
+    parser.add_argument("--disperse", type=float, default=0.75, help="0=translated_text, 1=translated_text")
     parser.add_argument("--out-dir", type=str, default=os.path.join("..", "data", "mining_ply_pretrains"))
     parser.add_argument("--seed", type=int, default=-1)
-    parser.add_argument("--use-augment", action='store_true',default=True, help="模式 2: 组合增强模式 (基于现有 ply 进行组合与变形)")
-    parser.add_argument("--rescale-only", action='store_true', default=False, help="模式 3: 仅重缩放模式 (不改变形状，只随机真实物理尺度并去坐标)")
-    parser.add_argument("--source-dir", type=str, default=os.path.join(os.path.dirname(__file__), '..', 'data', 'mining_ply_pretrain'), help="源矿体数据目录")
-    parser.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 1) - 1), help="并行工作进程数")
+    parser.add_argument("--use-augment", action='store_true',default=True, help="translated_text 2: translated_text (translated_text ply translated_text)")
+    parser.add_argument("--rescale-only", action='store_true', default=False, help="translated_text 3: translated_text (translated_text, translated_text)")
+    parser.add_argument("--source-dir", type=str, default=os.path.join(os.path.dirname(__file__), '..', 'data', 'mining_ply_pretrain'), help="translated_text")
+    parser.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 1) - 1), help="translated_text")
     
     args = parser.parse_args()
     
@@ -626,16 +626,16 @@ def main():
     
     # English comment for public release.
     if args.rescale_only and args.use_augment:
-         print("警告: 同时开启了 --rescale-only 和 --use-augment，将优先执行 --rescale-only 逻辑")
+         print("translated_text: translated_text --rescale-only translated_text --use-augment, translated_text --rescale-only translated_text")
 
-    print(f"=== 开始生成矿体 ===")
+    print(f"=== translated_text ===")
     
     if args.rescale_only:
-        print(f"工作模式: [Mode 3] 尺度重随机化 (Rescale Only)")
+        print(f"translated_text: [Mode 3] translated_text (Rescale Only)")
     elif args.use_augment:
-        print(f"工作模式: [Mode 2] 组合增强 (Composition + Deformation)")
+        print(f"translated_text: [Mode 2] translated_text (Composition + Deformation)")
     else:
-        print(f"工作模式: [Mode 1] 纯生成 (Random Field Generation)")
+        print(f"translated_text: [Mode 1] translated_text (Random Field Generation)")
 
     
     # English comment for public release.
@@ -646,18 +646,18 @@ def main():
     
     if args.rescale_only:
         if not os.path.exists(args.source_dir):
-            print(f"Error: 源目录 {args.source_dir} 不存在")
+            print(f"Error: translated_text {args.source_dir} translated_text")
             return
             
         src_files = [f for f in os.listdir(args.source_dir) if f.lower().endswith('.ply')]
         if not src_files:
-            print(f"Error: 源目录 {args.source_dir} 中没有 PLY 文件")
+            print(f"Error: translated_text {args.source_dir} translated_text PLY translated_text")
             return
             
         real_total_cnt = len(src_files)
         args.count = real_total_cnt # English comment for public release.
         
-        print(f"发现 {real_total_cnt} 个源文件，准备逐一处理...")
+        print(f"translated_text {real_total_cnt} translated_text, translated_text...")
         
         # English comment for public release.
         task_args = []
@@ -700,7 +700,7 @@ def main():
             
         init_args = (args.source_dir, args.use_augment, args.rescale_only)
 
-    print(f"计划数量: {args.count}")
+    print(f"translated_text: {args.count}")
 
     
     start_time = time.time()
@@ -738,15 +738,16 @@ def main():
                         print(f"{status_prefix}ERROR: {msg}")
                         
                 except Exception as exc:
-                    print(f"未知异常: {exc}")
+                    print(f"translated_text: {exc}")
                 
         except KeyboardInterrupt:
-            print("\n!!! 用户中断，正在停止所有进程 ...")
+            print("\n!!! translated_text, translated_text ...")
             executor.shutdown(wait=False, cancel_futures=True)
             raise
 
     total_time = time.time() - start_time
-    print(f"=== 所有任务已完成，总耗时: {total_time:.2f}s ===")
+    print(f"=== translated_text, translated_text: {total_time:.2f}s ===")
 
 if __name__ == "__main__":
     main()
+

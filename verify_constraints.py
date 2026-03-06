@@ -1,4 +1,4 @@
-
+﻿
 import torch
 import torch.nn.functional as F
 import sys
@@ -65,3 +65,4 @@ def test_strong_constraints():
 
 if __name__ == "__main__":
     test_strong_constraints()
+

@@ -1,4 +1,4 @@
-
+﻿
 import os
 import subprocess
 import sys
@@ -44,7 +44,7 @@ EXPERIMENTS = {
 
 def run_experiment(name, specific_args):
     print(f"==================================================")
-    print(f"正在进行消融实验: {name}")
+    print(f"translated_text: {name}")
     print(f"==================================================")
     
     # 1. Snapshot existing output directories
@@ -53,7 +53,7 @@ def run_experiment(name, specific_args):
     
     # 2. Run Training
     cmd = [PYTHON_EXE, MAIN_SCRIPT] + COMMON_ARGS + specific_args
-    print(f"执行命令: {' '.join(cmd)}")
+    print(f"translated_text: {' '.join(cmd)}")
     
     try:
         subprocess.check_call(cmd, cwd=ROOT_DIR)
@@ -68,44 +68,45 @@ def run_experiment(name, specific_args):
             
             dst_path = os.path.join(RESULT_BASE, name)
             if os.path.exists(dst_path):
-                print(f"移除旧的实验结果: {dst_path}")
+                print(f"translated_text: {dst_path}")
                 shutil.rmtree(dst_path)
                 
-            print(f"将结果从 {newest_dir} 移动到 {dst_path}")
+            print(f"translated_text {newest_dir} translated_text {dst_path}")
             shutil.move(newest_dir, dst_path)
         else:
-            print("警告: 在 results/3dvae/ 中未发现新生成的输出目录")
+            print("translated_text: translated_text results/3dvae/ translated_text")
             
-        print(f"实验 {name} 已完成。")
+        print(f"translated_text {name} translated_text.")
         
     except subprocess.CalledProcessError as e:
-        print(f"实验 {name} 失败，错误信息: {e}")
+        print(f"translated_text {name} translated_text, translated_text: {e}")
 
 def main():
-    print("开始消融实验 (Ablation Studies)...")
-    print(f"结果将保存至: {RESULT_BASE}")
+    print("translated_text (Ablation Studies)...")
+    print(f"translated_text: {RESULT_BASE}")
     
     os.makedirs(RESULT_BASE, exist_ok=True)
     
     for name, config in EXPERIMENTS.items():
         run_experiment(name, config['args'])
         
-    print("所有消融实验已结束。")
+    print("translated_text.")
 
     # Call the plotting script to generate the summary plot automatically
     try:
         from . import plot_ablation_summary
-        print("\n生成消融实验总结图表...")
+        print("\ntranslated_text...")
         plot_ablation_summary.main()
     except ImportError:
         # Fallback if relative import fails when running as script
         try:
             import plot_ablation_summary
-            print("\n生成消融实验总结图表...")
+            print("\ntranslated_text...")
             plot_ablation_summary.main()
         except Exception as e:
-            print(f"\n无法生成总结图表: {e}")
-            print("您可以尝试手动运行: python 3dvae/comparisons/plot_ablation_summary.py")
+            print(f"\ntranslated_text: {e}")
+            print("translated_text: python 3dvae/comparisons/plot_ablation_summary.py")
 
 if __name__ == "__main__":
     main()
+

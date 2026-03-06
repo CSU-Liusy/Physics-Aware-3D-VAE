@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import os
 import argparse
@@ -94,11 +94,11 @@ def export_spin(verts: np.ndarray, faces: np.ndarray, out_dir: str, base_name: s
 
 def main():
 	default_ply = os.path.join(os.path.dirname(__file__), '..', 'data', 'mining_ply', 'test_b10.ply')
-	parser = argparse.ArgumentParser(description='为 PLY 生成旋转展示 GIF（可单文件或目录批量）')
-	parser.add_argument('--ply-file', type=str, default=default_ply, help='输入 PLY 文件路径，或包含 .ply 的目录')
-	parser.add_argument('--frames', type=int, default=60, help='旋转帧数')
-	parser.add_argument('--elev', type=float, default=35.0, help='视角仰角')
-	parser.add_argument('--dpi', type=int, default=600, help='输出分辨率 DPI')
+	parser = argparse.ArgumentParser(description='translated_text PLY translated_text GIF(translated_text)')
+	parser.add_argument('--ply-file', type=str, default=default_ply, help='translated_text PLY translated_text, translated_text .ply translated_text')
+	parser.add_argument('--frames', type=int, default=60, help='translated_text')
+	parser.add_argument('--elev', type=float, default=35.0, help='translated_text')
+	parser.add_argument('--dpi', type=int, default=600, help='translated_text DPI')
 	args = parser.parse_args()
 
 	ply_path = os.path.abspath(args.ply_file)
@@ -107,34 +107,35 @@ def main():
 	if os.path.isdir(ply_path):
 		ply_list = [os.path.join(ply_path, f) for f in os.listdir(ply_path) if f.lower().endswith('.ply')]
 		if not ply_list:
-			raise FileNotFoundError(f'目录中未找到 PLY 文件: {ply_path}')
-		print(f'发现 {len(ply_list)} 个 PLY，批量生成...')
+			raise FileNotFoundError(f'translated_text PLY translated_text: {ply_path}')
+		print(f'translated_text {len(ply_list)} translated_text PLY, translated_text...')
 		for p in sorted(ply_list):
 			try:
 				verts, faces = read_ply(p)
 			except ValueError as e:
-				print(f'跳过（读入失败）: {p} ({e})')
+				print(f'translated_text(translated_text): {p} ({e})')
 				continue
 			except Exception as e:
-				print(f'跳过（异常）: {p} ({e})')
+				print(f'translated_text(translated_text): {p} ({e})')
 				continue
 			if faces.ndim != 2 or faces.shape[1] != 3:
-				print(f'跳过（非三角面）: {p}')
+				print(f'translated_text(translated_text): {p}')
 				continue
 			base_name = os.path.splitext(os.path.basename(p))[0]
 			gif_path, png_path = export_spin(verts, faces, out_dir, base_name, frames=args.frames, elev=args.elev, dpi=args.dpi)
-			print(f'完成: {base_name} -> GIF: {gif_path}, PNG: {png_path}')
+			print(f'translated_text: {base_name} -> GIF: {gif_path}, PNG: {png_path}')
 	else:
 		if not os.path.isfile(ply_path):
-			raise FileNotFoundError(f'未找到 PLY 文件: {ply_path}')
+			raise FileNotFoundError(f'translated_text PLY translated_text: {ply_path}')
 		verts, faces = read_ply(ply_path)
 		if faces.ndim != 2 or faces.shape[1] != 3:
-			raise ValueError('PLY 文件需要三角形面片 (faces Nx3)')
+			raise ValueError('PLY translated_text (faces Nx3)')
 		base_name = os.path.splitext(os.path.basename(ply_path))[0]
 		gif_path, png_path = export_spin(verts, faces, out_dir, base_name, frames=args.frames, elev=args.elev, dpi=args.dpi)
-		print(f'旋转 GIF: {gif_path}')
-		print(f'静态视图: {png_path}')
+		print(f'translated_text GIF: {gif_path}')
+		print(f'translated_text: {png_path}')
 
 
 if __name__ == '__main__':
 	main()
+

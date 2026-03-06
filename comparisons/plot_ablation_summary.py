@@ -1,4 +1,4 @@
-
+﻿
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -117,7 +117,7 @@ def main():
 
     # Plot 1: IoU
     bars = axes[0].bar(df_summary['Experiment'].astype(str), df_summary['IoU_Mean'], yerr=df_summary['IoU_Std'], capsize=5, color=colors, alpha=0.8)
-    axes[0].set_title('各模型 IoU 对比 (越高越好)', fontsize=14)
+    axes[0].set_title('translated_text IoU translated_text (translated_text)', fontsize=14)
     axes[0].set_ylabel('Mean IoU')
     axes[0].set_ylim(0, 1.0)
     axes[0].grid(axis='y', linestyle='--', alpha=0.7)
@@ -130,7 +130,7 @@ def main():
 
     # Plot 2: Dice
     bars2 = axes[1].bar(df_summary['Experiment'].astype(str), df_summary['Dice_Mean'], yerr=df_summary['Dice_Std'], capsize=5, color=colors, alpha=0.8)
-    axes[1].set_title('各模型 Dice 系数对比 (越高越好)', fontsize=14)
+    axes[1].set_title('translated_text Dice translated_text (translated_text)', fontsize=14)
     axes[1].set_ylabel('Mean Dice')
     axes[1].set_ylim(0, 1.0)
     axes[1].grid(axis='y', linestyle='--', alpha=0.7)
@@ -153,3 +153,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

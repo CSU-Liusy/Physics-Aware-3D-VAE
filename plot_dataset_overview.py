@@ -1,4 +1,4 @@
-"""Documentation translated to English for open-source release."""
+﻿"""Documentation translated to English for open-source release."""
 
 import os
 import sys
@@ -147,8 +147,8 @@ def _select_real_diverse(ply_files: list[str], n: int, seed: int = 42,
 
     sz_lo = os.path.getsize(pool[0])
     sz_hi = os.path.getsize(pool[-1])
-    print(f"  [选样] 文件大小窗口：{sz_lo/1024:.1f} KB ~ {sz_hi/1024:.1f} KB"
-          f"，共 {len(pool)} 个候选（size_thresh={size_thresh:.2f}）")
+    print(f"  [translated_text] translated_text: {sz_lo/1024:.1f} KB ~ {sz_hi/1024:.1f} KB"
+          f", translated_text {len(pool)} translated_text(size_thresh={size_thresh:.2f})")
 
     idxs = np.linspace(0, len(pool) - 1, n, dtype=int)
     return [pool[i] for i in idxs]
@@ -232,71 +232,71 @@ def parse_args():
     default_unet_ckpt = os.path.join(_repo_root, 'results', 'comparisons', 'models', 'unet_best.pth')
 
     p = argparse.ArgumentParser(
-        description='生成数据集样例与分布展示图（虚拟矿体 + 真实钻孔轨迹）',
+        description='translated_text(translated_text + translated_text)',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     p.add_argument('--model-dir', type=str, default=default_model_dir,
-                   help='模型权重目录')
+                   help='translated_text')
     p.add_argument('--model-name', type=str, default='best_model.pth',
-                   help='模型权重文件名（仅文件名，如 best_model.pth）；'
-                        '若不存在会报错并列出目录中的 .pth 文件')
+                   help='translated_text(translated_text, translated_text best_model.pth); '
+                        'translated_text .pth translated_text')
     p.add_argument('--virtual-dir', type=str, default=default_virtual_dir,
-                   help='虚拟矿体 PLY 目录')
+                   help='translated_text PLY translated_text')
     p.add_argument('--real-dir', type=str, default=default_real_dir,
-                   help='真实矿体 PLY 目录')
+                   help='translated_text PLY translated_text')
     p.add_argument('--out-dir', type=str, default=default_out_dir,
-                   help='图像输出目录')
+                   help='translated_text')
     p.add_argument('--n-virtual', type=int, default=9,
-                   help='左侧展示的虚拟矿体数量（建议为完全平方数：4/9）')
+                   help='translated_text(translated_text: 4/9)')
     p.add_argument('--n-real', type=int, default=9,
-                   help='右侧展示的真实矿体数量')
+                   help='translated_text')
     p.add_argument('--num-holes', type=int, default=8,
-                   help='每个真实矿体模拟的钻孔数')
+                   help='translated_text')
     p.add_argument('--samples-per-hole', type=int, default=12,
-                   help='每个钻孔的竖向采样点数')
+                   help='translated_text')
     p.add_argument('--dpi', type=int, default=300,
-                   help='输出图像 DPI')
+                   help='translated_text DPI')
     p.add_argument('--seed', type=int, default=42,
-                   help='随机种子（控制样本选取和钻孔位置）')
+                   help='translated_text(translated_text)')
     p.add_argument('--size-thresh', type=float, default=0.8,
-                   help='真实矿体选样的文件大小分位数阈值 [0.0~1.0]：'
-                        '越大越偏向大文件（复杂矿体），越小越偏向小文件（默认 0.8）')
+                   help='translated_text [0.0~1.0]: '
+                        'translated_text(translated_text), translated_text(translated_text 0.8)')
     p.add_argument('--skip-comparison', action='store_true',
-                   help='仅生成数据集概览图，不联动生成全局重建对比矩阵图')
+                   help='translated_text, translated_text')
     p.add_argument('--comparison-rows', type=int, default=4,
-                   help='联动生成对比矩阵时的样本总行数（可由真实/虚拟行数配比控制）')
+                   help='translated_text(translated_text/translated_text)')
     p.add_argument('--comparison-real-rows', type=int, default=2,
-                   help='联动生成对比矩阵时，优先展示的真实矿体行数')
+                   help='translated_text, translated_text')
     p.add_argument('--comparison-virtual-rows', type=int, default=2,
-                   help='联动生成对比矩阵时，优先展示的虚拟矿体行数')
+                   help='translated_text, translated_text')
     p.add_argument('--comparison-fixed-samples', action='store_true',
-                   help='联动生成对比矩阵时关闭随机选样，改为按文件大小固定选样')
+                   help='translated_text, translated_text')
     p.add_argument('--comparison-sample-seed', type=int, default=None,
-                   help='联动生成对比矩阵的随机选样种子；不指定则每次运行随机变化')
+                   help='translated_text; translated_text')
     p.add_argument('--selected-virtual-files', type=str, nargs='*', default=None,
-                   help='指定用于展示的虚拟矿体文件名（支持逗号分隔或多值输入）')
+                   help='translated_text(translated_text)')
     p.add_argument('--selected-real-files', type=str, nargs='*', default=None,
-                   help='指定用于展示的真实矿体文件名（支持逗号分隔或多值输入）')
+                   help='translated_text(translated_text)')
     p.add_argument('--unet-ckpt', type=str, default=default_unet_ckpt,
-                   help='3D U-Net 权重路径；若不存在将自动训练基础模型')
+                   help='3D U-Net translated_text; translated_text')
     p.add_argument('--comparison-unet-epochs', type=int, default=10,
-                   help='联动生成对比矩阵时，若缺少 U-Net 权重则自动训练轮次')
+                   help='translated_text, translated_text U-Net translated_text')
     p.add_argument('--skip-local-zoom', action='store_true',
-                   help='跳过局部细节与伪影抑制放大对比图生成')
+                   help='translated_text')
     p.add_argument('--zoom-radius', type=float, default=0.18,
-                   help='局部放大的归一化坐标半径')
+                   help='translated_text')
     p.add_argument('--zoom-sample-rank', type=int, default=1,
-                   help='局部放大样本在大文件排序中的序号（1 表示最大文件）')
+                   help='translated_text(1 translated_text)')
     p.add_argument('--uncertainty-mc-samples', type=int, default=24,
-                   help='认知不确定性方差估计的蒙特卡洛前向次数')
+                   help='translated_text')
     p.add_argument('--skip-quant-eval', action='store_true',
-                   help='跳过定量评估（默认会在图像生成后自动计算指标）')
+                   help='translated_text(translated_text)')
     p.add_argument('--quant-limit', type=int, default=0,
-                   help='定量评估样本上限；0 表示使用全部样本')
+                   help='translated_text; 0 translated_text')
     p.add_argument('--baseline-vae-ckpt', type=str, default=None,
-                   help='基础 3D-VAE 权重路径；不指定则自动探测')
+                   help='translated_text 3D-VAE translated_text; translated_text')
     p.add_argument('--quant-out-dir', type=str, default=os.path.join(_repo_root, 'results', 'figures'),
-                   help='定量评估结果输出目录（CSV/Markdown）')
+                   help='translated_text(CSV/Markdown)')
     return p.parse_args()
 
 
@@ -304,30 +304,30 @@ def _check_model(model_dir: str, model_name: str) -> str:
     """Documentation translated to English for open-source release."""
     model_path = os.path.join(model_dir, model_name)
     if os.path.isfile(model_path):
-        print(f"[模型] 找到权重文件: {model_path}")
+        print(f"[translated_text] translated_text: {model_path}")
         return model_path
 
     # English comment for public release.
-    print(f"\n[错误] 未找到模型权重文件: {model_path}")
+    print(f"\n[translated_text] translated_text: {model_path}")
     if os.path.isdir(model_dir):
         available = [f for f in os.listdir(model_dir) if f.endswith('.pth')]
         if available:
-            print(f"  目录 '{model_dir}' 中现有以下模型文件:")
+            print(f"  translated_text '{model_dir}' translated_text:")
             for f in sorted(available):
                 print(f"    - {f}")
-            print(f"  请通过 --model-name 指定其中一个，例如:")
+            print(f"  translated_text --model-name translated_text, translated_text:")
             print(f"    python 3dvae/plot_dataset_overview.py --model-name {available[0]}")
         else:
-            print(f"  目录 '{model_dir}' 中没有任何 .pth 文件。")
+            print(f"  translated_text '{model_dir}' translated_text .pth translated_text.")
     else:
-        print(f"  模型目录 '{model_dir}' 不存在，请通过 --model-dir 指定正确路径。")
+        print(f"  translated_text '{model_dir}' translated_text, translated_text --model-dir translated_text.")
     sys.exit(1)
 
 
 def _collect_ply(directory: str, label: str) -> list[str]:
     """Documentation translated to English for open-source release."""
     if not os.path.isdir(directory):
-        print(f"[错误] {label} 目录不存在: {directory}")
+        print(f"[translated_text] {label} translated_text: {directory}")
         sys.exit(1)
     files = sorted([
         os.path.join(directory, f)
@@ -335,9 +335,9 @@ def _collect_ply(directory: str, label: str) -> list[str]:
         if f.lower().endswith('.ply')
     ])
     if not files:
-        print(f"[错误] {label} 目录中没有 .ply 文件: {directory}")
+        print(f"[translated_text] {label} translated_text .ply translated_text: {directory}")
         sys.exit(1)
-    print(f"[数据] {label}: 共 {len(files)} 个 PLY 文件")
+    print(f"[translated_text] {label}: translated_text {len(files)} translated_text PLY translated_text")
     return files
 
 
@@ -376,7 +376,7 @@ def _resolve_selected_candidates(all_files: List[str],
         else:
             matches = by_name.get(os.path.basename(item), [])
             if len(matches) > 1:
-                print(f"  [警告] {label} 文件名 '{item}' 匹配到多个文件，默认取第一个。")
+                print(f"  [translated_text] {label} translated_text '{item}' translated_text, translated_text.")
             if matches:
                 chosen = matches[0]
 
@@ -387,12 +387,12 @@ def _resolve_selected_candidates(all_files: List[str],
             resolved.append(chosen)
 
     if missing:
-        print(f"  [警告] {label} 指定文件未找到，已忽略: {missing}")
+        print(f"  [translated_text] {label} translated_text, translated_text: {missing}")
     if not resolved:
-        print(f"[错误] {label} 指定文件均无效，请检查参数。")
+        print(f"[translated_text] {label} translated_text, translated_text.")
         sys.exit(1)
 
-    print(f"[样本池] {label}: 使用指定文件 {len(resolved)} 个")
+    print(f"[translated_text] {label}: translated_text {len(resolved)} translated_text")
     return resolved
 
 
@@ -403,21 +403,21 @@ def generate_figure(args) -> None:
     # English comment for public release.
 
     # English comment for public release.
-    virtual_files = _collect_ply(args.virtual_dir, '虚拟矿体')
-    real_files = _collect_ply(args.real_dir, '真实矿体')
+    virtual_files = _collect_ply(args.virtual_dir, 'translated_text')
+    real_files = _collect_ply(args.real_dir, 'translated_text')
 
     virtual_candidates = _resolve_selected_candidates(
-        virtual_files, args.selected_virtual_files, '虚拟矿体'
+        virtual_files, args.selected_virtual_files, 'translated_text'
     )
     real_candidates = _resolve_selected_candidates(
-        real_files, args.selected_real_files, '真实矿体'
+        real_files, args.selected_real_files, 'translated_text'
     )
 
     # English comment for public release.
-    print(f"[选样] 从虚拟矿体中按形态多样性选取 {args.n_virtual} 个...")
+    print(f"[translated_text] translated_text {args.n_virtual} translated_text...")
     selected_virtual = _select_diverse(virtual_candidates, args.n_virtual, seed=args.seed)
 
-    print(f"[选样] 从真实矿体中按立体性与表面积选取 {args.n_real} 个...")
+    print(f"[translated_text] translated_text {args.n_real} translated_text...")
     selected_real = _select_real_diverse(real_candidates, args.n_real, seed=args.seed,
                                           size_thresh=args.size_thresh)
 
@@ -456,7 +456,7 @@ def generate_figure(args) -> None:
         '#8c564b', '#17becf', '#bcbd22', '#d62728', '#7f7f7f'
     ]
 
-    print("[渲染] 绘制虚拟矿体...")
+    print("[translated_text] translated_text...")
     for i, ply_path in enumerate(selected_virtual):
         row = i // n_cols_v
         col = i % n_cols_v
@@ -479,7 +479,7 @@ def generate_figure(args) -> None:
         except Exception as e:
             ax.text(0.5, 0.5, 0.5, 'N/A', ha='center', va='center',
                     transform=ax.transAxes, fontsize=8, color='gray')
-            print(f"  [警告] 无法加载 {ply_path}: {e}")
+            print(f"  [translated_text] translated_text {ply_path}: {e}")
 
     # English comment for public release.
     fig.text(
@@ -494,7 +494,7 @@ def generate_figure(args) -> None:
     )
 
     # English comment for public release.
-    print("[渲染] 绘制真实矿体与钻孔轨迹...")
+    print("[translated_text] translated_text...")
     for i, ply_path in enumerate(selected_real):
         row = i // n_cols_r
         col = i % n_cols_r
@@ -523,7 +523,7 @@ def generate_figure(args) -> None:
         except Exception as e:
             ax.text(0.5, 0.5, 0.5, 'N/A', ha='center', va='center',
                     transform=ax.transAxes, fontsize=8, color='gray')
-            print(f"  [警告] 无法加载 {ply_path}: {e}")
+            print(f"  [translated_text] translated_text {ply_path}: {e}")
 
     # English comment for public release.
     fig.text(
@@ -561,26 +561,26 @@ def generate_figure(args) -> None:
     out_png = os.path.join(args.out_dir, f'dataset_overview_{model_stem}.png')
     out_pdf = os.path.join(args.out_dir, f'dataset_overview_{model_stem}.pdf')
 
-    print(f"[保存] 正在保存 PNG ({args.dpi} DPI)...")
+    print(f"[translated_text] translated_text PNG ({args.dpi} DPI)...")
     fig.savefig(out_png, dpi=args.dpi, bbox_inches='tight',
                 facecolor='white', pad_inches=0.1)
     print(f"  → {out_png}")
 
-    print("[保存] 正在保存 PDF...")
+    print("[translated_text] translated_text PDF...")
     fig.savefig(out_pdf, format='pdf', bbox_inches='tight',
                 facecolor='white', pad_inches=0.1)
     print(f"  → {out_pdf}")
 
     plt.close(fig)
-    print("[完成] 数据集展示图已生成。")
+    print("[translated_text] translated_text.")
 
     # English comment for public release.
     if args.skip_comparison:
-        print('[跳过] 已按参数要求跳过对比矩阵图生成。')
+        print('[translated_text] translated_text.')
     elif _generate_comparison_matrix is None:
-        print('[警告] 无法导入 plot_comparison.py，已跳过对比矩阵图生成。')
+        print('[translated_text] translated_text plot_comparison.py, translated_text.')
     else:
-        print('[联动] 开始生成全局三维重建对比矩阵图（GT / Sparse / IK / 3D U-Net / Ours）...')
+        print('[translated_text] translated_text(GT / Sparse / IK / 3D U-Net / Ours)...')
         comp_args = SimpleNamespace(
             model_dir=args.model_dir,
             model_name=args.model_name,
@@ -611,15 +611,15 @@ def generate_figure(args) -> None:
         try:
             _generate_comparison_matrix(comp_args)
         except Exception as e:
-            print(f'[警告] 对比矩阵图生成失败: {e}')
+            print(f'[translated_text] translated_text: {e}')
 
     # English comment for public release.
     if args.skip_local_zoom:
-        print('[跳过] 已按参数要求跳过局部放大对比图生成。')
+        print('[translated_text] translated_text.')
     elif _generate_local_detail_figure is None:
-        print('[警告] 无法导入局部放大图函数，已跳过 Local Detail 图生成。')
+        print('[translated_text] translated_text, translated_text Local Detail translated_text.')
     else:
-        print('[联动] 开始生成局部细节与伪影抑制放大对比图（Local Detail & Artifact Suppression）...')
+        print('[translated_text] translated_text(Local Detail & Artifact Suppression)...')
         local_args = SimpleNamespace(
             model_dir=args.model_dir,
             model_name=args.model_name,
@@ -647,14 +647,14 @@ def generate_figure(args) -> None:
         try:
             _generate_local_detail_figure(local_args)
         except Exception as e:
-            print(f'[警告] 局部放大对比图生成失败: {e}')
+            print(f'[translated_text] translated_text: {e}')
 
     # English comment for public release.
     # English comment for public release.
     if _generate_uncertainty_variance_figure is None:
-        print('[警告] 无法导入不确定性方差图函数，已跳过 Uncertainty Variance 图生成。')
+        print('[translated_text] translated_text, translated_text Uncertainty Variance translated_text.')
     else:
-        print('[联动] 开始生成认知不确定性方差热力图（Uncertainty Variance Heatmap）...')
+        print('[translated_text] translated_text(Uncertainty Variance Heatmap)...')
         uncertainty_args = SimpleNamespace(
             model_dir=args.model_dir,
             model_name=args.model_name,
@@ -683,18 +683,18 @@ def generate_figure(args) -> None:
         try:
             _generate_uncertainty_variance_figure(uncertainty_args)
         except Exception as e:
-            print(f'[警告] 不确定性方差热力图生成失败: {e}')
+            print(f'[translated_text] translated_text: {e}')
 
     # English comment for public release.
     if args.skip_quant_eval:
-        print('[跳过] 已按参数要求跳过定量评估。')
+        print('[translated_text] translated_text.')
         return
 
     if _run_quantitative_eval is None:
-        print('[警告] 无法导入 quantitative_evaluation.py，已跳过定量评估。')
+        print('[translated_text] translated_text quantitative_evaluation.py, translated_text.')
         return
 
-    print('[联动] 开始执行定量评估（IK/RBF/U-Net/基础VAE/Physics-Aware VAE）...')
+    print('[translated_text] translated_text(IK/RBF/U-Net/translated_textVAE/Physics-Aware VAE)...')
     quant_args = SimpleNamespace(
         real_dir=args.real_dir,
         pretrain_dir=args.virtual_dir,
@@ -717,7 +717,7 @@ def generate_figure(args) -> None:
     try:
         _run_quantitative_eval(quant_args)
     except Exception as e:
-        print(f'[警告] 定量评估执行失败: {e}')
+        print(f'[translated_text] translated_text: {e}')
 
 
 def main():
@@ -727,3 +727,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
