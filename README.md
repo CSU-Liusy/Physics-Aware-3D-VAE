@@ -99,12 +99,11 @@ Physics-Aware-3D-VAE/
   dataset.py
   main.py
   model.py
+  model_factory.py
   trainer.py
   output_result.py
   plot_comparison.py
   plot_dataset_overview.py
-  run_auto_pipeline.py
-  run_robust_analysis.py
   README.md
 ```
 
