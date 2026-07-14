@@ -1,13 +1,9 @@
-﻿import math
+import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 
-# =============================================================================
-# English comment for public release.
-# English comment for public release.
-# English comment for public release.
 
 
 def _safe_gn_groups(channels: int, max_groups: int = 8) -> int:
@@ -16,15 +12,8 @@ def _safe_gn_groups(channels: int, max_groups: int = 8) -> int:
     while g > 1 and channels % g != 0:
         g -= 1
     return max(1, g)
-# English comment for public release.
-# English comment for public release.
-# English comment for public release.
-# =============================================================================
 
 class SELayer3D(nn.Module):
-    """
-    Squeeze-and-Excitation Block for 3D.
-    """
     def __init__(self, channel, reduction=16):
         super(SELayer3D, self).__init__()
         self.avg_pool = nn.AdaptiveAvgPool3d(1)
@@ -42,7 +31,6 @@ class SELayer3D(nn.Module):
         return x * y.expand_as(x)
 
 class ResidualBlock3D(nn.Module):
-    """Documentation translated to English for open-source release."""
     def __init__(self, channels, groups=8):
         super().__init__()
         gn_groups = _safe_gn_groups(channels, groups)
@@ -64,7 +52,6 @@ class ResidualBlock3D(nn.Module):
 
 
 class UpsampleConv3D(nn.Module):
-    """Documentation translated to English for open-source release."""
     def __init__(self, in_channels, out_channels, kernel_size=3, padding=1):
         super().__init__()
         self.upsample = nn.Upsample(scale_factor=2, mode='trilinear', align_corners=True)
@@ -75,13 +62,7 @@ class UpsampleConv3D(nn.Module):
         return self.conv(x)
 
 
-
-# ============================================================================
-# GeoFormer Block (Transformer for 3D Geology)
-# ============================================================================
-
 class GeoTransformerBlock(nn.Module):
-    """Documentation translated to English for open-source release."""
     def __init__(self, channels, num_heads=4, ff_dim_scale=2, dropout=0.1):
         super().__init__()
         self.num_heads = num_heads
@@ -122,7 +103,6 @@ class GeoTransformerBlock(nn.Module):
 
 
 class ConvVAE3D(nn.Module):
-    """Documentation translated to English for open-source release."""
     def __init__(self, in_channels=2, grid_size=(32, 32, 32), latent_dim=256, base_channels=32, use_transformer=True):
         super().__init__()
         self.in_channels = in_channels
@@ -164,7 +144,6 @@ class ConvVAE3D(nn.Module):
         # Bottleneck: Residual + Optional Transformer
         self.enc_res_final = ResidualBlock3D(self.base*16)
         if self.use_transformer:
-            # English comment for public release.
             self.enc_transformer = GeoTransformerBlock(self.base*16, num_heads=4)
         
         # Flatten
@@ -274,13 +253,7 @@ class ConvVAE3D(nn.Module):
         return logits, mu, logvar
 
 
-# ============================================================================
-# English comment for public release.
-# ============================================================================
-
-
 class SparseVoxelEncoder(nn.Module):
-    """Documentation translated to English for open-source release."""
 
     def __init__(self, in_channels=2, base_channels=32, num_levels=4):
         super().__init__()
@@ -322,7 +295,6 @@ class SparseVoxelEncoder(nn.Module):
 
 
 class SparseVoxelDecoder(nn.Module):
-    """Documentation translated to English for open-source release."""
 
     def __init__(self, latent_dim=512, base_channels=32, num_levels=4, grid_size=(64, 64, 64)):
         super().__init__()
@@ -376,7 +348,6 @@ class SparseVoxelDecoder(nn.Module):
 
 
 class OctreeVAE3D(nn.Module):
-    """Documentation translated to English for open-source release."""
 
     def __init__(self, in_channels=2, grid_size=(64, 64, 64), latent_dim=512, base_channels=32, num_levels=4):
         super().__init__()
@@ -386,7 +357,6 @@ class OctreeVAE3D(nn.Module):
         self.base = base_channels
         self.num_levels = num_levels
         self.encoder = SparseVoxelEncoder(in_channels, base_channels, num_levels)
-        # English comment for public release.
         enc_res = tuple(max(1, g // (2 ** (num_levels - 1))) for g in self.grid_size)
         enc_channels = base_channels * (2 ** (num_levels - 1))
         enc_flat = enc_channels * np.prod(enc_res)
@@ -401,17 +371,14 @@ class OctreeVAE3D(nn.Module):
         batch = h.shape[0]
         h_flat = h.view(batch, -1)
 
-        # English comment for public release.
         if h_flat.shape[1] != self.fc_mu.in_features:
             enc_flat = h_flat.shape[1]
             enc_channels = h.shape[1]
             enc_res = h.shape[2:]
             self.fc_mu = nn.Linear(enc_flat, self.latent_dim, device=h.device)
             self.fc_logvar = nn.Linear(enc_flat, self.latent_dim, device=h.device)
-            # English comment for public release.
             self.decoder.min_res = enc_res
             self.decoder.fc = nn.Linear(self.latent_dim, enc_channels * np.prod(enc_res), device=h.device)
-            # English comment for public release.
             nn.init.kaiming_uniform_(self.fc_mu.weight, a=math.sqrt(5))
             nn.init.zeros_(self.fc_mu.bias)
             nn.init.kaiming_uniform_(self.fc_logvar.weight, a=math.sqrt(5))
@@ -483,15 +450,10 @@ def gradient_loss(pred, target):
     return diff_h.mean() + diff_w.mean() + diff_d.mean()
 
 def loss_function(recon_logits, target_vox, mu, logvar, beta=1.0, free_bits=0.0, obs_mask=None, lambda_drill=1.0):
-    """Documentation translated to English for open-source release."""
-    # English comment for public release.
-    # English comment for public release.
     if obs_mask is not None:
         if obs_mask.ndim == 5:
             obs_mask = obs_mask.squeeze(1)
             
-        # English comment for public release.
-        # English comment for public release.
         extra_weight = max(0.0, lambda_drill - 1.0)
         pos_weight = torch.ones_like(target_vox) + obs_mask * extra_weight
         
@@ -501,19 +463,15 @@ def loss_function(recon_logits, target_vox, mu, logvar, beta=1.0, free_bits=0.0,
     
     bce = bce_raw.mean()
 
-
-    # English comment for public release.
     dice = dice_loss(recon_logits, target_vox)
-    dice_weight = 0.5  # English comment for public release.
+    dice_weight = 0.5 
 
-    # English comment for public release.
     kld_elem = -0.5 * (1 + logvar - mu.pow(2) - logvar.exp())
     if free_bits > 0.0:
         free_bits_tensor = torch.tensor(free_bits, device=recon_logits.device)
         kld_elem = torch.max(kld_elem, free_bits_tensor)
     kld = kld_elem.mean()
 
-    # English comment for public release.
     recon_prob = torch.sigmoid(recon_logits)
     grad_loss_val = gradient_loss(recon_prob, target_vox)
     grad_weight = 0.15 # Stronger weight for gradients
@@ -534,24 +492,19 @@ def optimize_latent_for_observation(
     lambda_prior=0.01,
     verbose=False
 ):
-    """Documentation translated to English for open-source release."""
-    # English comment for public release.
+
     # obs: (B, 2, D, H, W)
     drill_vals = obs[:, 0, ...].unsqueeze(1)  # (B, 1, D, H, W)
     drill_mask = obs[:, 1, ...].unsqueeze(1)  # (B, 1, D, H, W)
     
     model.eval()
     
-    # English comment for public release.
-    # English comment for public release.
     with torch.no_grad():
         mu, logvar = model.encode(obs)
         z_init = model.reparameterize(mu, logvar)
     
-    # English comment for public release.
     z_opt = z_init.clone().detach().requires_grad_(True)
     
-    # English comment for public release.
     optimizer = torch.optim.Adam([z_opt], lr=lr)
     
     if verbose:
@@ -560,24 +513,14 @@ def optimize_latent_for_observation(
     for i in range(steps):
         optimizer.zero_grad()
         
-        # English comment for public release.
         logits = model.decode(z_opt)
         
-        # English comment for public release.
-        # English comment for public release.
-        # English comment for public release.
         probs = torch.sigmoid(logits)
         
-        # English comment for public release.
-        # English comment for public release.
-        # L2 Loss on probability: (probs - vals)^2 * mask
         fitting_loss = ( (probs - drill_vals) ** 2 * drill_mask ).sum() / (drill_mask.sum() + 1e-8)
         
-        # English comment for public release.
-        # English comment for public release.
         prior_loss = (z_opt ** 2).mean()
         
-        # English comment for public release.
         tv = total_variation_loss(probs)
         
         loss = lambda_drill * fitting_loss + lambda_prior * prior_loss + 0.1 * tv
@@ -588,14 +531,12 @@ def optimize_latent_for_observation(
         if verbose and i % 10 == 0:
             print(f"  Step {i}: Loss={loss.item():.4f} (Fit={fitting_loss.item():.4f})")
             
-    # English comment for public release.
     with torch.no_grad():
         logits_final = model.decode(z_opt)
         
     return z_opt, logits_final
 
 def vox_to_pointcloud(vox, threshold=0.5):
-    """Documentation translated to English for open-source release."""
 
     if isinstance(vox, torch.Tensor):
         vox_np = vox.detach().cpu().numpy()
@@ -613,10 +554,6 @@ def vox_to_pointcloud(vox, threshold=0.5):
     pts = np.stack([idx[:, 1], idx[:, 0], idx[:, 2]], axis=1).astype(np.float32) / float(D - 1)
     return pts
 
-
-# ============================================================================
-# English comment for public release.
-# ============================================================================
 
 
 class LoRALayer(nn.Module):
@@ -713,7 +650,7 @@ class LoRAConv3d(nn.Module):
         if self.rank > 0:
             delta_weight_2d = (self.lora_B @ self.lora_A) * self.scaling
             delta_weight = delta_weight_2d.view(
-                self.out_channels,
+                self.out_channels, 
                 self.in_channels,
                 self.kernel_size[0],
                 self.kernel_size[1],
@@ -744,12 +681,10 @@ def apply_lora_to_model(model, rank=8, alpha=16, target_modules=None, dropout=0.
             lora_layer.to(module.weight.device) # Ensure LoRA params are on same device
             setattr(parent, child_name, lora_layer)
             lora_params.extend([lora_layer.lora_A, lora_layer.lora_B])
-            # English comment for public release.
         elif isinstance(module, nn.Conv3d):
             lora_layer = LoRAConv3d(module, rank=rank, alpha=alpha, dropout=dropout)
             lora_layer.to(module.weight.device) # Ensure LoRA params are on same device
             setattr(parent, child_name, lora_layer)
-            # English comment for public release.
     return model, lora_params
 
 
@@ -775,7 +710,7 @@ def merge_all_lora_weights(model):
     for module in model.modules():
         if isinstance(module, (LoRALinear, LoRAConv3d)):
             module.merge_weights()
-    print("✓ translated_text LoRA translated_text")
+    print("✓ All LoRA weights merged into base layers")
 
 
 def print_lora_statistics(model):
@@ -783,12 +718,12 @@ def print_lora_statistics(model):
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     frozen_params = total_params - trainable_params
     print("\n" + "=" * 60)
-    print("LoRA translated_text")
+    print("LoRA Parameter Statistics")
     print("=" * 60)
-    print(f"translated_text:        {total_params:,}")
-    print(f"translated_text:      {trainable_params:,} ({trainable_params / total_params * 100:.2f}%)")
-    print(f"translated_text:        {frozen_params:,} ({frozen_params / total_params * 100:.2f}%)")
-    print(f"translated_text:    {(1 - trainable_params / total_params) * 100:.1f}%")
+    print(f"Total params:     {total_params:,}")
+    print(f"Trainable params: {trainable_params:,} ({trainable_params / total_params * 100:.2f}%)")
+    print(f"Frozen params:    {frozen_params:,} ({frozen_params / total_params * 100:.2f}%)")
+    print(f"Param reduction:  {(1 - trainable_params / total_params) * 100:.1f}%")
     print("=" * 60 + "\n")
 
 
@@ -798,38 +733,38 @@ LORA_CONFIGS = {
         "alpha": 8,
         "target_modules": ["fc_mu", "fc_logvar", "fc_dec"],
         "dropout": 0.0,
-        "description": "translated_text - translated_text",
+        "description": "Minimal - fine-tune only latent space projection layers",
     },
     "light": {
         "rank": 8,
         "alpha": 16,
         "target_modules": ["enc_down", "dec_up", "fc"],
         "dropout": 0.05,
-        "description": "translated_text - translated_text/translated_textFCtranslated_text",
+        "description": "Lightweight - fine-tune down/up-sample and FC layers",
     },
     "standard": {
         "rank": 16,
         "alpha": 32,
         "target_modules": None,
         "dropout": 0.1,
-        "description": "translated_text - translated_text Linear translated_text Conv3d translated_text",
+        "description": "Standard - fine-tune all Linear and Conv3d layers",
     },
     "aggressive": {
         "rank": 32,
         "alpha": 64,
         "target_modules": None,
         "dropout": 0.1,
-        "description": "translated_text - translated_text LoRA, translated_text",
+        "description": "Aggressive - high-rank LoRA for complex tasks",
     },
 }
 
 
 def apply_lora_preset(model, preset="light"):
     if preset not in LORA_CONFIGS:
-        raise ValueError(f"translated_text: {preset}.translated_text: {list(LORA_CONFIGS.keys())}")
+        raise ValueError(f"Unknown preset: {preset}. Options: {list(LORA_CONFIGS.keys())}")
     config = LORA_CONFIGS[preset]
-    print(f"\n📌 translated_text LoRA translated_text: '{preset}'")
-    print(f"   translated_text: {config['description']}")
+    print(f"\n📌 Applying LoRA preset: '{preset}'")
+    print(f"   Description: {config['description']}")
     print(f"   Rank={config['rank']}, Alpha={config['alpha']}, Dropout={config['dropout']}\n")
     model, lora_params = apply_lora_to_model(
         model,
@@ -839,9 +774,9 @@ def apply_lora_preset(model, preset="light"):
         dropout=config["dropout"],
     )
 
-    # English comment for public release.
+    # Some models (e.g. Octree) may have layer names not matching the preset; fall back to full layer application
     if len(lora_params) == 0:
-        print("⚠️  translated_text, translated_text Linear/Conv3d translated_text LoRA")
+        print("⚠️  Preset matched no layers; falling back to all Linear/Conv3d for LoRA")
         model, lora_params = apply_lora_to_model(
             model,
             rank=config["rank"],
@@ -854,7 +789,7 @@ def apply_lora_preset(model, preset="light"):
     return model, lora_params
 
 
-# English comment for public release.
+# Convenience factory: maintain compatibility
 def create_octree_vae(config):
     return OctreeVAE3D(
         in_channels=2,
@@ -863,5 +798,4 @@ def create_octree_vae(config):
         base_channels=config.get("base_channels", 32),
         num_levels=config.get("num_levels", 4),
     )
-
 
