@@ -106,7 +106,17 @@ Physics-Aware-3D-VAE/
   README.md
 ```
 
-## Notes
+## Related Work: VoxelOreGen
 
-- Virtual Prior Dataset (Public): We provide the 5,000 synthesized virtual geological datasets via Baidu Netdisk. You can download them here: https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p (Extraction Code: gq2p).
+The virtual prior dataset provided in this repository originates from our companion project, **VoxelOreGen**, a physics-driven generative pipeline for 3D orebody benchmark data generation. VoxelOreGen couples an Advection-Diffusion-Reaction (ADR) physical simulation engine with a conditional Wasserstein GAN (cWGAN-GP) to produce large-scale, physically grounded 3D orebody voxel datasets. The workflow synthesizes high-throughput 3D tensors by solving coupled fluid-flow, heat-transport, and reactive-mass-transfer equations, embedding metallogenic constraints directly into the training data.
 
+For details on the physics engine, generative architecture, quantitative evaluation, and the complete benchmark dataset, see the VoxelOreGen repository:
+
+> [https://github.com/CSU-Liusy/VoxelOreGen](https://github.com/CSU-Liusy/VoxelOreGen)
+
+## Download
+
+The 5,000 synthesized virtual geological datasets used for the prior learning phase are publicly available via Baidu Netdisk:
+
+> **Download link:** [https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p](https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p)  
+> **Extraction Code:** `gq2p`
