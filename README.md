@@ -67,16 +67,12 @@ This starts the default training flow using `config/default.yaml`.
 
 - `train`: train the VAE model
 - `benchmark`: run baseline comparisons
-- `ablation`: run ablation study pipeline
-- `robust_eval`: run robustness analysis
 
 Examples:
 
 ```bash
 python main.py --mode train
 python main.py --mode benchmark --checkpoint ../results/3dvae/<run>/checkpoints/best_model.pth
-python main.py --mode ablation
-python main.py --mode robust_eval --checkpoint ../results/3dvae/<run>/checkpoints/best_model.pth
 ```
 
 ## Figure Generation
