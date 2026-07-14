@@ -9,8 +9,7 @@ This folder is a public-facing copy of `3dvae/` with the same functionality, Eng
 - 3D VAE training and inference pipeline (`main.py`, `trainer.py`, `model.py`)
 - Mining dataset loading, sparse drill-hole simulation, and cache management (`dataset.py`)
 - Result export and visualization utilities (`output_result.py`, `showresult.py`)
-- Figure generation scripts for comparison and paper plots (`plot_comparison.py`, `plot_dataset_overview.py`, `paper_plot.py`)
-- Robustness analysis and automated workflow scripts (`run_robust_analysis.py`, `run_auto_pipeline.py`)
+- Figure generation scripts for comparison and paper plots (`plot_comparison.py`, `plot_dataset_overview.py`)
 - Benchmark and ablation scripts (`comparisons/`)
 
 ## Environment
