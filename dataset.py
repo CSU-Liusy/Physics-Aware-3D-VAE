@@ -1,4 +1,4 @@
-﻿import os
+import os
 import random
 import math
 import numpy as np
@@ -10,17 +10,36 @@ except ImportError:
     pass # augment will check availability
 
 # =============================================================================
-# English comment for public release.
-# English comment for public release.
-# English comment for public release.
-# English comment for public release.
-# English comment for public release.
-# English comment for public release.
-# English comment for public release.
+# Module: Data loading & preprocessing
+# Features:
+# 1. Read PLY-format 3D mesh files.
+# 2. Point-in-mesh test (ray casting).
+# 3. Generate simulated drilling observations as model input.
+# 4. Generate voxelized ground truth.
+# 5. PyTorch Dataset interface with caching for faster training.
 # =============================================================================
 
 def read_ply(path):
-	"""Documentation translated to English for open-source release."""
+	"""
+	Simple ASCII PLY file reader.
+	
+	Args:
+		path (str): Path to the PLY file.
+	
+	Returns:
+		verts (np.ndarray): Vertex coordinate array, shape (N, 3), dtype=float32.
+		faces (np.ndarray): Face index array, shape (M, 3), dtype=int32.
+	
+	Features:
+		- Parse ASCII PLY file header.
+		- Read vertex coordinates (x, y, z).
+		- Read face indices; auto-triangulates polygons (e.g. quads).
+	
+	Raises:
+		- FileNotFoundError: File does not exist.
+		- ValueError: Malformed or empty file.
+		- RuntimeError: Other read errors.
+	"""
 	if not os.path.exists(path):
 		raise FileNotFoundError(f'PLY file not found: {path}')
 	
@@ -74,7 +93,23 @@ def read_ply(path):
 
 
 def point_in_mesh(points, verts, faces):
-	"""Documentation translated to English for open-source release."""
+	"""
+	Point-in-mesh test (ray casting, fully vectorized).
+	
+	Args:
+		points (np.ndarray): Query points, shape (P, 3).
+		verts (np.ndarray): Mesh vertices, shape (V, 3).
+		faces (np.ndarray): Face indices, shape (F, 3).
+	
+	Returns:
+		inside (np.ndarray): Boolean array, shape (P,); True means inside.
+	
+	Algorithm:
+		- Cast rays in +X direction.
+		- Compute ray-triangle intersections for all faces.
+		- Odd intersection count = inside; even = outside.
+		- Batched processing to control memory usage.
+	"""
 	EPS = 1e-9
 	P = points.shape[0]
 	F = faces.shape[0]
@@ -95,14 +130,14 @@ def point_in_mesh(points, verts, faces):
 	# det = dot(edge1, h)
 	det = np.sum(edge1 * h, axis=1)  # (F,)
 	
-	# English comment for public release.
+	# Valid triangles (det != 0)
 	valid_tri = np.abs(det) > EPS
 	inv_det = np.where(valid_tri, 1.0 / (det + EPS), 0.0)  # (F,)
 	
-	# English comment for public release.
+	# Process points in batches
 	inside = np.zeros(P, dtype=bool)
 	
-	# English comment for public release.
+	# Batch to avoid memory blow-up (P*F can be large)
 	batch_size = min(500, P)
 	for start in range(0, P, batch_size):
 		end = min(start + batch_size, P)
@@ -124,7 +159,7 @@ def point_in_mesh(points, verts, faces):
 		# t = inv_det * dot(edge2, q): (B, F)
 		t = inv_det[None, :] * np.sum(edge2[None, :, :] * q, axis=2)
 		
-		# English comment for public release.
+		# Determine valid intersections
 		hit = (
 			valid_tri[None, :] &
 			(u >= 0.0) & (u <= 1.0) &
@@ -132,7 +167,7 @@ def point_in_mesh(points, verts, faces):
 			(t > EPS)
 		)  # (B, F)
 		
-		# English comment for public release.
+		# Count intersections
 		cnt = np.sum(hit, axis=1)  # (B,)
 		inside[start:end] = (cnt % 2) == 1
 	
@@ -140,7 +175,9 @@ def point_in_mesh(points, verts, faces):
 
 
 def _process_file_job(args):
-	"""Documentation translated to English for open-source release."""
+	"""
+	Multiprocessing helper: process a single file.
+	"""
 	(
 		path,
 		n_samples,
@@ -175,7 +212,7 @@ def _process_file_job(args):
 			if vox.shape != (D, H, W):
 				vox = None
 		except (IOError, ValueError, OSError) as e:
-			print(f"⚠️ translated_text {cache_path} translated_text: {e}")
+			print(f"⚠️ Cache file {cache_path} load failed: {e}")
 			vox = None
 	
 	if vox is None:
@@ -191,20 +228,53 @@ def _process_file_job(args):
 		try:
 			np.save(cache_path, vox)
 		except Exception as e:
-			print(f"⚠️ translated_text {cache_path}: {e}")
+			print(f"⚠️ Cannot save cache {cache_path}: {e}")
 
-	# English comment for public release.
-	# English comment for public release.
+	# Sample Generation Logic: store only metadata needed for generation; no pre-generated obs_grid.
+	# Return count and vmin/vmax; actual generation deferred to __getitem__
 	return path, vox, vmin, vmax, n_samples
 
 
 class MiningDataset(Dataset):
-	"""Documentation translated to English for open-source release."""
+	"""
+	Mining dataset class.
+	
+	Features:
+		- Load PLY mesh files.
+		- Generate synthetic drilling data (simulating sparse observations).
+		- Generate voxelized ground truth for supervised learning.
+		- Support data caching (.npy) to accelerate repeated loading.
+		- Auto-allocate sample counts proportional to file size.
+	
+	__getitem__ returns:
+		1. obs_grids (Tensor): Observation grid, shape (2, D, H, W).
+		   - Channel 0: Observed value (0=empty, 1=solid).
+		   - Channel 1: Mask (0=unobserved, 1=observed).
+		2. vox (Tensor): Ground truth voxel grid, shape (D, H, W), values 0 or 1.
+		3. vmin (Tensor): Bounding-box minimum (x, y, z).
+		4. vmax (Tensor): Bounding-box maximum (x, y, z).
+	"""
 	def __init__(self, ply_dir, num_holes=8, samples_per_hole=16, grid_size=(32, 32, 32), 
 			  num_samples=None, augment_per_mesh=4, file_list=None, train_frac=0.8, 
 			  base_kb_per_sample=100, max_samples_per_file=100, min_samples_per_file=1,
 			  force_regen_cache=False, log_mode='full', load_mode='parallel', split_seed=42):
-		"""Documentation translated to English for open-source release."""
+		"""
+		Initialize dataset.
+		
+		Args:
+			ply_dir (str): Directory containing PLY files.
+			num_holes (int): Number of simulated drill holes per sample.
+			samples_per_hole (int): Sampling points per drill hole.
+			grid_size (tuple/int): Voxel resolution (D, H, W) or a single integer.
+			num_samples (int, optional): Target total sample count (proportional to file size if given).
+			augment_per_mesh (int): (Deprecated, kept for compatibility) Augmentation count per mesh.
+			file_list (list/str, optional): Specific file list or directory to use.
+			train_frac (float): Training split ratio.
+			base_kb_per_sample (float): KB-per-sample baseline for auto allocation.
+			max_samples_per_file (int): Max samples per file cap.
+			min_samples_per_file (int): Min samples per file floor.
+			force_regen_cache (bool): Force regeneration of cache files.
+		"""
 		self.ply_dir = ply_dir
 		self.num_holes = num_holes
 		self.samples_per_hole = samples_per_hole
@@ -214,8 +284,8 @@ class MiningDataset(Dataset):
 			self.grid_size = (grid_size, grid_size, grid_size)
 		else:
 			self.grid_size = tuple(grid_size)
-		# English comment for public release.
-		# English comment for public release.
+		# D, H, W correspond to Z, Y, X axes (numpy indexing convention: we unify with D,H,W)
+		# In point_in_mesh and meshgrid we use indexing='xy'
 		# xs (W), ys (H), zs (D)
 		
 		# num_samples: if provided (>0) will be used as a target (proportional allocation);
@@ -284,12 +354,12 @@ class MiningDataset(Dataset):
 			samples_per_file = base.tolist()
 
 		# ---------------------------------------------------------
-		# English comment for public release.
+		# Optimization: Memory Management
 		# ---------------------------------------------------------
-		# English comment for public release.
-		# English comment for public release.
-		# English comment for public release.
-		# English comment for public release.
+		# Avoid storing duplicate vox grids.
+		# self.vox_cache: stores unique vox grids (list of numpy arrays)
+		# self.samples: stores (vox_idx, vmin, vmax, seed)
+		# self.sample_meta: stores (source_file, file_sample_index) for each sample
 		self.vox_cache = []
 		self.samples = []
 		self.sample_meta = []
@@ -298,29 +368,29 @@ class MiningDataset(Dataset):
 		if self.is_brief:
 			print(f'MiningDataset: files={len(self.files)}, samples={sum(samples_per_file)}')
 		else:
-			print(f'MiningDataset: translated_text {len(self.files)} translated_text .ply translated_text; translated_text(translated_text={sum(samples_per_file)})')
+			print(f'MiningDataset: found {len(self.files)} .ply files; per-file sample allocation (total={sum(samples_per_file)})')
 		
-		# English comment for public release.
+		# Cache directory setup
 		cache_dir = os.path.join(os.path.dirname(ply_dir), 'cache')
 		os.makedirs(cache_dir, exist_ok=True)
 		
-		# English comment for public release.
+		# If force-regen, clear cache directory
 		if self.force_regen_cache:
-			msg = f'translated_text, translated_text {cache_dir} ...'
+			msg = f'Force-regenerating cache; clearing {cache_dir} ...'
 			print(msg)
 			for f in os.listdir(cache_dir):
 				if f.endswith('.npy'):
 					try:
 						os.remove(os.path.join(cache_dir, f))
 					except Exception as e:
-						print(f'translated_text {f}: {e}')
+						print(f'Cannot delete cache file {f}: {e}')
 
 		from tqdm import tqdm
 		from multiprocessing import Pool, cpu_count
 		
 		total_samples = sum(samples_per_file)
 		
-		# English comment for public release.
+		# Prepare arguments
 		args_list = []
 		for fi, path in enumerate(self.files):
 			args_list.append((
@@ -340,7 +410,7 @@ class MiningDataset(Dataset):
 
 		if use_parallel:
 			with Pool(processes=num_processes) as pool:
-				with tqdm(total=total_samples, desc='translated_text(translated_text)', unit='translated_text', disable=self.is_brief) as pbar:
+				with tqdm(total=total_samples, desc='Build data index (parallel)', unit='samples', disable=self.is_brief) as pbar:
 					for path, vox, vmin, vmax, n_s in pool.imap(_process_file_job, args_list):
 						if vox is None:
 							continue
@@ -358,7 +428,7 @@ class MiningDataset(Dataset):
 							file_sample_counters[path] += 1
 						pbar.update(n_s)
 		else:
-			with tqdm(total=total_samples, desc='translated_text(translated_text)', unit='translated_text', disable=self.is_brief) as pbar:
+			with tqdm(total=total_samples, desc='Build data index (sequential)', unit='samples', disable=self.is_brief) as pbar:
 				for a in args_list:
 					path, vox, vmin, vmax, n_s = _process_file_job(a)
 					if vox is None:
@@ -393,7 +463,7 @@ class MiningDataset(Dataset):
 		self.blacklist = set()
 		self.valid_indices = list(self.train_indices)
 
-		# English comment for public release.
+		# Per-file sample counts per split for external reporting
 		self.samples_per_file = samples_per_file
 		self.file_train_counts = {p: 0 for p in self.files}
 		self.file_test_counts = {p: 0 for p in self.files}
@@ -405,9 +475,9 @@ class MiningDataset(Dataset):
 			self.file_test_counts[fname] = self.file_test_counts.get(fname, 0) + 1
 
 		if self.is_brief:
-			print(f'MiningDataset translated_text: total={total}, train={self.train_sample_count}, test={self.test_sample_count} (translated_text)')
+			print(f'MiningDataset summary: total={total}, train={self.train_sample_count}, test={self.test_sample_count} (sample-level random split)')
 		else:
-			print(f'MiningDataset translated_text: translated_text={total}, translated_text={self.train_sample_count}, translated_text={self.test_sample_count}(translated_text)')
+			print(f'MiningDataset summary: total={total}, train={self.train_sample_count}, test={self.test_sample_count} (sample-level random split)')
 
 	def _generate_obs(self, vox, vmin, vmax, seed):
 		"""
@@ -485,45 +555,45 @@ class MiningDataset(Dataset):
 		# Updated unpacking: (vox_idx, vmin, vmax, seed)
 		vox_idx, vmin_np, vmax_np, seed = self.samples[sample_idx]
 		
-		# English comment for public release.
+		# Retrieve vox from cache
 		vox_np = self.vox_cache[vox_idx]
 		
 		# on-the-fly generation
 		obs_np = self._generate_obs(vox_np, vmin_np, vmax_np, seed)
 		
 		# ---------------------------------------------------------
-		# English comment for public release.
+		# Optimization: On-the-fly Data Augmentation
 		# ---------------------------------------------------------
 		# -----------------------------------------------------------
-		# English comment for public release.
+		# Strong 3D data augmentation (Rotation, Scaling, Flip)
 		# -----------------------------------------------------------
 		if self.active_split == 'train' and self.augment_per_mesh > 0:
-			# English comment for public release.
+			# 50% chance to trigger augmentation
 			if random.random() < 0.5:
-				# English comment for public release.
+				# --- 1. Rotation (Z-axis, 0-360) ---
 				# obs_np: (2, D, H, W), vox_np: (D, H, W)
 				# rotate expects (H, W) as last two dims by default for 2D, or axes parameter
 				# Scipy rotate: input, angle, axes, reshape=False (keep grid size), order=0 (nearest for masks)
 				
-				# English comment for public release.
+				# Random angle
 				angle = random.uniform(0, 360)
-				# English comment for public release.
+				# Rotation around Z -> XY plane (H, W) -> axes=(1, 2)
 				# Dataset format: D, H, W. X corresponds to W, Y to H, Z to D in meshgrid previously?
 				# Actually in getitem logic: z_inds, y_inds, x_inds. So dims are (Z, Y, X).
 				# Rotating around Z axis means rotating in (Y, X) plane -> axes (1, 2).
 				
-				# English comment for public release.
-				# English comment for public release.
+				# For OBS (C, D, H, W) -> axes (2, 3)
+				# For VOX (D, H, W) -> axes (1, 2)
 				try:
-					# English comment for public release.
+					# Only execute if scipy is available
 					import scipy.ndimage
 					
-					# English comment for public release.
+					# Rotate (nearest-neighbor for binary/categorical labels)
 					# OBS channel 0 is value (0/1), channel 1 is mask (0/1). Order=0 is safe.
 					obs_np = scipy.ndimage.rotate(obs_np, angle, axes=(2, 3), reshape=False, order=0, mode='constant', cval=0.0)
 					vox_np = scipy.ndimage.rotate(vox_np, angle, axes=(1, 2), reshape=False, order=0, mode='constant', cval=0.0)
 					
-					# English comment for public release.
+					# --- 2. Random scaling (0.8 ~ 1.2) ---
 					if random.random() < 0.5:
 						scale = random.uniform(0.8, 1.2)
 						# zoom: input, zoom, order=0
@@ -587,7 +657,7 @@ class MiningDataset(Dataset):
 				except ImportError:
 					pass # fallback to simple flips
 
-			# English comment for public release.
+			# --- 3. Random flips (optimized) ---
 			# Flip H
 			if random.random() < 0.5:
 				obs_np = np.ascontiguousarray(np.flip(obs_np, axis=2))
@@ -598,7 +668,7 @@ class MiningDataset(Dataset):
 				obs_np = np.ascontiguousarray(np.flip(obs_np, axis=3))
 				vox_np = np.ascontiguousarray(np.flip(vox_np, axis=2))
 			
-			# English comment for public release.
+			# Flip D (Z axis) - added
 			if random.random() < 0.5:
 				obs_np = np.ascontiguousarray(np.flip(obs_np, axis=1))
 				vox_np = np.ascontiguousarray(np.flip(vox_np, axis=0))
@@ -619,7 +689,7 @@ class MiningDataset(Dataset):
 			raise RuntimeError('All samples were blacklisted; dataset empty')
 
 	def set_split(self, split: str):
-		"""Documentation translated to English for open-source release."""
+		"""Switch active data split; split in {'train','test','all'}."""
 		split = split.lower()
 		if split not in ('train', 'test', 'all'):
 			raise ValueError('split must be train/test/all')

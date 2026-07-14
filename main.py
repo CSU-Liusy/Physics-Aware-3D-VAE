@@ -1,6 +1,6 @@
-﻿"""Entry point for 3D VAE training and evaluation workflows.
-
-Supported modes: ``train``, ``benchmark``, ``ablation``, and ``robust_eval``.
+﻿"""
+main.py - 3D VAE entry point: parse config and invoke training pipeline.
+Supported modes: train, benchmark, ablation, robust_eval
 """
 
 import sys
@@ -9,12 +9,12 @@ import os
 from config_loader import parse_args
 from trainer import train
 
-# English comment for public release.
+# Dynamic import of feature modules
 try:
     from comparisons.run_benchmark import execute_benchmark
     from comparisons.run_ablation import main as run_ablation_main
 except ImportError:
-    # English comment for public release.
+    # Attempt path correction
     sys.path.append(os.path.join(os.path.dirname(__file__), 'comparisons'))
     try:
         from comparisons.run_benchmark import execute_benchmark
@@ -27,12 +27,12 @@ if __name__ == '__main__':
     args = parse_args()
 
     if args.mode == 'train':
-        print("Mode: train")
+        print("Starting mode: Train")
         train(args)
         print('Training finished')
         
     elif args.mode == 'benchmark':
-        print("Mode: benchmark")
+        print("Starting mode: Benchmark")
         limit = args.num_samples if args.num_samples > 0 else 10
         execute_benchmark(
             vae_ckpt=args.checkpoint,
@@ -42,16 +42,15 @@ if __name__ == '__main__':
         print('Benchmark finished')
         
     elif args.mode == 'ablation':
-        print("Mode: ablation")
+        print("Starting mode: Ablation Study")
         # Ablation script runs independently, we just invoke it
         run_ablation_main()
-        print('Ablation finished')
+        print('Ablation study finished')
         
     elif args.mode == 'robust_eval':
-        # English comment for public release.
+        # Deferred import to avoid circular dependency
         from run_robust_analysis import run_robustness_analysis
         run_robustness_analysis(args)
         
     else:
         print(f"Unknown mode: {args.mode}")
-
