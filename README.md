@@ -156,5 +156,3 @@ Data are downloaded separately and are not included in the GitHub code directory
 ```bash
 python main.py --prepare --out runs/esi_revision_v2
 ```
-
-See [docs/DATA_ACCESS.md](docs/DATA_ACCESS.md) for the expected input layout and validation. Upload the contents of this code directory directly to GitHub; no ZIP packaging step is required.
