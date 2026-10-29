@@ -1,0 +1,4 @@
+# Install the appropriate PyTorch build for your device first.
+# pip resolves nested requirement paths relative to their requirement file.
+-r revision/requirements.txt
+-r legacy/requirements.txt

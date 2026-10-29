@@ -1,0 +1,722 @@
+{
+  "format": "geovae-complete-repository-layout-v1",
+  "created_utc": "2026-10-28T07:04:51.611846+00:00",
+  "current_engine_root": "revision",
+  "historical_general_workflow": "legacy",
+  "entry": "main.py",
+  "current_engine_source_sha256": "2bbb423c62e8ca17cd8045d98cc62fcd123d0a0ade27c6dd2ef72cd52c91d5c3",
+  "unchanged_unique_original_file_count": 70,
+  "historical_snapshot_duplicate_note": "The original77 snapshot rows contain VERIFICATION.json twice; they describe76unique files. All production sources and receipts are preserved; any current test-fixture-only corrections are explicitly listed separately.",
+  "current_test_fixture_corrections": {
+    "revision/tests/test_revision_diagnostics.py": {
+      "original_sha256": "709a7ac1b8b7c7dda93684c747580d1a2ea5b75f80aab5706ba992f7afdb4e47",
+      "current_sha256": "01036ead009dd0bd826f481e3c7988244bc9ea8451d4e70961c624b65b6c7a51",
+      "reason": "Replace directory-depth-dependent positive path with external temporary path; retain private aggregate allowlist and both inner/outer route rejection checks.",
+      "scope": "test_fixture_only_no_production_source_change"
+    },
+    "revision/porphyry/test_frontend_coupling.py": {
+      "original_sha256": "27bf3bd73f410167ca960bf50d2f43006e6d14e7f4e7588aa435e2c069753ae3",
+      "current_sha256": "1cd21ab3bbf7b30fe61fd6ec8fe4161f0b5e784d38550cfe5fa0b1f646d644c1",
+      "reason": "Use explicit cold-release fixture for disabled-entry tests and test actual shipped reviewed release, missing prerequisites and no-output behavior separately.",
+      "scope": "test_fixture_only_no_production_source_change"
+    },
+    "revision/porphyry/test_portable_evaluation.py": {
+      "original_sha256": "28a087ee9d5a633b2ff2e05fd7255a840d3eaebe26597c986d32feca64990036",
+      "current_sha256": "77b110c86ab3be0e1aa9faa1fe235440e01bbc06faccb216cc909b91e0f0feee",
+      "reason": "Use explicit cold-release fixture for pre-release backend tests; inspect current bounded release metadata without starting an evaluator.",
+      "scope": "test_fixture_only_no_production_source_change"
+    },
+    "revision/porphyry/test_portable_guards.py": {
+      "original_sha256": "6d4b1b7bc1c92fc9278060656229e58312edcd05abbc16c1dd9290a2affe5384",
+      "current_sha256": "c34ab333acf4c439b2b0fdeba8b8abb765811219e41a42e93d75fa0df98c2b73",
+      "reason": "Separate cold-release readiness assertions from actual reviewed release and missing-prerequisite assertions.",
+      "scope": "test_fixture_only_no_production_source_change"
+    }
+  },
+  "all_nonarray_files": {
+    ".gitignore": "1f93901d8326b7fe54f17a10aee7496a030d968f464ba0f09e23fd7b8eeb3a46",
+    "docs/DATA_ACCESS.json": "1e9a752fd656c2132662f4092a1676f94611f7c4e53b6cd36079b8a49c701426",
+    "docs/DATA_ACCESS.md": "e5227476d9c4a2109f1e22ea2f6b0a96db63f5eac19bb87a2b025b09e3c13a40",
+    "docs/REVISION_GUIDE.md": "3e58f3610d5d27ec76d7c49c2fb5c709b12a260dbc1ae7b136394147e6d16abf",
+    "legacy/comparisons/__init__.py": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5",
+    "legacy/comparisons/models/interpolation.py": "b6dca76a29a0622b16363b4571aae26571ed56431dd0eaba0475a8982543289a",
+    "legacy/comparisons/models/unet.py": "8d37e6afe97ca4ad3c6264595c687686102d201c1241f726d97753cae21ee61a",
+    "legacy/comparisons/plot_ablation_summary.py": "3c2beee059cd2507d9168636dbb91ca0b50205d350155d06b739ae6857c95464",
+    "legacy/comparisons/run_ablation.py": "ec6c50add23fa9cbf903c8fca51ea4346490f4ace762ae20bf396b76f6ef9e1d",
+    "legacy/comparisons/run_benchmark.py": "dd7608c0edd2168954352a15ef5056bc8eacf608be552958ea68a69237a80170",
+    "legacy/comparisons/train_unet.py": "7b2a157a8262c32246f4b2b6bb35363af10870c4b3f484ad3edef122414a2727",
+    "legacy/config/default.yaml": "b22f79e7eece621d07a7bd62d277cee62efc7fcba93aefe48ad08cbe2b13bb87",
+    "legacy/config_loader.py": "9c25b52b487de6c49edd808c080af013796e219cf907d19507c9f1d6ea4d9aca",
+    "legacy/dataset.py": "301b975829c72736c9983d1418fbf31c064d2c6c5763f13f2a87c54e315e9568",
+    "legacy/legacy_paths.py": "6866d3ae6f167dcd12f7ae3f69e706b3278badd3877faff462262c5484e46b99",
+    "legacy/main.py": "595f5c9136e8a79bfe4fc6d42e381e4967ee53d6fb475571a6cb9b0a4d5704ac",
+    "legacy/MIGRATION.md": "ed855e11870d75053102520d8bc844fcc4c26f85043b63d1c1dd441b1c5e7159",
+    "legacy/model.py": "73c4b3b70d166da102f478cfab5445cce843e0eece853cb2cef6ea09658948bd",
+    "legacy/model_factory.py": "27d54ce67042dd5ca03ecd1e2a14ee1b0cc9776724e9cd269c7292038ef54015",
+    "legacy/ORIGINAL_SOURCE_MAP.json": "26f29470170c6905ee0bca3a55029c96a0e0852dbf6e3ef98c2df819e84fbb1e",
+    "legacy/output_result.py": "de59f75c6c7c55025a85804564c0a22236842291ff49dcdb497e0241aaf69a61",
+    "legacy/README.md": "62b13fe6253fb5b5121d069c9b70f760fdab56b4227dc57b3b40a1a0b8e02cc7",
+    "legacy/requirements.txt": "bed5d160b7cc603aee232b34a984e38a1fd57f85ad6094a823a5adc0c4156e7e",
+    "legacy/showresult.py": "33782fa6c59f8de33f559a509ea3fd80114523df8656de2c07106451947d5b9b",
+    "legacy/trainer.py": "ad611cbea1615ff2d85c3e7a480ec853261933b3d875004ad8379cb6b847a6ab",
+    "legacy/verify_constraints.py": "f4d12b2b21c70b01df07a2ee114b71c9ddbef7a143397c36d0e43c911cd37538",
+    "LICENSING.md": "935aef70b71bda709125bfca2adba6d40e7965e8b76bfce4eef855b98caf31d0",
+    "main.py": "9eba8c3613686663ddf54997b5591075621ab666ab294dd0c3eb5f197e301cde",
+    "README.md": "e15485a4aa4b37a3162989ffa3648d375f880b4b01c486ce6087070ca64f3b8e",
+    "repository_safety.py": "7589a98ca9adccdbb39e43dd1ee1f16ebd7193c434b7371760d45f23705722fc",
+    "requirements.txt": "ff7b02a013b0b57c6d68932bcf403f102daa05924ab0512a9fc63cf89c9660df",
+    "revision/.gitignore": "12907358fd4f609992b196a5849d645071193d92a38dc812deebc0ffb612f398",
+    "revision/comparisons/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "revision/comparisons/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "revision/comparisons/models/unet.py": "3b0e6cde7141252dbc6dae1894ca34e5edf70c795d18890855e58e4bea895e2a",
+    "revision/config/revision_v1.yaml": "50954ff609350464c06b2694ca5360977c5035c7f9839f05fb250c4f00ed0740",
+    "revision/config/smoke16.yaml": "85f22484ee8c77a5706358d2b81f7fcd087d499553bc8601b7cd638e524e6a9c",
+    "revision/config_loader.py": "5beb7bdde2f08f48efebd75c746d37241c4b2041de356c40cdb46969a7ebc62b",
+    "revision/evidence/source_data/files/ablation/attention_no_position/model_seed_means.csv": "44f2cd3890eedd9184fd88b1da81c2ceeb595f58a5cb577710b702276a672697",
+    "revision/evidence/source_data/files/ablation/attention_no_position/recomputed_per_case.csv": "4ba55c236c415115836a86b6b04874a0ac0b303e55bf7a37c787f6452244e544",
+    "revision/evidence/source_data/files/ablation/attention_no_position/reliability.csv": "d63017016f0d2094e9235c834ec0eaaff8ab7c322edca8df4b537d9fd82221e9",
+    "revision/evidence/source_data/files/ablation/attention_no_position/summary.csv": "57eeda58576130b8b5b86abf9bb9ba7697632339dad11580d289088f78735005",
+    "revision/evidence/source_data/files/ablation/attention_position/model_seed_means.csv": "b9fd93c8e6d3d62ca330c2ec0699f391082ab38875fc6d519f47033e15d369d0",
+    "revision/evidence/source_data/files/ablation/attention_position/paired_differences.csv": "8b99d973ed94eed7ad1ee1c2430114d00a33da49571f2e834f0c52dfa96b3662",
+    "revision/evidence/source_data/files/ablation/attention_position/recomputed_per_case.csv": "83061158ec55ce0c42342fa49d645e4d7f6b11bb5bed3f87c8c2a865faef97ce",
+    "revision/evidence/source_data/files/ablation/attention_position/reliability.csv": "13a75c31b1625be859a5482dc189d50f405c44fead2f4bef481db51206a9df18",
+    "revision/evidence/source_data/files/ablation/attention_position/summary.csv": "5871d50ae09ca52cac5302492f0196a82809ae8a86c2a75a99ef7ff3e1c10379",
+    "revision/evidence/source_data/files/ablation/base_no_observed/model_seed_means.csv": "95075034f2c194420b07a5507706d1b6cdecc062bbae8864f6df7ba251bf6e5f",
+    "revision/evidence/source_data/files/ablation/base_no_observed/recomputed_per_case.csv": "c6f2d0ba95644d287e6b3d785b8fbb26045e4ef0b45c07f31d816134f8a7868f",
+    "revision/evidence/source_data/files/ablation/base_no_observed/reliability.csv": "130432ab46c896fa2f441e559822136b5bfda91f2d4debb9bf93d08ba551ae0a",
+    "revision/evidence/source_data/files/ablation/base_no_observed/summary.csv": "4dae1e1b0abffaad4717c9839651f326bd1b3c229dff462464ce0ae6ec233e3a",
+    "revision/evidence/source_data/files/ablation/base_observed/model_seed_means.csv": "66afa2e401dc2c8be32925547b2f08024ad0fec87e17763bc960d1665490bcd0",
+    "revision/evidence/source_data/files/ablation/base_observed/recomputed_per_case.csv": "32d80f1a5e72027eda905079bab0e51e4012489c693bb19d29c953132a1d1950",
+    "revision/evidence/source_data/files/ablation/base_observed/reliability.csv": "533cd7b2632933a38608e84d3856300092992de82ac4ce79f5d6ecb56c6cadf3",
+    "revision/evidence/source_data/files/ablation/base_observed/summary.csv": "403296de8fc044bc3555b764650c0c9d670cb8ad9318c1970f0bdc64b0343087",
+    "revision/evidence/source_data/files/diagnostic/candidate_scalars.csv": "bc22852ea6d9771a10f1ec83b89e1ade63138f7ffa0cf63704361bffd6f42de5",
+    "revision/evidence/source_data/files/diagnostic/composition_counts.csv": "5e346b494f171f88f5cc6d3e7347acdc1e546e9a1b57a594daabfb8adb54a258",
+    "revision/evidence/source_data/files/diagnostic/condition_counts.csv": "9ff44d3b5776f649e0bf03959e9ad78929d2368bf7b70c6e3c74ebf1092f87d5",
+    "revision/evidence/source_data/files/diagnostic/lora_distance_effect_scalars.csv": "23465d65e9ce44598d2a25329878bd66b80160959f59f3afb4eceec82e520ab2",
+    "revision/evidence/source_data/files/diagnostic/optimization_trace_scalars.csv": "3861c206628a500e52ac1de7348f6cdf149b095cac62ea232ff427e7baf4e066",
+    "revision/evidence/source_data/files/diagnostic/test_acceptance.csv": "6c7a860d19016e57f3c9e8e2523f03af09eb85e26c7c1b3290b5d57d9132ff17",
+    "revision/evidence/source_data/files/diagnostic/val_acceptance.csv": "91dbfb9e60fc43770887421fa08dce0a7c0f3d86d7a8fc064a0b49a4f845d8f8",
+    "revision/evidence/source_data/files/external150/descriptive_summary.csv": "cf8ac73a64fe97f072c329a7384dba94f3075a7700517139e30d24dd8df7878b",
+    "revision/evidence/source_data/files/external150/recomputed_per_case.csv": "1d6c1c8720a921070757806d5534778a96aeefb99a8888f18260329627c1c5fe",
+    "revision/evidence/source_data/files/external150/reliability.csv": "ef934e5d5f13079990e3ac094fef1d609faccd1b0c47409cb337cfae2804d6b6",
+    "revision/evidence/source_data/files/primary/analysis.json": "2431f33f56630ab7b4b94901cd1751702f6a5c0e17bed9d73bb1d9a178f8bd94",
+    "revision/evidence/source_data/files/primary/model_seed_means.csv": "95fa4a5a476433e152ec2f4b91bf1bd327ba3f9674bdaef649b0164bd159a5bd",
+    "revision/evidence/source_data/files/primary/paired_differences.csv": "0e34507043de616d06af7a1e5e761dd1aa276e56ca8c51aedcd7cd3f0aaf1c13",
+    "revision/evidence/source_data/files/primary/recomputed_per_case.csv": "811b19b1c0dfcfd90e5e55d5ed69ce487c68e36f658c453d3c80e15aaab75f00",
+    "revision/evidence/source_data/files/primary/reliability.csv": "7a74b6843eece7bff957e13e3a26bc9353c9bc8b7d4dd5cc2d887a3cffebeb43",
+    "revision/evidence/source_data/files/primary/summary.csv": "94d1728162bac7a7477314fe43170beff3f95eb05f867971c082b22be798a710",
+    "revision/evidence/source_data/files/real_aggregate/real_aggregate_metrics.csv": "807ab55515f98cc566fc87f037d12477098a88debd7562bf0737a884a415666e",
+    "revision/evidence/source_data/files/real_aggregate/real_summary.json": "f072b36a7e6d547bb2d8edb22d80f6be17eb48560bdf453ed2657456ffd429b7",
+    "revision/evidence/source_data/files/robustness/mask_summary.csv": "956bf5c15415dcb90c43e9b15fa9868aef3a921abaaa2302e095fd6599275fdd",
+    "revision/evidence/source_data/files/robustness/paired_differences.csv": "93ae9adbda20da8fc6a0568d95c49e750ce27934e05af4f9dbaf828fbbd97f67",
+    "revision/evidence/source_data/files/robustness/per_case_scalars.csv": "60cdb4576ca90247414d48ae0f5a9d41a96eab99b46793b18a7f91c8c1800ce5",
+    "revision/evidence/source_data/files/robustness/retention_summary.csv": "d2531af96a42a55e479902f93b5c25f3ea51af2eded371d3803350853880d3c4",
+    "revision/evidence/source_data/files/robustness/summary.csv": "67ed36fa816fb39a89ba0376bcf2bf0519ecd255a922453aee29c0f71fbaf019",
+    "revision/evidence/source_data/files/secondary/contrasts.csv": "ef41f3d5f34b9113a7731b471c13025ae6f968ab03442fb7cf063d0fe54e1840",
+    "revision/evidence/source_data/files/secondary/parent_differences.csv": "cd928398449f84185b46afd7fd8d5c4c0b08610f75e76be8dcfd90de5cf430d4",
+    "revision/evidence/source_data/files/secondary/seed_differences.csv": "ec3bed424120ac43fb260ec2d0c5ca4e706e3f523a78f79791eb7b3663f0f859",
+    "revision/evidence/source_data/files/thresholds/full_validation_curves.csv": "843de69de49a9110092a5d7555d510b3f9444b7ec2c8c3642e4146f793ab94f7",
+    "revision/evidence/source_data/files/training/environment.json": "df21ae33fb9834c66ac55aeb5a330f3d0e0f19a81abab40b7282ef239a41947f",
+    "revision/evidence/source_data/files/training/selected_checkpoints_and_runtime.csv": "e5b6df909fb6bbfa7e8b3c866df0248cad4c57ee6e041eac46100951299cf959",
+    "revision/evidence/source_data/LICENSE_AND_SCOPE.md": "5cf757af6f3fa161ea2430d42633bc8f53e0590f57c6edb52879981fb687a840",
+    "revision/evidence/source_data/README.md": "5fd311d63837c89c57e3c62eed6e0b92d53ed6bb9c533cd6bde8c3e20202eb9c",
+    "revision/evidence/source_data/SOURCE_DATA_INDEX.json": "758227198e3c068a9037260d8038dbae6c946ffa855604f7c5c3ac900b72952c",
+    "revision/evidence/source_data/SOURCE_INPUT_HASHES.json": "c9cebb2367a691fba5fbbd7dcebcc2eda1ae78978a9a79bea213bd514f359574",
+    "revision/experiment_data.py": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d",
+    "revision/EXPORT_PROVENANCE.json": "a7132c71dbc91aff4ae2a0f48357789eaa41b8390afbb9dfabc56b9821c17765",
+    "revision/main.py": "574f807d8e30e9ec17ac00474a1ba7ea5a80796f7db7fcacb938a85d747843a2",
+    "revision/model.py": "05f196f35f69355c05c1b023b0306acf99cfabd8652d29772bd079a782812726",
+    "revision/porphyry/author_bundle.py": "59d6f8731604e7458c7a6686e80562db94e1a814859d9232920951d35763557b",
+    "revision/porphyry/author_reference.py": "11ba4cbd3541817b7ebbf17bf5d595cb031e45ad55ee855a65664e62e6c1e457",
+    "revision/porphyry/conversion_reference.json": "502833c3eab3ac4582e285fafab8efe4152d753e4ca5f3868cd472193244615e",
+    "revision/porphyry/porphyry_public.py": "35eb6dac91310ebcd442bff5a4303bf0b5dfba017f4f1a67bdac9506f16c7eb8",
+    "revision/porphyry/portable_evaluation.py": "28e74127e3d71197240d2adbaf81e2a19f91e081a47776c47fc51a8769be5d45",
+    "revision/porphyry/prepared_data.py": "9ed0797bfecc818b2f2c4596781501628f596bed78f9cd46c2cdc849ed48b930",
+    "revision/porphyry/README.md": "ec949cde56215702ee77522785f1e5ab1e79ee0981d79c24dd9702af6ccba3b0",
+    "revision/porphyry/release_contract.py": "b961cb9fc3b516e140552284dfb808efe168af666100e585857d07866ff11e22",
+    "revision/porphyry/release_evidence/actual10.attestation.json": "0c0d3359f8e08ed5a53ba9fe115e594d0a8476a5bd306ec7b8c5512311c7b91b",
+    "revision/porphyry/release_evidence/independent_review.attestation.json": "f78a49657af4bef16357a1972ea09c76dcc5aee4704dc7d48f05f1e4685aba50",
+    "revision/porphyry/release_evidence/reference150.attestation.json": "7c22505fcd999c22b7dea50fd8a8ffe0360ff7d185a9773752cf17a64d22bc0c",
+    "revision/porphyry/release_registry.json": "b36d6e79385ed7bba394d2daa48e3eaa1b3c9badc75f75088cfad27479bce053",
+    "revision/porphyry/test_author_reference.py": "ac5c7006c0912c2e2576069a64c99b3b209e76be425bb3b3a7965b055b183327",
+    "revision/porphyry/test_frontend_coupling.py": "1cd21ab3bbf7b30fe61fd6ec8fe4161f0b5e784d38550cfe5fa0b1f646d644c1",
+    "revision/porphyry/test_portable_evaluation.py": "77b110c86ab3be0e1aa9faa1fe235440e01bbc06faccb216cc909b91e0f0feee",
+    "revision/porphyry/test_portable_guards.py": "c34ab333acf4c439b2b0fdeba8b8abb765811219e41a42e93d75fa0df98c2b73",
+    "revision/porphyry/test_prepared_data.py": "676046fcd34d906eff8ddac837b93fa61240198fe558b8e6a322158ac78aa7d7",
+    "revision/porphyry/test_release_display_v4.py": "41c21a2b2d3cca1c4fe6d065c914de9e0db875106967acf1f93f41700a280608",
+    "revision/protocol/manifest.json": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+    "revision/public_finish.py": "5e1afce349de53dee09b7e2c474c1905bf5e80740cc2ee6b588877d252291667",
+    "revision/r12_data.py": "99febeb39824e8919d811ae6ca63eba418aee08de46f5fa0420a602f7f502bbd",
+    "revision/r12_sampling.py": "10d5e45a9ccb5a69974a983e4af44e6a2796995c02b508f4ad77b0a1a3b87863",
+    "revision/README.md": "887a7f76a8ce0f12157e4a4846136fcd2fdef8935371201aba5a929fe8c0b655",
+    "revision/repro_ablation.py": "9dd80afca9c4c7e1ac03f5accebc45560f19b4c685947905b21cb88a98ba1e0a",
+    "revision/repro_baselines.py": "afa8d61a48bcd5737b239089cdc3c94fd7931bb17f516d9b30bbbad6290a86a4",
+    "revision/repro_cgan.py": "db8ffc585905b3a2a78025331956b7dcb9c2ae2ff17d7877761b3aaf5241fd21",
+    "revision/repro_cli.py": "3270af56e36d89fc8d23fe3d55071310dc9961397c30d7be4480817ec8bef75e",
+    "revision/repro_figures.py": "23d827322cffd18dcb489f29f5bfd73f5139149077acae87691151b2f61a8be0",
+    "revision/repro_hyper_tuning.py": "84bedbb1f2a2238ad0d95c299637af84753ead15c77c59c6060e0e35e24006ed",
+    "revision/repro_metrics.py": "55111cda4f6f1e8a7ee8b933b7db070a7bee2f1ee2c520812b75b1589f3d863a",
+    "revision/repro_pipeline.py": "10ee03a7cde5008ccb52bfe58e9f50b6c9aa9f57e9a4025c121887819815ea40",
+    "revision/repro_report.py": "cbf3fd99f6b69a24decaba01ba3d03e82ab94f0773d4e677105b817e94e92ace",
+    "revision/repro_run_all.py": "f5bece576df217f9b22fdff46b9de7e58652a064fd772c955d56fa6a6119bc2a",
+    "revision/repro_smoke.py": "8977214d4ee1db88f7f05a8c867957c54e7bc68f3c2d2a00eba9d5b6b9b60915",
+    "revision/repro_tuning.py": "a47823c71ebc0406910f2b4e8f7bf95b256ec3cd71258d68b59f5ff46ae168e4",
+    "revision/requirements-baselines.txt": "a2ce67eed4a9f70cd37726586f825f1e2b21664946fe11d01c7b95459c005eba",
+    "revision/requirements-core.txt": "721e07e911eabda069666082154b72ea931ddfc6639d6262e0139016573a111a",
+    "revision/requirements.txt": "2b86194cb5ce644ba60964a7f35a08f28a202ac8ad47708400f41d29e69c6798",
+    "revision/restore_benchmark.py": "1366fc5e4089b9a3069e006ae5d0e500ebac606ddb6a6850714fa0b81b784ea0",
+    "revision/restore_benchmark_validation.json": "bf7dfcde6b3e5bb320485d8680f6a0d9a3d4e899d796153955f0352278ed7c33",
+    "revision/revision_analysis.py": "cfd9bba0d55204835da4d1496e10148098013c825bada78c25c1dd576a12e0b3",
+    "revision/revision_diagnostics.py": "357bbb508061a1d8fe79a751c255382408ca780b0c15e64d3048ca0b8f9ee8cc",
+    "revision/revision_figures.py": "04c5ad838b5d26bd72fd94d8c9495e570fd62418423b799cb71caaa8ba0759f7",
+    "revision/revision_integrity.py": "b33a0cbb4d7b327df6203217f49d4092b4619afea32d513a919f7c9a5c8da9b6",
+    "revision/revision_numerics.py": "d1d2f19fdaff27a7d83507fb10f93e61e9ae54e85768443366058153e2f343fc",
+    "revision/revision_robustness.py": "0540c491584b64bc2dfbb2575bb3b530b7dc8dfa675338ae14af5da68441b013",
+    "revision/revision_runner.py": "961acfea799b35a41ccc80cc1d6db09a056610a3d5a6e287eeaefb6757e5a135",
+    "revision/revision_smoke.py": "f03c90df05a293cd19c92ceed3bd39de752a0f44aaa1c91105233c11023fea5c",
+    "revision/revision_tables.py": "3139b53c04ba3210c180e3d8ad32b74257caaff60c04a050a56925e6f839bcc4",
+    "revision/run_tests.py": "091b0f1ed09945b1a420e8615f2f70a94f1e8be2f57f8cf358f6f4177b6ec438",
+    "revision/supplemental/complex_examples.py": "9035439d51f3cc952f5a419d6d66e98b3838d529014cfd65a435b06c3406b7ba",
+    "revision/supplemental/README.md": "d5a3b5cf6033a347fcffff80aa16997a68de6513fa8ff0879512f79266da7b31",
+    "revision/supplemental/reference/complex_synthetic_selection.json": "f9b6cee797e702ca9b7e26ab33af578c093fa5e26d5c7683b0b34ad0005861ab",
+    "revision/supplemental/reference/render_complex_synthetic.py": "80a973a393eb75e3624ff9317d5a5807b496f8ca2866771ecbadc36947f21d64",
+    "revision/supplemental/reference/secondary_ablation_contrasts.py": "632aa4a42500ef1d1591bc32dea78f418c2dbde0fe6dd5b31a1c448cc74cd781",
+    "revision/supplemental/reference/SOURCE_PROVENANCE.json": "6a13178ffed87cec1e4b1897729de8185d62c0030687c1662b682aa8e3a9bf38",
+    "revision/supplemental/secondary_contrasts.py": "6a76333cb3c9c3d1c0e0ac073be7be7d11f97047880bc931875b4ea6bb10dc33",
+    "revision/supplemental/verification/complex_plot_primitive_parity.json": "69458e9da66f774a49ae12fad995fb7ed6e4ce1765e898a5a1417c947d9cc602",
+    "revision/supplemental/verification/secondary_reanalysis.json": "2b54aa3a4312f4da89698f0ff866efd0e1940f7b6040f55207f6adf30585fbe5",
+    "revision/supplemental/verification/SOFTWARE_CHECKS.json": "e10c5cbb60877616c86c52183a72e40c996ba09d5274c00ae8ac806233a87117",
+    "revision/test_fixture_changes.json": "ff1b3726bb5f8c1d535b4f6c85e3131812197bef01c6c21a0dcc9d6d02f87bcc",
+    "revision/tests/test_evaluation_resume.py": "8fc494e2b80d839aad30226910e17883280e49a98e3b2aa147d06f0a2408c486",
+    "revision/tests/test_experiment_data.py": "c94cfab57d770481f5763f4e3a4e6ba0eb83db60b17e1619b6cc8ac3ce175952",
+    "revision/tests/test_hyper_tuning.py": "eb6568e2b5da622eec5459970c4e6654942701a33f47f402486006e208a91d32",
+    "revision/tests/test_model_adaptation.py": "b4ac8598ef2e5819edcc29a49149cbe02f0a05329812aa2f68d23a8847939f8f",
+    "revision/tests/test_prediction_cache.py": "3429a2762be40fb442525f1053c78b75897a1fc7485e64862acca70c31380969",
+    "revision/tests/test_public_package.py": "2ea48c0878f1b092d8ec347fafee3c046f48eba706c80afbfd60a3282ab32933",
+    "revision/tests/test_repro_integrity.py": "efb06fe5fa332158762ef4ada37434bbf464d5f6e2340c1620107038694eefcc",
+    "revision/tests/test_revision_analysis.py": "b9494ccc8283666ac0093ccdd8903cb7ded980844b78d9b5537c4ad4becc4840",
+    "revision/tests/test_revision_diagnostics.py": "01036ead009dd0bd826f481e3c7988244bc9ea8451d4e70961c624b65b6c7a51",
+    "revision/tests/test_revision_integrity.py": "f11a4a482af89a3c0f0e512c81488579b5e2a93438ed525043b4570538ee95d1",
+    "revision/tests/test_revision_mps_parallel.py": "2a854542c3aeb99f269cf9283e0d9af2337f6551e43d24ad5fff6cff3e906f81",
+    "revision/tests/test_revision_numerics.py": "09a1b0d21ffd72bf82bf5e9efede563cc21d65104e283c14ad9bcbc1236aa105",
+    "revision/tests/test_revision_progress.py": "b01560179636503f930cc63c0c603282aff2650e327afcd4e4c854ad0a172c1b",
+    "revision/tests/test_revision_robustness.py": "eade50388c66531efc5a599face0cbf1706924cfeadd3385d79fd64df6244911",
+    "revision/tests/test_unet_amp.py": "2a4d989511624d5ff260a984f1860ff87b925445a08e40f6f3ff1288147ce105",
+    "revision/VERIFICATION.json": "9cbbfe415ef8d7600bbe639c2869a73bd9d26c4d077a901c57197c0485245b1c",
+    "run_tests.py": "13fd59eb377f6997327146dfd899b9bc59d1144ef0233b6906c147b1f3d385f1",
+    "tests/test_data_distribution.py": "243df129f85041d33001576d5e6a715c49ac15bb21675e421c13381827f9b5b5",
+    "tests/test_legacy_cli.py": "a78d883c23d8b18ea5db8d6adfaacee50bed7b514c5ec17892130765f7483ebe",
+    "tests/test_legacy_failure_reporting.py": "e1ce94545a3073a6134f9bf547565864239b653902e92284f84b44b96a4a9e6b",
+    "tests/test_repository_launcher.py": "94d81c242e71b152356b3935ab6e58755e785cc56d04ba98e76ba93c56fb5ae3",
+    "tests/test_repository_safety.py": "79a47a081f00963a1dc3aff8abf1ce58c8408a11de0b8851a1701d1103229141",
+    "tests/test_supplemental_tools.py": "2ba081dca5f436e0984938d777fee0dc90874585c37283eca1132691e2fc53c1",
+    "LICENSE": "8584bf11fca943ed617663c95cc18e7b190c8cf97716c560c8cc5e7db0124b15"
+  },
+  "synthetic_grid_inventory": {
+    "distribution": "Existing Baidu Netdisk link confirmed by author; data excluded from direct GitHub upload",
+    "count": 5000,
+    "installed_path": "revision/protocol/grids",
+    "manifest": "revision/protocol/manifest.json",
+    "manifest_sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+    "download_metadata": "docs/DATA_ACCESS.json",
+    "publication_status": "AUTHOR_CONFIRMED_EXISTING_SHARE_LINK",
+    "download_url": "https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p",
+    "extraction_code": "gq2p",
+    "zip_packaging_required": false,
+    "remote_contents_independently_downloaded_and_verified": false,
+    "existing_per_file_hashes": "revision/protocol/manifest.json",
+    "exact_restore_entry": "python revision/restore_benchmark.py"
+  },
+  "historical_records_policy": "Inner EXPORT_PROVENANCE/VERIFICATION and release records retain original scopes and hashes. Data are supplied through the author-confirmed original Baidu share. Duplicate documents were consolidated; all scientific results and current paths are preserved in all_nonarray_files. No ZIP delivery is required.",
+  "excluded_original_files": {
+    "README.md": "Replaced by accurate current/historical workflow documentation; unverified physical-generator/data lineage claims are not propagated.",
+    "plot_comparison.py": "Not in training/export dependency closure; outdated manuscript figures and implicit training removed from the release.",
+    "plot_dataset_overview.py": "Not in training/export closure; requires absent quantitative_evaluation module and obsolete manuscript interpretation."
+  },
+  "excluded_data": "No confidential122case records/geometry/predictions/adapters, author checkpoints, licensed external input/derived geometry, or original legacy datasets/results.",
+  "git_upload_performed": false,
+  "historical_original_distribution_files": [
+    {
+      "old": ".gitignore",
+      "new": "revision/.gitignore",
+      "sha256": "12907358fd4f609992b196a5849d645071193d92a38dc812deebc0ffb612f398"
+    },
+    {
+      "old": "LICENSING.md",
+      "new": "revision/LICENSING.md",
+      "sha256": "ee5bc9d6503ef322f6b2a3f33d4411399dc55095c43daee39a16f43f01ede0d0"
+    },
+    {
+      "old": "README.md",
+      "new": "revision/README.md",
+      "sha256": "a14e56e3f93b662461fc1e187942d8da83038b49d0ddb3fa4d6f33c60e97f7b6"
+    },
+    {
+      "old": "VERIFICATION.json",
+      "new": "revision/VERIFICATION.json",
+      "sha256": "9cbbfe415ef8d7600bbe639c2869a73bd9d26c4d077a901c57197c0485245b1c"
+    },
+    {
+      "old": "comparisons/__init__.py",
+      "new": "revision/comparisons/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "old": "comparisons/models/__init__.py",
+      "new": "revision/comparisons/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "old": "comparisons/models/unet.py",
+      "new": "revision/comparisons/models/unet.py",
+      "sha256": "3b0e6cde7141252dbc6dae1894ca34e5edf70c795d18890855e58e4bea895e2a"
+    },
+    {
+      "old": "config/revision_v1.yaml",
+      "new": "revision/config/revision_v1.yaml",
+      "sha256": "50954ff609350464c06b2694ca5360977c5035c7f9839f05fb250c4f00ed0740"
+    },
+    {
+      "old": "config/smoke16.yaml",
+      "new": "revision/config/smoke16.yaml",
+      "sha256": "85f22484ee8c77a5706358d2b81f7fcd087d499553bc8601b7cd638e524e6a9c"
+    },
+    {
+      "old": "config_loader.py",
+      "new": "revision/config_loader.py",
+      "sha256": "5beb7bdde2f08f48efebd75c746d37241c4b2041de356c40cdb46969a7ebc62b"
+    },
+    {
+      "old": "experiment_data.py",
+      "new": "revision/experiment_data.py",
+      "sha256": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d"
+    },
+    {
+      "old": "main.py",
+      "new": "revision/main.py",
+      "sha256": "574f807d8e30e9ec17ac00474a1ba7ea5a80796f7db7fcacb938a85d747843a2"
+    },
+    {
+      "old": "model.py",
+      "new": "revision/model.py",
+      "sha256": "05f196f35f69355c05c1b023b0306acf99cfabd8652d29772bd079a782812726"
+    },
+    {
+      "old": "porphyry/README.md",
+      "new": "revision/porphyry/README.md",
+      "sha256": "ec949cde56215702ee77522785f1e5ab1e79ee0981d79c24dd9702af6ccba3b0"
+    },
+    {
+      "old": "porphyry/author_bundle.py",
+      "new": "revision/porphyry/author_bundle.py",
+      "sha256": "59d6f8731604e7458c7a6686e80562db94e1a814859d9232920951d35763557b"
+    },
+    {
+      "old": "porphyry/author_reference.py",
+      "new": "revision/porphyry/author_reference.py",
+      "sha256": "11ba4cbd3541817b7ebbf17bf5d595cb031e45ad55ee855a65664e62e6c1e457"
+    },
+    {
+      "old": "porphyry/conversion_reference.json",
+      "new": "revision/porphyry/conversion_reference.json",
+      "sha256": "502833c3eab3ac4582e285fafab8efe4152d753e4ca5f3868cd472193244615e"
+    },
+    {
+      "old": "porphyry/porphyry_public.py",
+      "new": "revision/porphyry/porphyry_public.py",
+      "sha256": "35eb6dac91310ebcd442bff5a4303bf0b5dfba017f4f1a67bdac9506f16c7eb8"
+    },
+    {
+      "old": "porphyry/portable_evaluation.py",
+      "new": "revision/porphyry/portable_evaluation.py",
+      "sha256": "28e74127e3d71197240d2adbaf81e2a19f91e081a47776c47fc51a8769be5d45"
+    },
+    {
+      "old": "porphyry/prepared_data.py",
+      "new": "revision/porphyry/prepared_data.py",
+      "sha256": "9ed0797bfecc818b2f2c4596781501628f596bed78f9cd46c2cdc849ed48b930"
+    },
+    {
+      "old": "porphyry/release_contract.py",
+      "new": "revision/porphyry/release_contract.py",
+      "sha256": "b961cb9fc3b516e140552284dfb808efe168af666100e585857d07866ff11e22"
+    },
+    {
+      "old": "porphyry/release_evidence/actual10.attestation.json",
+      "new": "revision/porphyry/release_evidence/actual10.attestation.json",
+      "sha256": "0c0d3359f8e08ed5a53ba9fe115e594d0a8476a5bd306ec7b8c5512311c7b91b"
+    },
+    {
+      "old": "porphyry/release_evidence/independent_review.attestation.json",
+      "new": "revision/porphyry/release_evidence/independent_review.attestation.json",
+      "sha256": "f78a49657af4bef16357a1972ea09c76dcc5aee4704dc7d48f05f1e4685aba50"
+    },
+    {
+      "old": "porphyry/release_evidence/reference150.attestation.json",
+      "new": "revision/porphyry/release_evidence/reference150.attestation.json",
+      "sha256": "7c22505fcd999c22b7dea50fd8a8ffe0360ff7d185a9773752cf17a64d22bc0c"
+    },
+    {
+      "old": "porphyry/release_registry.json",
+      "new": "revision/porphyry/release_registry.json",
+      "sha256": "b36d6e79385ed7bba394d2daa48e3eaa1b3c9badc75f75088cfad27479bce053"
+    },
+    {
+      "old": "porphyry/test_author_reference.py",
+      "new": "revision/porphyry/test_author_reference.py",
+      "sha256": "ac5c7006c0912c2e2576069a64c99b3b209e76be425bb3b3a7965b055b183327"
+    },
+    {
+      "old": "porphyry/test_frontend_coupling.py",
+      "new": "revision/porphyry/test_frontend_coupling.py",
+      "sha256": "27bf3bd73f410167ca960bf50d2f43006e6d14e7f4e7588aa435e2c069753ae3"
+    },
+    {
+      "old": "porphyry/test_portable_evaluation.py",
+      "new": "revision/porphyry/test_portable_evaluation.py",
+      "sha256": "28a087ee9d5a633b2ff2e05fd7255a840d3eaebe26597c986d32feca64990036"
+    },
+    {
+      "old": "porphyry/test_portable_guards.py",
+      "new": "revision/porphyry/test_portable_guards.py",
+      "sha256": "6d4b1b7bc1c92fc9278060656229e58312edcd05abbc16c1dd9290a2affe5384"
+    },
+    {
+      "old": "porphyry/test_prepared_data.py",
+      "new": "revision/porphyry/test_prepared_data.py",
+      "sha256": "676046fcd34d906eff8ddac837b93fa61240198fe558b8e6a322158ac78aa7d7"
+    },
+    {
+      "old": "porphyry/test_release_display_v4.py",
+      "new": "revision/porphyry/test_release_display_v4.py",
+      "sha256": "41c21a2b2d3cca1c4fe6d065c914de9e0db875106967acf1f93f41700a280608"
+    },
+    {
+      "old": "protocol/manifest.json",
+      "new": "revision/protocol/manifest.json",
+      "sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030"
+    },
+    {
+      "old": "public_finish.py",
+      "new": "revision/public_finish.py",
+      "sha256": "5e1afce349de53dee09b7e2c474c1905bf5e80740cc2ee6b588877d252291667"
+    },
+    {
+      "old": "r12_data.py",
+      "new": "revision/r12_data.py",
+      "sha256": "99febeb39824e8919d811ae6ca63eba418aee08de46f5fa0420a602f7f502bbd"
+    },
+    {
+      "old": "r12_sampling.py",
+      "new": "revision/r12_sampling.py",
+      "sha256": "10d5e45a9ccb5a69974a983e4af44e6a2796995c02b508f4ad77b0a1a3b87863"
+    },
+    {
+      "old": "repro_ablation.py",
+      "new": "revision/repro_ablation.py",
+      "sha256": "9dd80afca9c4c7e1ac03f5accebc45560f19b4c685947905b21cb88a98ba1e0a"
+    },
+    {
+      "old": "repro_baselines.py",
+      "new": "revision/repro_baselines.py",
+      "sha256": "afa8d61a48bcd5737b239089cdc3c94fd7931bb17f516d9b30bbbad6290a86a4"
+    },
+    {
+      "old": "repro_cgan.py",
+      "new": "revision/repro_cgan.py",
+      "sha256": "db8ffc585905b3a2a78025331956b7dcb9c2ae2ff17d7877761b3aaf5241fd21"
+    },
+    {
+      "old": "repro_cli.py",
+      "new": "revision/repro_cli.py",
+      "sha256": "3270af56e36d89fc8d23fe3d55071310dc9961397c30d7be4480817ec8bef75e"
+    },
+    {
+      "old": "repro_figures.py",
+      "new": "revision/repro_figures.py",
+      "sha256": "23d827322cffd18dcb489f29f5bfd73f5139149077acae87691151b2f61a8be0"
+    },
+    {
+      "old": "repro_hyper_tuning.py",
+      "new": "revision/repro_hyper_tuning.py",
+      "sha256": "84bedbb1f2a2238ad0d95c299637af84753ead15c77c59c6060e0e35e24006ed"
+    },
+    {
+      "old": "repro_metrics.py",
+      "new": "revision/repro_metrics.py",
+      "sha256": "55111cda4f6f1e8a7ee8b933b7db070a7bee2f1ee2c520812b75b1589f3d863a"
+    },
+    {
+      "old": "repro_pipeline.py",
+      "new": "revision/repro_pipeline.py",
+      "sha256": "10ee03a7cde5008ccb52bfe58e9f50b6c9aa9f57e9a4025c121887819815ea40"
+    },
+    {
+      "old": "repro_report.py",
+      "new": "revision/repro_report.py",
+      "sha256": "cbf3fd99f6b69a24decaba01ba3d03e82ab94f0773d4e677105b817e94e92ace"
+    },
+    {
+      "old": "repro_run_all.py",
+      "new": "revision/repro_run_all.py",
+      "sha256": "f5bece576df217f9b22fdff46b9de7e58652a064fd772c955d56fa6a6119bc2a"
+    },
+    {
+      "old": "repro_smoke.py",
+      "new": "revision/repro_smoke.py",
+      "sha256": "8977214d4ee1db88f7f05a8c867957c54e7bc68f3c2d2a00eba9d5b6b9b60915"
+    },
+    {
+      "old": "repro_tuning.py",
+      "new": "revision/repro_tuning.py",
+      "sha256": "a47823c71ebc0406910f2b4e8f7bf95b256ec3cd71258d68b59f5ff46ae168e4"
+    },
+    {
+      "old": "requirements-baselines.txt",
+      "new": "revision/requirements-baselines.txt",
+      "sha256": "a2ce67eed4a9f70cd37726586f825f1e2b21664946fe11d01c7b95459c005eba"
+    },
+    {
+      "old": "requirements-core.txt",
+      "new": "revision/requirements-core.txt",
+      "sha256": "721e07e911eabda069666082154b72ea931ddfc6639d6262e0139016573a111a"
+    },
+    {
+      "old": "requirements.txt",
+      "new": "revision/requirements.txt",
+      "sha256": "2b86194cb5ce644ba60964a7f35a08f28a202ac8ad47708400f41d29e69c6798"
+    },
+    {
+      "old": "revision_analysis.py",
+      "new": "revision/revision_analysis.py",
+      "sha256": "cfd9bba0d55204835da4d1496e10148098013c825bada78c25c1dd576a12e0b3"
+    },
+    {
+      "old": "revision_diagnostics.py",
+      "new": "revision/revision_diagnostics.py",
+      "sha256": "357bbb508061a1d8fe79a751c255382408ca780b0c15e64d3048ca0b8f9ee8cc"
+    },
+    {
+      "old": "revision_figures.py",
+      "new": "revision/revision_figures.py",
+      "sha256": "04c5ad838b5d26bd72fd94d8c9495e570fd62418423b799cb71caaa8ba0759f7"
+    },
+    {
+      "old": "revision_integrity.py",
+      "new": "revision/revision_integrity.py",
+      "sha256": "b33a0cbb4d7b327df6203217f49d4092b4619afea32d513a919f7c9a5c8da9b6"
+    },
+    {
+      "old": "revision_numerics.py",
+      "new": "revision/revision_numerics.py",
+      "sha256": "d1d2f19fdaff27a7d83507fb10f93e61e9ae54e85768443366058153e2f343fc"
+    },
+    {
+      "old": "revision_robustness.py",
+      "new": "revision/revision_robustness.py",
+      "sha256": "0540c491584b64bc2dfbb2575bb3b530b7dc8dfa675338ae14af5da68441b013"
+    },
+    {
+      "old": "revision_runner.py",
+      "new": "revision/revision_runner.py",
+      "sha256": "961acfea799b35a41ccc80cc1d6db09a056610a3d5a6e287eeaefb6757e5a135"
+    },
+    {
+      "old": "revision_smoke.py",
+      "new": "revision/revision_smoke.py",
+      "sha256": "f03c90df05a293cd19c92ceed3bd39de752a0f44aaa1c91105233c11023fea5c"
+    },
+    {
+      "old": "revision_tables.py",
+      "new": "revision/revision_tables.py",
+      "sha256": "3139b53c04ba3210c180e3d8ad32b74257caaff60c04a050a56925e6f839bcc4"
+    },
+    {
+      "old": "run_tests.py",
+      "new": "revision/run_tests.py",
+      "sha256": "091b0f1ed09945b1a420e8615f2f70a94f1e8be2f57f8cf358f6f4177b6ec438"
+    },
+    {
+      "old": "tests/test_evaluation_resume.py",
+      "new": "revision/tests/test_evaluation_resume.py",
+      "sha256": "8fc494e2b80d839aad30226910e17883280e49a98e3b2aa147d06f0a2408c486"
+    },
+    {
+      "old": "tests/test_experiment_data.py",
+      "new": "revision/tests/test_experiment_data.py",
+      "sha256": "c94cfab57d770481f5763f4e3a4e6ba0eb83db60b17e1619b6cc8ac3ce175952"
+    },
+    {
+      "old": "tests/test_hyper_tuning.py",
+      "new": "revision/tests/test_hyper_tuning.py",
+      "sha256": "eb6568e2b5da622eec5459970c4e6654942701a33f47f402486006e208a91d32"
+    },
+    {
+      "old": "tests/test_model_adaptation.py",
+      "new": "revision/tests/test_model_adaptation.py",
+      "sha256": "b4ac8598ef2e5819edcc29a49149cbe02f0a05329812aa2f68d23a8847939f8f"
+    },
+    {
+      "old": "tests/test_prediction_cache.py",
+      "new": "revision/tests/test_prediction_cache.py",
+      "sha256": "3429a2762be40fb442525f1053c78b75897a1fc7485e64862acca70c31380969"
+    },
+    {
+      "old": "tests/test_public_package.py",
+      "new": "revision/tests/test_public_package.py",
+      "sha256": "2ea48c0878f1b092d8ec347fafee3c046f48eba706c80afbfd60a3282ab32933"
+    },
+    {
+      "old": "tests/test_repro_integrity.py",
+      "new": "revision/tests/test_repro_integrity.py",
+      "sha256": "efb06fe5fa332158762ef4ada37434bbf464d5f6e2340c1620107038694eefcc"
+    },
+    {
+      "old": "tests/test_revision_analysis.py",
+      "new": "revision/tests/test_revision_analysis.py",
+      "sha256": "b9494ccc8283666ac0093ccdd8903cb7ded980844b78d9b5537c4ad4becc4840"
+    },
+    {
+      "old": "tests/test_revision_diagnostics.py",
+      "new": "revision/tests/test_revision_diagnostics.py",
+      "sha256": "709a7ac1b8b7c7dda93684c747580d1a2ea5b75f80aab5706ba992f7afdb4e47"
+    },
+    {
+      "old": "tests/test_revision_integrity.py",
+      "new": "revision/tests/test_revision_integrity.py",
+      "sha256": "f11a4a482af89a3c0f0e512c81488579b5e2a93438ed525043b4570538ee95d1"
+    },
+    {
+      "old": "tests/test_revision_mps_parallel.py",
+      "new": "revision/tests/test_revision_mps_parallel.py",
+      "sha256": "2a854542c3aeb99f269cf9283e0d9af2337f6551e43d24ad5fff6cff3e906f81"
+    },
+    {
+      "old": "tests/test_revision_numerics.py",
+      "new": "revision/tests/test_revision_numerics.py",
+      "sha256": "09a1b0d21ffd72bf82bf5e9efede563cc21d65104e283c14ad9bcbc1236aa105"
+    },
+    {
+      "old": "tests/test_revision_progress.py",
+      "new": "revision/tests/test_revision_progress.py",
+      "sha256": "b01560179636503f930cc63c0c603282aff2650e327afcd4e4c854ad0a172c1b"
+    },
+    {
+      "old": "tests/test_revision_robustness.py",
+      "new": "revision/tests/test_revision_robustness.py",
+      "sha256": "eade50388c66531efc5a599face0cbf1706924cfeadd3385d79fd64df6244911"
+    },
+    {
+      "old": "tests/test_unet_amp.py",
+      "new": "revision/tests/test_unet_amp.py",
+      "sha256": "2a4d989511624d5ff260a984f1860ff87b925445a08e40f6f3ff1288147ce105"
+    },
+    {
+      "old": "EXPORT_PROVENANCE.json",
+      "new": "revision/EXPORT_PROVENANCE.json",
+      "sha256": "a7132c71dbc91aff4ae2a0f48357789eaa41b8390afbb9dfabc56b9821c17765"
+    },
+    {
+      "old": "VERIFICATION.json",
+      "new": "revision/VERIFICATION.json",
+      "sha256": "9cbbfe415ef8d7600bbe639c2869a73bd9d26c4d077a901c57197c0485245b1c"
+    }
+  ],
+  "current_original_distribution_exceptions": {
+    "revision/LICENSING.md": {
+      "original_sha256": "ee5bc9d6503ef322f6b2a3f33d4411399dc55095c43daee39a16f43f01ede0d0",
+      "current_sha256": null,
+      "scope": "document distribution update or historically recorded test-fixture correction; no frozen production source edit"
+    },
+    "revision/README.md": {
+      "original_sha256": "a14e56e3f93b662461fc1e187942d8da83038b49d0ddb3fa4d6f33c60e97f7b6",
+      "current_sha256": "887a7f76a8ce0f12157e4a4846136fcd2fdef8935371201aba5a929fe8c0b655",
+      "scope": "document distribution update or historically recorded test-fixture correction; no frozen production source edit"
+    },
+    "revision/porphyry/test_frontend_coupling.py": {
+      "original_sha256": "27bf3bd73f410167ca960bf50d2f43006e6d14e7f4e7588aa435e2c069753ae3",
+      "current_sha256": "1cd21ab3bbf7b30fe61fd6ec8fe4161f0b5e784d38550cfe5fa0b1f646d644c1",
+      "scope": "document distribution update or historically recorded test-fixture correction; no frozen production source edit"
+    },
+    "revision/porphyry/test_portable_evaluation.py": {
+      "original_sha256": "28a087ee9d5a633b2ff2e05fd7255a840d3eaebe26597c986d32feca64990036",
+      "current_sha256": "77b110c86ab3be0e1aa9faa1fe235440e01bbc06faccb216cc909b91e0f0feee",
+      "scope": "document distribution update or historically recorded test-fixture correction; no frozen production source edit"
+    },
+    "revision/porphyry/test_portable_guards.py": {
+      "original_sha256": "6d4b1b7bc1c92fc9278060656229e58312edcd05abbc16c1dd9290a2affe5384",
+      "current_sha256": "c34ab333acf4c439b2b0fdeba8b8abb765811219e41a42e93d75fa0df98c2b73",
+      "scope": "document distribution update or historically recorded test-fixture correction; no frozen production source edit"
+    },
+    "revision/tests/test_revision_diagnostics.py": {
+      "original_sha256": "709a7ac1b8b7c7dda93684c747580d1a2ea5b75f80aab5706ba992f7afdb4e47",
+      "current_sha256": "01036ead009dd0bd826f481e3c7988244bc9ea8451d4e70961c624b65b6c7a51",
+      "scope": "document distribution update or historically recorded test-fixture correction; no frozen production source edit"
+    }
+  },
+  "updated_utc": "2026-10-29T02:38:42.974504+00:00",
+  "pruning": {
+    "basis": "duplicate explanatory documents only",
+    "removed": [
+      "revision/LICENSING.md",
+      "revision/TEST_FIXTURE_MIGRATION.md"
+    ],
+    "scientific_result_files_removed": [],
+    "originals_retained_in_author_history": true
+  },
+  "exact_restore_software_validation": {
+    "helper": "revision/restore_benchmark.py",
+    "validation": "revision/restore_benchmark_validation.json",
+    "checks_passed": 8,
+    "restored_fixture_cases": 3,
+    "full5000_replay_repeated": false,
+    "new_training_runs": 0,
+    "remote_data_verified": false
+  },
+  "documentation_correction_20261029": {
+    "utc": "2026-10-28T16:32:48.401328+00:00",
+    "file": "docs/DATA_ACCESS.md",
+    "old_sha256": "4d15ee9938861d01f4a72aaf3cf73631b8023578a5f3163cad22f9037d5045d3",
+    "new_sha256": "e5227476d9c4a2109f1e22ea2f6b0a96db63f5eac19bb87a2b025b09e3c13a40",
+    "change": "Correct confirmation source from publisher to author; the download location and all access conditions are unchanged.",
+    "scope": "Documentation correction only. Existing software-check and scientific evidence remains historical; no new test or experiment was executed.",
+    "new_software_tests": 0,
+    "new_training_runs": 0,
+    "new_predictions": 0,
+    "scientific_source_changed": false,
+    "license_or_rights_decision_made": false
+  },
+  "license_adoption_20261029": {
+    "approved_date_local": "2026-10-29",
+    "timezone": "Asia/Shanghai",
+    "spdx_identifier": "MIT",
+    "copyright_year": 2026,
+    "copyright_holders": [
+      "Shuyi Liu",
+      "Lin Bi",
+      "Zhuo Wang",
+      "Jinbo Li"
+    ],
+    "commercial_use_permitted": true,
+    "author_approval": "Explicit approval of the MIT draft in the current conversation; not an approval of other declarations or external publication.",
+    "license_file": "LICENSE",
+    "license_source": "https://opensource.org/license/mit",
+    "scope": "Author-owned source code only. Third-party materials retain their licenses; datasets, model weights and manuscript figures are excluded.",
+    "new_software_tests": 0,
+    "new_training_runs": 0,
+    "new_predictions": 0,
+    "scientific_source_changed": false,
+    "github_upload_performed": false
+  },
+  "source_data_documentation_refresh_20261029": {
+    "utc": "2026-10-29T02:38:42.974504+00:00",
+    "changed_source_data_documents": [
+      "revision/evidence/source_data/LICENSE_AND_SCOPE.md",
+      "revision/evidence/source_data/SOURCE_DATA_INDEX.json"
+    ],
+    "scope": "Remove a redundant author-material licensing sentence; preserve access/confidentiality scope, third-party attribution and all scientific payload bytes.",
+    "new_software_tests": 0,
+    "scientific_payload_changed": false,
+    "third_party_terms_changed": false
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "format": "geovae-outer-repository-verification-v1",
+  "updated_utc": "2026-10-29T02:38:42.974504+00:00",
+  "status": "DIRECT_GITHUB_DIRECTORY_CHECKED_AUTHOR_CONFIRMED_BAIDU_LINK",
+  "current_engine_source_sha256": "2bbb423c62e8ca17cd8045d98cc62fcd123d0a0ade27c6dd2ef72cd52c91d5c3",
+  "historical_records": {
+    "path": "revision/VERIFICATION.json",
+    "unchanged": true,
+    "scope": "Prior engine, formal-author and bounded external receipts retain their original stated scope. They do not cover the new outer launcher, restored legacy interfaces or supplemental wrappers. The historical inner README/license/grids snapshot predates separate Baidu distribution; current placement is recorded in the outer manifest.",
+    "test_only_exceptions": "Four test-file fixtures have current hashes in revision/test_fixture_changes.json; the old inner receipt remains historical."
+  },
+  "new_layout_tests": {
+    "command": "python -B run_tests.py --scope layout",
+    "environment": "Python 3.12, CPU; Pytest/PyYAML present",
+    "passed": 65,
+    "subtests_passed": 35,
+    "failed": 0,
+    "seconds": 3.05,
+    "scope": "Root dispatch and process isolation, outer path guards, legacy YAML/input/cache/checkpoint interfaces, exact benchmark input selection and explicit failure accounting, plot creation and visualization output routing, supplemental saved-data and rendering interfaces.",
+    "final_path_domain_summary": "65 passed, 35 subtests passed in 3.13s"
+  },
+  "new_primary_cpu_fixture": {
+    "command": "python main.py --all --smoke --out EXTERNAL_SOFTWARE_FIXTURE_DIRECTORY",
+    "returncode": 0,
+    "wall_seconds": 33.83168425702024,
+    "scope": "Fresh tiny synthetic CPU functional training/evaluation fixture through new root launcher; not formal or manuscript evidence.",
+    "formal5000grids_read": false,
+    "formal_results_replaced": false
+  },
+  "new_legacy_cpu_fixture": {
+    "purpose": "CPU-only toy interface check, not a scientific or paper experiment",
+    "fresh_epoch": {
+      "exit_code": 0,
+      "seconds": 3.979816716047935
+    },
+    "separate_checkpoint_warm_start": {
+      "exit_code": 0,
+      "seconds": 3.9271495500579476
+    },
+    "input_unchanged": true,
+    "checkpoint_warm_start_is_full_optimizer_resume": false,
+    "retained_failure": "Initial legacy warm-start raised a logger ordering error. The failure log remains in the internal audit history; the corrected rerun passed.",
+    "scope": "Self-created cube mesh, four simulated samples, 16-cubed grid, one CPU epoch; no confidential mesh or formal paper training."
+  },
+  "saved_scalar_reanalysis": {
+    "command": "python revision/supplemental/secondary_contrasts.py --verify-only",
+    "contrast_rows": 20,
+    "seed_rows": 60,
+    "parent_rows": 3000,
+    "numeric_values_checked": 3220,
+    "maximum_absolute_difference": 0.0,
+    "new_model_calls": 0
+  },
+  "complex_figure_helper": {
+    "plot_primitive_AST_matches": 7,
+    "full_new_independent_public_figure_run_executed": false,
+    "scope": "Portable loader/path tests and exact renderer primitive comparisons; existing author figures have separate manuscript QA."
+  },
+  "final_path_cpu_suite": {
+    "status": "passed",
+    "command": "python -B run_tests.py",
+    "environment": "WSL wsl_vae Python; CPU only, CUDA hidden",
+    "domain_summaries": [
+      "65 passed, 35 subtests passed in 3.13s",
+      "88 passed, 2 skipped in 52.04s",
+      "89 passed, 3 skipped, 28 subtests passed in 9.85s"
+    ],
+    "wall_seconds": 67.32944399304688,
+    "raw_log_sha256": "57b5fcca460359df50c14b4c2e121494adc0df814c4ca3ffea6bd322d005a6e7",
+    "scope": "Outer layout/legacy/supplemental tests, then preserved revision/tests and revision/porphyry domains in fresh subprocesses.",
+    "new_formal_training_or_prediction": false,
+    "grid_arrays_replayed_or_rehashed": false
+  },
+  "not_executed": [
+    "New formal training",
+    "Public-from-scratch full protocol training",
+    "Independent new external150",
+    "Full legacy GPU workload"
+  ],
+  "private_data_or_weights_distributed": false,
+  "external_third_party_geometry_distributed": false,
+  "github_upload_performed": false,
+  "new_source_bindings": {
+    "main.py": "9eba8c3613686663ddf54997b5591075621ab666ab294dd0c3eb5f197e301cde",
+    "repository_safety.py": "7589a98ca9adccdbb39e43dd1ee1f16ebd7193c434b7371760d45f23705722fc",
+    "run_tests.py": "13fd59eb377f6997327146dfd899b9bc59d1144ef0233b6906c147b1f3d385f1",
+    "legacy/MIGRATION.md": "ed855e11870d75053102520d8bc844fcc4c26f85043b63d1c1dd441b1c5e7159",
+    "legacy/ORIGINAL_SOURCE_MAP.json": "26f29470170c6905ee0bca3a55029c96a0e0852dbf6e3ef98c2df819e84fbb1e",
+    "legacy/README.md": "62b13fe6253fb5b5121d069c9b70f760fdab56b4227dc57b3b40a1a0b8e02cc7",
+    "legacy/config_loader.py": "9c25b52b487de6c49edd808c080af013796e219cf907d19507c9f1d6ea4d9aca",
+    "legacy/dataset.py": "301b975829c72736c9983d1418fbf31c064d2c6c5763f13f2a87c54e315e9568",
+    "legacy/legacy_paths.py": "6866d3ae6f167dcd12f7ae3f69e706b3278badd3877faff462262c5484e46b99",
+    "legacy/main.py": "595f5c9136e8a79bfe4fc6d42e381e4967ee53d6fb475571a6cb9b0a4d5704ac",
+    "legacy/model.py": "73c4b3b70d166da102f478cfab5445cce843e0eece853cb2cef6ea09658948bd",
+    "legacy/model_factory.py": "27d54ce67042dd5ca03ecd1e2a14ee1b0cc9776724e9cd269c7292038ef54015",
+    "legacy/output_result.py": "de59f75c6c7c55025a85804564c0a22236842291ff49dcdb497e0241aaf69a61",
+    "legacy/requirements.txt": "bed5d160b7cc603aee232b34a984e38a1fd57f85ad6094a823a5adc0c4156e7e",
+    "legacy/showresult.py": "33782fa6c59f8de33f559a509ea3fd80114523df8656de2c07106451947d5b9b",
+    "legacy/trainer.py": "ad611cbea1615ff2d85c3e7a480ec853261933b3d875004ad8379cb6b847a6ab",
+    "legacy/verify_constraints.py": "f4d12b2b21c70b01df07a2ee114b71c9ddbef7a143397c36d0e43c911cd37538",
+    "legacy/comparisons/__init__.py": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5",
+    "legacy/comparisons/plot_ablation_summary.py": "3c2beee059cd2507d9168636dbb91ca0b50205d350155d06b739ae6857c95464",
+    "legacy/comparisons/run_ablation.py": "ec6c50add23fa9cbf903c8fca51ea4346490f4ace762ae20bf396b76f6ef9e1d",
+    "legacy/comparisons/run_benchmark.py": "dd7608c0edd2168954352a15ef5056bc8eacf608be552958ea68a69237a80170",
+    "legacy/comparisons/train_unet.py": "7b2a157a8262c32246f4b2b6bb35363af10870c4b3f484ad3edef122414a2727",
+    "legacy/comparisons/models/interpolation.py": "b6dca76a29a0622b16363b4571aae26571ed56431dd0eaba0475a8982543289a",
+    "legacy/comparisons/models/unet.py": "8d37e6afe97ca4ad3c6264595c687686102d201c1241f726d97753cae21ee61a",
+    "legacy/config/default.yaml": "b22f79e7eece621d07a7bd62d277cee62efc7fcba93aefe48ad08cbe2b13bb87",
+    "revision/supplemental/README.md": "d5a3b5cf6033a347fcffff80aa16997a68de6513fa8ff0879512f79266da7b31",
+    "revision/supplemental/complex_examples.py": "9035439d51f3cc952f5a419d6d66e98b3838d529014cfd65a435b06c3406b7ba",
+    "revision/supplemental/secondary_contrasts.py": "6a76333cb3c9c3d1c0e0ac073be7be7d11f97047880bc931875b4ea6bb10dc33",
+    "revision/supplemental/reference/SOURCE_PROVENANCE.json": "6a13178ffed87cec1e4b1897729de8185d62c0030687c1662b682aa8e3a9bf38",
+    "revision/supplemental/reference/complex_synthetic_selection.json": "f9b6cee797e702ca9b7e26ab33af578c093fa5e26d5c7683b0b34ad0005861ab",
+    "revision/supplemental/reference/render_complex_synthetic.py": "80a973a393eb75e3624ff9317d5a5807b496f8ca2866771ecbadc36947f21d64",
+    "revision/supplemental/reference/secondary_ablation_contrasts.py": "632aa4a42500ef1d1591bc32dea78f418c2dbde0fe6dd5b31a1c448cc74cd781",
+    "revision/supplemental/verification/SOFTWARE_CHECKS.json": "e10c5cbb60877616c86c52183a72e40c996ba09d5274c00ae8ac806233a87117",
+    "revision/supplemental/verification/complex_plot_primitive_parity.json": "69458e9da66f774a49ae12fad995fb7ed6e4ce1765e898a5a1417c947d9cc602",
+    "revision/supplemental/verification/secondary_reanalysis.json": "2b54aa3a4312f4da89698f0ff866efd0e1940f7b6040f55207f6adf30585fbe5",
+    "tests/test_legacy_cli.py": "a78d883c23d8b18ea5db8d6adfaacee50bed7b514c5ec17892130765f7483ebe",
+    "tests/test_legacy_failure_reporting.py": "e1ce94545a3073a6134f9bf547565864239b653902e92284f84b44b96a4a9e6b",
+    "tests/test_repository_launcher.py": "94d81c242e71b152356b3935ab6e58755e785cc56d04ba98e76ba93c56fb5ae3",
+    "tests/test_repository_safety.py": "79a47a081f00963a1dc3aff8abf1ce58c8408a11de0b8851a1701d1103229141",
+    "tests/test_supplemental_tools.py": "2ba081dca5f436e0984938d777fee0dc90874585c37283eca1132691e2fc53c1",
+    "tests/test_data_distribution.py": "243df129f85041d33001576d5e6a715c49ac15bb21675e421c13381827f9b5b5",
+    "revision/restore_benchmark.py": "1366fc5e4089b9a3069e006ae5d0e500ebac606ddb6a6850714fa0b81b784ea0",
+    "revision/restore_benchmark_validation.json": "bf7dfcde6b3e5bb320485d8680f6a0d9a3d4e899d796153955f0352278ed7c33",
+    "README.md": "e15485a4aa4b37a3162989ffa3648d375f880b4b01c486ce6087070ca64f3b8e",
+    "revision/README.md": "887a7f76a8ce0f12157e4a4846136fcd2fdef8935371201aba5a929fe8c0b655",
+    "docs/DATA_ACCESS.md": "e5227476d9c4a2109f1e22ea2f6b0a96db63f5eac19bb87a2b025b09e3c13a40",
+    "docs/DATA_ACCESS.json": "1e9a752fd656c2132662f4092a1676f94611f7c4e53b6cd36079b8a49c701426",
+    "revision/evidence/source_data/README.md": "5fd311d63837c89c57e3c62eed6e0b92d53ed6bb9c533cd6bde8c3e20202eb9c",
+    "revision/evidence/source_data/SOURCE_DATA_INDEX.json": "758227198e3c068a9037260d8038dbae6c946ffa855604f7c5c3ac900b72952c",
+    "LICENSE": "8584bf11fca943ed617663c95cc18e7b190c8cf97716c560c8cc5e7db0124b15",
+    "LICENSING.md": "935aef70b71bda709125bfca2adba6d40e7965e8b76bfce4eef855b98caf31d0",
+    "revision/evidence/source_data/LICENSE_AND_SCOPE.md": "5cf757af6f3fa161ea2430d42633bc8f53e0590f57c6edb52879981fb687a840"
+  },
+  "test_fixture_migration": {
+    "record": "revision/test_fixture_changes.json",
+    "production_runtime_changed": false,
+    "scope": "Four test files corrected for an explicit external temporary private path and both cold/released external states. No failing test was deselected.",
+    "original_failed_run": {
+      "failed": 8,
+      "log_sha256": "bc4f21769d78ce653bee48cc05c8e88c67264a43554de5b5267bd4fdd07ffb89",
+      "retained": true
+    }
+  },
+  "source_inventory": "REPOSITORY_MANIFEST.json",
+  "data_distribution_change": {
+    "record": "docs/DATA_ACCESS.json",
+    "arrays_committed_to_github": false,
+    "runtime_and_scientific_results_changed": false,
+    "whole_previous_suite_repeated": false,
+    "previous_full_suite_scope": "The earlier242pass/5conditional-skips/63subtests record used installed data. It remains historical and is not a claim about running the full suite without the download.",
+    "incremental_current_software_checks": {
+      "command": "python run_tests.py --scope layout",
+      "passed": 96,
+      "subtests_passed": 35,
+      "failed": 0,
+      "log_sha256": "95c55ef8a8c61791db641673075e26c94315257d0d68acaab2f2c0b8451c4081"
+    },
+    "cli_checks": [
+      "help passed",
+      "all dry-run passed",
+      "missing-data all exits2 before creating run",
+      "full tests exit2 before running when data missing"
+    ],
+    "production_identity_checks": "All previous production/test Python files except new outer main.py/run_tests.py retain previous hashes; new presence tests added. Core7 and inner runtime unchanged.",
+    "scientific_results_removed": 0,
+    "duplicate_docs_consolidated": [
+      "revision/LICENSING.md",
+      "revision/TEST_FIXTURE_MIGRATION.md"
+    ],
+    "current_share_link_verified": false,
+    "downloaded_grid_count": 0,
+    "current_share_link_source": "Author confirmed original Baidu URL; remote contents not independently downloaded or hash-compared in this edit.",
+    "zip_packaging_required": false,
+    "author_confirmed_link_restored": true,
+    "latest_incremental_check": {
+      "command": "python -B -m pytest -q -p no:cacheprovider tests/test_data_distribution.py",
+      "passed": 31,
+      "failed": 0,
+      "seconds": 0.41,
+      "log_sha256": "d77c86ce00eb94fb331577695f6cb8664ac2a61eff446f3ec9d28a058e2a4645",
+      "scope": "Only download-presence/router interface; no remote data verification or formal experiments."
+    },
+    "expected_separately_obtained_grid_count": 5000,
+    "download_count_correction": "The earlier5000 field described the expected dataset size, not a download performed by this audit."
+  },
+  "exact_data_restoration": {
+    "helper": "revision/restore_benchmark.py",
+    "validation": "revision/restore_benchmark_validation.json",
+    "checks_passed": 8,
+    "restored_fixture_cases": 3,
+    "full5000_replay_repeated": false,
+    "new_training_runs": 0,
+    "remote_data_verified": false
+  },
+  "documentation_correction_20261029": {
+    "utc": "2026-10-28T16:32:48.401328+00:00",
+    "file": "docs/DATA_ACCESS.md",
+    "old_sha256": "4d15ee9938861d01f4a72aaf3cf73631b8023578a5f3163cad22f9037d5045d3",
+    "new_sha256": "e5227476d9c4a2109f1e22ea2f6b0a96db63f5eac19bb87a2b025b09e3c13a40",
+    "change": "Correct confirmation source from publisher to author; the download location and all access conditions are unchanged.",
+    "scope": "Documentation correction only. Existing software-check and scientific evidence remains historical; no new test or experiment was executed.",
+    "new_software_tests": 0,
+    "new_training_runs": 0,
+    "new_predictions": 0,
+    "scientific_source_changed": false,
+    "license_or_rights_decision_made": false
+  },
+  "license_adoption_20261029": {
+    "approved_date_local": "2026-10-29",
+    "timezone": "Asia/Shanghai",
+    "spdx_identifier": "MIT",
+    "copyright_year": 2026,
+    "copyright_holders": [
+      "Shuyi Liu",
+      "Lin Bi",
+      "Zhuo Wang",
+      "Jinbo Li"
+    ],
+    "commercial_use_permitted": true,
+    "author_approval": "Explicit approval of the MIT draft in the current conversation; not an approval of other declarations or external publication.",
+    "license_file": "LICENSE",
+    "license_source": "https://opensource.org/license/mit",
+    "scope": "Author-owned source code only. Third-party materials retain their licenses; datasets, model weights and manuscript figures are excluded.",
+    "new_software_tests": 0,
+    "new_training_runs": 0,
+    "new_predictions": 0,
+    "scientific_source_changed": false,
+    "github_upload_performed": false
+  },
+  "source_data_documentation_refresh_20261029": {
+    "utc": "2026-10-29T02:38:42.974504+00:00",
+    "changed_source_data_documents": [
+      "revision/evidence/source_data/LICENSE_AND_SCOPE.md",
+      "revision/evidence/source_data/SOURCE_DATA_INDEX.json"
+    ],
+    "scope": "Remove a redundant author-material licensing sentence; preserve access/confidentiality scope, third-party attribution and all scientific payload bytes.",
+    "new_software_tests": 0,
+    "scientific_payload_changed": false,
+    "third_party_terms_changed": false
+  }
+}
