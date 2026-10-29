@@ -1,0 +1,150 @@
+{
+  "format": "legacy-source-migration-v1",
+  "scope": "Necessary original code/configuration only, no data/weights/results. Original model/loss bytes preserved separately from the revision engine.",
+  "files": [
+    {
+      "original_relative_file": "comparisons/__init__.py",
+      "original_sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5",
+      "new_relative_file": "comparisons/__init__.py",
+      "status": "byte_identical",
+      "current_sha256": "f1945cd6c19e56b3c1c78943ef5ec18116907a4ca1efc40a57d48ab1db7adfc5"
+    },
+    {
+      "original_relative_file": "comparisons/models/interpolation.py",
+      "original_sha256": "b6dca76a29a0622b16363b4571aae26571ed56431dd0eaba0475a8982543289a",
+      "new_relative_file": "comparisons/models/interpolation.py",
+      "status": "byte_identical",
+      "current_sha256": "b6dca76a29a0622b16363b4571aae26571ed56431dd0eaba0475a8982543289a"
+    },
+    {
+      "original_relative_file": "comparisons/models/unet.py",
+      "original_sha256": "8d37e6afe97ca4ad3c6264595c687686102d201c1241f726d97753cae21ee61a",
+      "new_relative_file": "comparisons/models/unet.py",
+      "status": "byte_identical",
+      "current_sha256": "8d37e6afe97ca4ad3c6264595c687686102d201c1241f726d97753cae21ee61a"
+    },
+    {
+      "original_relative_file": "comparisons/plot_ablation_summary.py",
+      "original_sha256": "b2520117c0b90fd4212b4ab5f6f2eb33c401d872b37c84ddf86a07606655f7c6",
+      "new_relative_file": "comparisons/plot_ablation_summary.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "3c2beee059cd2507d9168636dbb91ca0b50205d350155d06b739ae6857c95464"
+    },
+    {
+      "original_relative_file": "comparisons/run_ablation.py",
+      "original_sha256": "863226d294f72a4ac84bcec2f3b7018bfcd12fa8599eeb5229ebe8c4d13c2c9d",
+      "new_relative_file": "comparisons/run_ablation.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "ec6c50add23fa9cbf903c8fca51ea4346490f4ace762ae20bf396b76f6ef9e1d"
+    },
+    {
+      "original_relative_file": "comparisons/run_benchmark.py",
+      "original_sha256": "81d8e8f145435e33b0a7ed7b7c34130ac4eb852a18f00480d69a1d2b74e59c55",
+      "new_relative_file": "comparisons/run_benchmark.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "dd7608c0edd2168954352a15ef5056bc8eacf608be552958ea68a69237a80170"
+    },
+    {
+      "original_relative_file": "comparisons/train_unet.py",
+      "original_sha256": "a2c5b6c5a16c2bb8cb58252cc1160e468c22ae5b49b29c4d38296dfd3b71978e",
+      "new_relative_file": "comparisons/train_unet.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "7b2a157a8262c32246f4b2b6bb35363af10870c4b3f484ad3edef122414a2727"
+    },
+    {
+      "original_relative_file": "config/default.yaml",
+      "original_sha256": "88980ff32f78841b76e63d716e2429dfdbff41215180c7a83ec6199cd877813b",
+      "new_relative_file": "config/default.yaml",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "b22f79e7eece621d07a7bd62d277cee62efc7fcba93aefe48ad08cbe2b13bb87"
+    },
+    {
+      "original_relative_file": "config_loader.py",
+      "original_sha256": "90255745f6c2a5062901ea16421b5984d44e5d8fad82c4e4051f406d8d6013a5",
+      "new_relative_file": "config_loader.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "9c25b52b487de6c49edd808c080af013796e219cf907d19507c9f1d6ea4d9aca"
+    },
+    {
+      "original_relative_file": "dataset.py",
+      "original_sha256": "cc480208b642711f3e12e4aedb9f5923caaa8d1ae4b8f015b58cdb68a607f424",
+      "new_relative_file": "dataset.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "301b975829c72736c9983d1418fbf31c064d2c6c5763f13f2a87c54e315e9568"
+    },
+    {
+      "original_relative_file": "main.py",
+      "original_sha256": "2583d6bdc06cb724dc3f278c3aa4019d5e901e99bf62fc2173ac0935b0c363dc",
+      "new_relative_file": "main.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "595f5c9136e8a79bfe4fc6d42e381e4967ee53d6fb475571a6cb9b0a4d5704ac"
+    },
+    {
+      "original_relative_file": "model.py",
+      "original_sha256": "73c4b3b70d166da102f478cfab5445cce843e0eece853cb2cef6ea09658948bd",
+      "new_relative_file": "model.py",
+      "status": "byte_identical",
+      "current_sha256": "73c4b3b70d166da102f478cfab5445cce843e0eece853cb2cef6ea09658948bd"
+    },
+    {
+      "original_relative_file": "model_factory.py",
+      "original_sha256": "27d54ce67042dd5ca03ecd1e2a14ee1b0cc9776724e9cd269c7292038ef54015",
+      "new_relative_file": "model_factory.py",
+      "status": "byte_identical",
+      "current_sha256": "27d54ce67042dd5ca03ecd1e2a14ee1b0cc9776724e9cd269c7292038ef54015"
+    },
+    {
+      "original_relative_file": "output_result.py",
+      "original_sha256": "de59f75c6c7c55025a85804564c0a22236842291ff49dcdb497e0241aaf69a61",
+      "new_relative_file": "output_result.py",
+      "status": "byte_identical",
+      "current_sha256": "de59f75c6c7c55025a85804564c0a22236842291ff49dcdb497e0241aaf69a61"
+    },
+    {
+      "original_relative_file": "plot_comparison.py",
+      "original_sha256": "9ff5820a95bba293fe40a2a169e6842788cfe1b21d5d05d04c44ce862c7edbcf",
+      "new_relative_file": null,
+      "status": "omitted_obsolete_paper_figure"
+    },
+    {
+      "original_relative_file": "plot_dataset_overview.py",
+      "original_sha256": "8ac7c4f836fb94a7053afc2cfc02b6385848e31ee5da4cff98168a03d7be9736",
+      "new_relative_file": null,
+      "status": "omitted_obsolete_paper_figure"
+    },
+    {
+      "original_relative_file": "requirements.txt",
+      "original_sha256": "901e4b66a67eef531514ceffc69cd88c885dfb2243cc1814c36faac14f5f7d3b",
+      "new_relative_file": "requirements.txt",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "bed5d160b7cc603aee232b34a984e38a1fd57f85ad6094a823a5adc0c4156e7e"
+    },
+    {
+      "original_relative_file": "showresult.py",
+      "original_sha256": "2a830ac4f02997e984f8de79a95903bc388afc986feeda7836ebef25b6ea11fd",
+      "new_relative_file": "showresult.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "33782fa6c59f8de33f559a509ea3fd80114523df8656de2c07106451947d5b9b"
+    },
+    {
+      "original_relative_file": "trainer.py",
+      "original_sha256": "ca53904eea00167207a7ee208eff703db3ce4ddd41e75c2c0dd233879ca56070",
+      "new_relative_file": "trainer.py",
+      "status": "interface_path_or_documentation_correction",
+      "current_sha256": "ad611cbea1615ff2d85c3e7a480ec853261933b3d875004ad8379cb6b847a6ab"
+    },
+    {
+      "original_relative_file": "verify_constraints.py",
+      "original_sha256": "f4d12b2b21c70b01df07a2ee114b71c9ddbef7a143397c36d0e43c911cd37538",
+      "new_relative_file": "verify_constraints.py",
+      "status": "byte_identical",
+      "current_sha256": "f4d12b2b21c70b01df07a2ee114b71c9ddbef7a143397c36d0e43c911cd37538"
+    }
+  ],
+  "new_files": [
+    "legacy_paths.py",
+    "MIGRATION.md",
+    "README.md"
+  ],
+  "omission_reason": "The two omitted files are obsolete paper-only figure generators, outside the training/export closure, with hidden training/private geometry/unsupported display semantics. E originals unchanged."
+}
