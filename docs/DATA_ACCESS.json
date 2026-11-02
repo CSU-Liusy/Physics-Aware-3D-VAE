@@ -1,0 +1,27 @@
+{
+  "format": "geovae-baidu-folder-data-v2",
+  "distribution": "Existing author-confirmed Baidu Netdisk link; data excluded from GitHub code",
+  "current_download_url": "https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p",
+  "current_extraction_code": "gq2p",
+  "publication_status": "AUTHOR_CONFIRMED_EXISTING_SHARE_LINK",
+  "author_confirmation": "Author states these5000data are the same previously used data from their earlier work and requests retaining the original Baidu sharing method.",
+  "remote_contents_independently_downloaded_and_verified": false,
+  "runtime_requires_manifest_match": true,
+  "grid_count": 5000,
+  "expected_grid_shape": [
+    32,
+    32,
+    32
+  ],
+  "repository_manifest": "revision/protocol/manifest.json",
+  "manifest_sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+  "installed_grid_directory": "revision/protocol/grids",
+  "file_list_and_per_file_hashes": "revision/protocol/manifest.json",
+  "zip_packaging_required": false,
+  "arrays_in_github_tree": false,
+  "scientific_results_removed": 0,
+  "new_scientific_computation": false,
+  "exact_restore_entry": "python revision/restore_benchmark.py",
+  "exact_restore_checks": "Frozen manifest and archived generator SHA256, occupancy SHA256 and serialized NPY SHA256; never overwrite existing mismatched files.",
+  "bounded_software_validation": "revision/restore_benchmark_validation.json (3 exact inputs, 8 checks; not a repeat of the earlier full5000 replay or training)"
+}
