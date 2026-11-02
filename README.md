@@ -1,8 +1,8 @@
-# Physics-Aware-3D-VAE
+# GeoVAE: Sparse-Drillhole Orebody Reconstruction
 
-Release package for the 3D VAE training and sparse-observation reconstruction workflow used in this repository.
+Code and reproducibility materials for the manuscript **GeoVAE: A learned shape prior for three-dimensional orebody reconstruction from sparse drillhole samples**.
 
-The original general mesh-training workflow is retained in `legacy/`. The revised GeoVAE training, evaluation, ablation and reviewer-reproduction files are collected in `revision/`, with a common `main.py` launcher. The historical repository name is retained; the revised benchmark evaluates a learned shape prior on procedural geometric shapes.
+The repository retains its historical name, `Physics-Aware-3D-VAE`. The revised GeoVAE workflow is located in `revision/`, while the original mesh-based workflow is retained in `legacy/`.
 
 ## What Is Included
 
