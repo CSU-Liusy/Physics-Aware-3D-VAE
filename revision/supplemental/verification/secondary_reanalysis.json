@@ -1,0 +1,77 @@
+{
+  "status": "passed_saved_scalar_reanalysis",
+  "not_preregistered": true,
+  "contrasts": 20,
+  "metrics": [
+    "blind_iou",
+    "brier_blind",
+    "observed_mse_truth",
+    "observed_error",
+    "hidden_error"
+  ],
+  "contrast_definitions": [
+    [
+      "extra_observed_loss",
+      "base_observed",
+      "base_no_observed"
+    ],
+    [
+      "plain_attention",
+      "attention_no_position",
+      "base_observed"
+    ],
+    [
+      "relative_position",
+      "attention_position",
+      "attention_no_position"
+    ],
+    [
+      "combined_attention_and_position",
+      "attention_position",
+      "base_observed"
+    ]
+  ],
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 20261025,
+    "unit": "generator_parent",
+    "parents": 150,
+    "conditional_on_three_executed_fits": true
+  },
+  "numeric_comparison_policy": {
+    "relative_tolerance": 1e-12,
+    "absolute_tolerance": 1e-15
+  },
+  "comparisons": {
+    "contrasts.csv": {
+      "numeric_values_compared": 100,
+      "max_absolute_difference": 0
+    },
+    "seed_differences.csv": {
+      "numeric_values_compared": 120,
+      "max_absolute_difference": 0
+    },
+    "parent_differences.csv": {
+      "numeric_values_compared": 3000,
+      "max_absolute_difference": 0
+    }
+  },
+  "numpy_version": "1.26.4",
+  "source_sha256": {
+    "manifest.json": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+    "SOURCE_DATA_INDEX.json": "88c14f0b05fe29bbcec47a91c9852a67105bf8d946638cdb43bd70b7bf223b04",
+    "files/ablation/base_no_observed/recomputed_per_case.csv": "c6f2d0ba95644d287e6b3d785b8fbb26045e4ef0b45c07f31d816134f8a7868f",
+    "files/ablation/base_observed/recomputed_per_case.csv": "32d80f1a5e72027eda905079bab0e51e4012489c693bb19d29c953132a1d1950",
+    "files/ablation/attention_no_position/recomputed_per_case.csv": "4ba55c236c415115836a86b6b04874a0ac0b303e55bf7a37c787f6452244e544",
+    "files/ablation/attention_position/recomputed_per_case.csv": "83061158ec55ce0c42342fa49d645e4d7f6b11bb5bed3f87c8c2a865faef97ce",
+    "files/secondary/contrasts.csv": "ef41f3d5f34b9113a7731b471c13025ae6f968ab03442fb7cf063d0fe54e1840",
+    "files/secondary/seed_differences.csv": "ec3bed424120ac43fb260ec2d0c5ca4e706e3f523a78f79791eb7b3663f0f859",
+    "files/secondary/parent_differences.csv": "cd928398449f84185b46afd7fd8d5c4c0b08610f75e76be8dcfd90de5cf430d4"
+  },
+  "historical_compute_helper_sha256": "632aa4a42500ef1d1591bc32dea78f418c2dbde0fe6dd5b31a1c448cc74cd781",
+  "portable_wrapper_sha256": "6a76333cb3c9c3d1c0e0ac073be7be7d11f97047880bc931875b4ea6bb10dc33",
+  "model_calls": 0,
+  "prediction_or_grid_arrays_read": 0,
+  "private_case_records_read": 0,
+  "interpretation": "Four contrasts times five metrics, retaining all directions; pointwise percentile intervals, not multiplicity-adjusted. Reanalysis of distributed saved scalars does not independently authenticate private/raw prediction provenance."
+}

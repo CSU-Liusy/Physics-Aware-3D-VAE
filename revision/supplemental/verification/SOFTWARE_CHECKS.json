@@ -1,0 +1,31 @@
+{
+  "status": "passed_bounded_CPU_software_and_saved_scalar_checks",
+  "CPU_fixture_tests": {
+    "passed": 9,
+    "command": "python -B -m pytest -q -p no:cacheprovider tests/test_supplemental_tools.py",
+    "seconds": 1.37,
+    "scope": "Fixed family/counts, pure-compute fixture, mismatch/missing-data rejection, author/incomplete-run rejection, actualreference+plotimports,helpnooutput."
+  },
+  "saved_scalar_reanalysis": {
+    "status": "passed_saved_scalar_reanalysis",
+    "contrasts": 20,
+    "seed_rows": 60,
+    "parent_rows": 3000,
+    "numeric_values_compared": 3220,
+    "maximum_absolute_difference": 0.0,
+    "model_calls": 0,
+    "prediction_or_grid_arrays_read": 0,
+    "private_case_records_read": 0
+  },
+  "complex_examples": {
+    "source_primitives_AST_parity_passed": 7,
+    "actual_new_public_full750_run_executed": false,
+    "actual_portable_four_figure_render_executed": false,
+    "final_embedded_PDF_layout_certified": false
+  },
+  "current_sources_sha256": {
+    "revision/supplemental/secondary_contrasts.py": "6a76333cb3c9c3d1c0e0ac073be7be7d11f97047880bc931875b4ea6bb10dc33",
+    "revision/supplemental/complex_examples.py": "9035439d51f3cc952f5a419d6d66e98b3838d529014cfd65a435b06c3406b7ba",
+    "tests/test_supplemental_tools.py": "2ba081dca5f436e0984938d777fee0dc90874585c37283eca1132691e2fc53c1"
+  }
+}

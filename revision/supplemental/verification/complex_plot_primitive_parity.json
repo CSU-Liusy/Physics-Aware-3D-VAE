@@ -1,0 +1,15 @@
+{
+  "status": "passed_AST_identity_for_reused_plot_primitives",
+  "author_plot_sha256": "3aaca3fb4bf51c653439b7c52557a405a5c29730479d70bf96d5ced4b629a3aa",
+  "public_plot_sha256": "04c5ad838b5d26bd72fd94d8c9495e570fd62418423b799cb71caaa8ba0759f7",
+  "functions": {
+    "_plane": true,
+    "_plane_record": true,
+    "_section": true,
+    "_plane_panel": true,
+    "_panel_labels": true,
+    "_alignment": true,
+    "export": true
+  },
+  "scope": "Source AST parity, not new rendered-figure execution or final embedded-PDF QA. Public _guard_public_output is separately used by the new wrapper."
+}

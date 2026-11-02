@@ -1,0 +1,20 @@
+{
+  "source_files": {
+    "secondary_ablation_contrasts.py": {
+      "sha256": "632aa4a42500ef1d1591bc32dea78f418c2dbde0fe6dd5b31a1c448cc74cd781",
+      "origin": "author-admin helper or fixed synthetic reference-selection record",
+      "unmodified_reference_copy": true
+    },
+    "render_complex_synthetic.py": {
+      "sha256": "80a973a393eb75e3624ff9317d5a5807b496f8ca2866771ecbadc36947f21d64",
+      "origin": "author-admin helper or fixed synthetic reference-selection record",
+      "unmodified_reference_copy": true
+    },
+    "complex_synthetic_selection.json": {
+      "sha256": "f9b6cee797e702ca9b7e26ab33af578c093fa5e26d5c7683b0b34ad0005861ab",
+      "origin": "author-admin helper or fixed synthetic reference-selection record",
+      "unmodified_reference_copy": true
+    }
+  },
+  "scope": "These exact source copies retain historical author-side gates and are transparency references. Use the separate portable entry points in the parent directory. No author data, checkpoint, prediction or 72hour budget ledger is bundled here."
+}

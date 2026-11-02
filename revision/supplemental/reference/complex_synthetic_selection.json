@@ -1,0 +1,360 @@
+{
+  "all750_reference_metrics_sha256": "6084c0377473b693f75bfd90067dd24d8fdfa04266daa127dd567562a91fd9a2",
+  "candidate_counts": {
+    "curved_main_lens": {
+      "after_distinct_parent_filter": 104,
+      "before_distinct_parent_filter": 104
+    },
+    "resolved_secondary_component_or_boundary_fallback": {
+      "after_distinct_parent_filter": 1,
+      "before_distinct_parent_filter": 1
+    },
+    "visible_auxiliary_lobe": {
+      "after_distinct_parent_filter": 106,
+      "before_distinct_parent_filter": 106
+    }
+  },
+  "candidate_denominator": 750,
+  "common_eligible_cases": 705,
+  "distinct_selected_parents": 3,
+  "elapsed_seconds": 18.33638885396067,
+  "existing_diagnostic_selection_unchanged": true,
+  "existing_primary_test_cohort_unchanged": true,
+  "function_ast_sha256": {
+    "_plane": "b201281de246cc0465251947d3e1c053ac20b55001fce18612550fb0e4e22e70",
+    "_section": "55a25eab87465bb4b9c268bce71dd6e9e748bff7c1970abfa7925d2073f248ab",
+    "_stable_seed": "17f98361ba5e42d78b2834269d43819e6426111733cc495ee55b23dead43d28d",
+    "generate_occupancy": "d19497816709bf86bb0103444ee5662b460e034a464f57d1cbd9ae9c0f3d93c1",
+    "make_drill_masks": "da30f45fc24506d8fa0d37dc5c831c67b5ad2c4d0a64e37ba2ae46cf741d650c"
+  },
+  "future_figure_contract": [
+    "Reuse the same case,96observed labels,mask_seed42 and frozen validation thresholds from completed main-test predictions for every method.",
+    "Use the recorded fixed plane or a single declared identical3Dcamera for reference and every comparator; never choose a prediction-dependent view.",
+    "Keep all registered methods including failures; no case reselection or method exclusion after viewing predictions.",
+    "If main predictions for a selected case are missing, wait for the existing main test; do not train or add inference just for this showcase.",
+    "State reference-geometry-based illustrative selection and native32\u00b3resolution in the SI caption; do not describe this as a new independent benchmark."
+  ],
+  "independent_test_parents": 150,
+  "no_gpu_work": true,
+  "no_model_inference": true,
+  "no_model_or_checkpoint_reads": true,
+  "no_prediction_reads": true,
+  "not_new_external_test": "All selected cases belong to the same frozen750case/150parent synthetic primary test cohort. They are illustrative examples and cannot estimate external generalization.",
+  "resolution_limit": "All feature evidence is measured on native32\u00b3voxel occupancies. Subvoxel curvature, geological topology, fault displacement and field plausibility are not established by these features.",
+  "rules_frozen_utc": "2026-10-25T17:36:36.598438+00:00",
+  "rules_sha256": "27e62ba899a098076fc816710bd8ec351ef405b97ad42014b4821ac0095ebeb9",
+  "selected_cases": 3,
+  "selection": [
+    {
+      "already_in_existing_diagnostic_cases": false,
+      "fallback_used": false,
+      "native_reference_evidence": {
+        "auxiliary_lobe_added_fraction": 0.0,
+        "auxiliary_lobe_added_voxels": 0,
+        "branch": false,
+        "center_surface_planar_residual_rms_voxels": 0.9065326714369064,
+        "component_sizes_26_descending": [
+          652
+        ],
+        "components_26": 1,
+        "exposed_voxel_faces": 844,
+        "fixed_plane": {
+          "extent": [
+            -1.5317682305131912,
+            31.145954020434885,
+            -0.5,
+            31.5
+          ],
+          "first_column_rule": "First lexicographic observed occupied column, else first observed column",
+          "first_column_yx": [
+            1,
+            15
+          ],
+          "hole_u": [
+            0.0,
+            29.614185789921695
+          ],
+          "horizontal_centers": "extent_min + (index + 0.5) * spacing",
+          "horizontal_samples": 33,
+          "horizontal_spacing_voxels": 0.9902340076044872,
+          "interpolation": "Nearest voxel center; identical plane and extent for every panel",
+          "second_column_rule": "Farthest observed column from first; lexicographic tie break",
+          "second_column_yx": [
+            30,
+            21
+          ],
+          "shape": [
+            32,
+            32,
+            32
+          ]
+        },
+        "fixed_section_added_lobe_pixels": 0,
+        "fixed_section_occupied_pixels": 51,
+        "fixed_section_second_component_pixels": 0,
+        "id_sha256": "1b453bbdce7b084911f4e068a8adcb4161d1e4750ae534ee3124f6ffd23d43ec",
+        "normalized_boundary_complexity": 11.224768240003213,
+        "observed_auxiliary_lobe_labels": 0,
+        "observed_occupied_labels": 0,
+        "observed_voxels": 96,
+        "occupied_voxels": 652,
+        "parent_id": "syn-parent-000736",
+        "sample_id": "syn-p000736-v4",
+        "second_component_fraction": 0.0,
+        "second_component_voxels": 0,
+        "target_file_sha256": "bfaeb7db3d0f2f0584a316507c92b9446e5bcc1e3dc2ae0a71ef9aa92a431507",
+        "target_occupancy_sha256": "da873cc6095d770c2274887e5c78f44ab9851b42a2630d2e63a0392af2d8f86d",
+        "thickness_min_max_voxels": [
+          1,
+          5
+        ],
+        "thickness_q10_q50_q90_voxels": [
+          1.0,
+          3.0,
+          4.0
+        ],
+        "xy_occupied_columns": 219
+      },
+      "parameters": {
+        "azimuth": 2.7936468645673473,
+        "branch": false,
+        "branch_offset": [
+          -0.032234891413293956,
+          0.2164792989966175,
+          -0.1972824708524797
+        ],
+        "center": [
+          0.009039350595489222,
+          0.0573794832435323,
+          0.009251909527115867
+        ],
+        "fold_amplitude": 0.12037955650836413,
+        "fold_frequency": 2.157128328505504,
+        "rim_amplitude": 0.07190710217082577,
+        "rim_frequency": 2.2650942098685998,
+        "scales": [
+          0.6336003060162364,
+          0.4606019689218779,
+          0.13730822682178379
+        ]
+      },
+      "ranking_metric": "center_surface_planar_residual_rms_voxels",
+      "ranking_value": 0.9065326714369064,
+      "registered_role": "curved_main_lens",
+      "role": "curved_main_lens",
+      "source": "independent_procedural_lens",
+      "target_manifest_relative_path": "grids/syn-p000736-v4.npy"
+    },
+    {
+      "already_in_existing_diagnostic_cases": false,
+      "fallback_used": false,
+      "native_reference_evidence": {
+        "auxiliary_lobe_added_fraction": 0.20192307692307693,
+        "auxiliary_lobe_added_voxels": 126,
+        "branch": true,
+        "center_surface_planar_residual_rms_voxels": 0.6959660672025341,
+        "component_sizes_26_descending": [
+          624
+        ],
+        "components_26": 1,
+        "exposed_voxel_faces": 782,
+        "fixed_plane": {
+          "extent": [
+            -11.236102527122116,
+            23.408546931504407,
+            -0.5,
+            31.5
+          ],
+          "first_column_rule": "First lexicographic observed occupied column, else first observed column",
+          "first_column_yx": [
+            12,
+            22
+          ],
+          "hole_u": [
+            0.0,
+            22.47220505424423
+          ],
+          "horizontal_centers": "extent_min + (index + 0.5) * spacing",
+          "horizontal_samples": 35,
+          "horizontal_spacing_voxels": 0.9898471273893292,
+          "interpolation": "Nearest voxel center; identical plane and extent for every panel",
+          "second_column_rule": "Farthest observed column from first; lexicographic tie break",
+          "second_column_yx": [
+            0,
+            3
+          ],
+          "shape": [
+            32,
+            32,
+            32
+          ]
+        },
+        "fixed_section_added_lobe_pixels": 11,
+        "fixed_section_occupied_pixels": 26,
+        "fixed_section_second_component_pixels": 0,
+        "id_sha256": "7bd81a41a31ccc1ab250459befdd1a0b35952c8e1791d0a744aefb9723b293f4",
+        "normalized_boundary_complexity": 10.709035541947987,
+        "observed_auxiliary_lobe_labels": 0,
+        "observed_occupied_labels": 1,
+        "observed_voxels": 96,
+        "occupied_voxels": 624,
+        "parent_id": "syn-parent-000654",
+        "sample_id": "syn-p000654-v1",
+        "second_component_fraction": 0.0,
+        "second_component_voxels": 0,
+        "target_file_sha256": "0756996b30bd3d7d3083f424f9f97701331ffe7a25856d6a1297d284ea5e9fa5",
+        "target_occupancy_sha256": "be60ef0eccdba7dbc5c335046b4ad0432fb2b4aac76be396efeb7943b28e88b0",
+        "thickness_min_max_voxels": [
+          1,
+          7
+        ],
+        "thickness_q10_q50_q90_voxels": [
+          1.0,
+          3.0,
+          5.0
+        ],
+        "xy_occupied_columns": 202
+      },
+      "parameters": {
+        "azimuth": 0.27181354447444667,
+        "branch": true,
+        "branch_offset": [
+          -0.174015145912655,
+          -0.25328042272051543,
+          -0.2307289774474471
+        ],
+        "center": [
+          0.022032319803715394,
+          -0.024692561214873142,
+          0.06983610155318602
+        ],
+        "fold_amplitude": 0.040273751024726356,
+        "fold_frequency": 2.0602711588543468,
+        "rim_amplitude": 0.04550279716911327,
+        "rim_frequency": 2.2215258449257753,
+        "scales": [
+          0.5836986313311009,
+          0.4436569544392785,
+          0.12383896892384044
+        ]
+      },
+      "ranking_metric": "auxiliary_lobe_added_fraction",
+      "ranking_value": 0.20192307692307693,
+      "registered_role": "visible_auxiliary_lobe",
+      "role": "visible_auxiliary_lobe",
+      "source": "independent_procedural_lens",
+      "target_manifest_relative_path": "grids/syn-p000654-v1.npy"
+    },
+    {
+      "already_in_existing_diagnostic_cases": false,
+      "fallback_used": false,
+      "native_reference_evidence": {
+        "auxiliary_lobe_added_fraction": 0.19439252336448598,
+        "auxiliary_lobe_added_voxels": 104,
+        "branch": true,
+        "center_surface_planar_residual_rms_voxels": 0.8363076850611402,
+        "component_sizes_26_descending": [
+          431,
+          104
+        ],
+        "components_26": 2,
+        "exposed_voxel_faces": 700,
+        "fixed_plane": {
+          "extent": [
+            -10.688779163215974,
+            21.886547810394614,
+            -0.5,
+            31.5
+          ],
+          "first_column_rule": "First lexicographic observed occupied column, else first observed column",
+          "first_column_yx": [
+            21,
+            17
+          ],
+          "hole_u": [
+            0.0,
+            21.37755832643195
+          ],
+          "horizontal_centers": "extent_min + (index + 0.5) * spacing",
+          "horizontal_samples": 33,
+          "horizontal_spacing_voxels": 0.987131120412442,
+          "interpolation": "Nearest voxel center; identical plane and extent for every panel",
+          "second_column_rule": "Farthest observed column from first; lexicographic tie break",
+          "second_column_yx": [
+            0,
+            13
+          ],
+          "shape": [
+            32,
+            32,
+            32
+          ]
+        },
+        "fixed_section_added_lobe_pixels": 13,
+        "fixed_section_occupied_pixels": 70,
+        "fixed_section_second_component_pixels": 13,
+        "id_sha256": "bf66a3330787734bf63a9f1cc1b99c7a58032d668582c66e4167b70b14b06e1c",
+        "normalized_boundary_complexity": 10.621736384129841,
+        "observed_auxiliary_lobe_labels": 0,
+        "observed_occupied_labels": 1,
+        "observed_voxels": 96,
+        "occupied_voxels": 535,
+        "parent_id": "syn-parent-000651",
+        "sample_id": "syn-p000651-v2",
+        "second_component_fraction": 0.19439252336448598,
+        "second_component_voxels": 104,
+        "target_file_sha256": "228f1cf12473f4d043e4c89b42fba825778dd4433ac4d29d6fefb9f9901061ea",
+        "target_occupancy_sha256": "99e6636e2ecee16bbd3a28af7c1a0439c11e88ad552d3473249b41326e9e50ff",
+        "thickness_min_max_voxels": [
+          1,
+          7
+        ],
+        "thickness_q10_q50_q90_voxels": [
+          1.0,
+          3.0,
+          6.0
+        ],
+        "xy_occupied_columns": 162
+      },
+      "parameters": {
+        "azimuth": 1.7545562894521913,
+        "branch": true,
+        "branch_offset": [
+          0.06525954081530452,
+          0.21197195401319915,
+          -0.30044910360752564
+        ],
+        "center": [
+          0.09821949269209825,
+          -0.007986588445894548,
+          0.015843348896506876
+        ],
+        "fold_amplitude": 0.05251286558037357,
+        "fold_frequency": 1.5864515571643145,
+        "rim_amplitude": 0.1224638114668446,
+        "rim_frequency": 3.3929815212247068,
+        "scales": [
+          0.6291361528820649,
+          0.33711187937599185,
+          0.12465033587791703
+        ]
+      },
+      "ranking_metric": "second_component_fraction",
+      "ranking_value": 0.19439252336448598,
+      "registered_role": "resolved_secondary_component_or_boundary_fallback",
+      "role": "resolved_secondary_component_or_boundary_fallback",
+      "source": "independent_procedural_lens",
+      "target_manifest_relative_path": "grids/syn-p000651-v2.npy"
+    }
+  ],
+  "selection_frozen_utc": "2026-10-25T17:36:54.917303+00:00",
+  "selector_sha256": "c58b216036f23e7df165744ccd255f9520788ccef82c5e240da58135168a9b97",
+  "source_sha256": {
+    "diagnostic_preregistration.json": "972b4367874a39cae18fb1197ad10f648d1060b6a99ccbcb9598b23493b8e584",
+    "experiment_data.py": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d",
+    "manifest.json": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+    "revision_figures.py": "7f8b103c3e84637ba24cd2c259319ae2c9b3778030b42bdac7bcae5960e14f96"
+  },
+  "status": "frozen_before_reading_any_model_prediction_or_score",
+  "terminology_limit": "The generator branch flag means Boolean union with an auxiliary ellipsoidal lobe. Disconnected components and digital boundary measures are voxel-level morphology, not verified geological branches/faults."
+}
