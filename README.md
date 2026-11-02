@@ -147,12 +147,27 @@ The revised benchmark distributed here uses procedural geometric shapes. Its pro
 ## Download
 
 ### Revised 5,000-Volume Benchmark
-The 5,000 synthesized virtual geological datasets used for the prior learning phase are available through the author's Baidu Netdisk share:
 
-> **Download link:** [https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p](https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p)  
-> **Extraction Code:** `gq2p`
+The revised benchmark contains 5,000 synthetic volumes from 1,000 generating parents. The training, validation and test partitions contain 3,500, 750 and 750 volumes, respectively, with generating parents kept separate across partitions.
 
-Data are downloaded separately and are not included in the GitHub code directory. For the revised workflow, place the 5,000 matching `.npy` inputs in `revision/protocol/grids/`, keeping the supplied `revision/protocol/manifest.json` unchanged. Run the preparation check before training:
+- **Download:** [Baidu Netdisk](https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p)
+- **Extraction code:** `gq2p`
+
+Data are distributed separately from the GitHub repository. Place the 5,000 manifest-matched `.npy` arrays in `revision/protocol/grids/`, keeping the supplied `revision/protocol/manifest.json` unchanged.
+
+Alternatively, reconstruct the benchmark arrays from the bundled generator and frozen parameters:
+
+```bash
+python revision/restore_benchmark.py
+```
+
+After obtaining the benchmark arrays, run the preparation check before training:
+
+```bash
+python main.py --prepare --out runs/esi_revision_v2
+```
+
+See [docs/DATA_ACCESS.md](docs/DATA_ACCESS.md) for the expected input layout and manifest validation.
 
 ### Additional 15,000 Virtual Orebody Objects
 
