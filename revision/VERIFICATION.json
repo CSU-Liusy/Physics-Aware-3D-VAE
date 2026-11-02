@@ -1,0 +1,257 @@
+{
+  "actual_cpu_end_to_end": {
+    "case_count": 20,
+    "checkpoint_restore_checked": true,
+    "models": [
+      "geovae",
+      "base_vae",
+      "unet",
+      "cgan"
+    ],
+    "split_counts": {
+      "test": 3,
+      "train": 14,
+      "val": 3
+    },
+    "status": "draft_smoke_complete",
+    "training_ablations": [
+      "base_no_observed",
+      "attention_no_position"
+    ]
+  },
+  "current_verification_utc": "2026-10-27T02:19:00.359938+00:00",
+  "date": "2026-10-27",
+  "engine_source_sha256": "2bbb423c62e8ca17cd8045d98cc62fcd123d0a0ade27c6dd2ef72cd52c91d5c3",
+  "evaluation_numerics_source_sha256": "d1d2f19fdaff27a7d83507fb10f93e61e9ae54e85768443366058153e2f343fc",
+  "first_full_cpu_execution_seconds": 12.029296300024725,
+  "formal_author_run_evidence": {
+    "formal_fit_count": 18,
+    "integrity_report_sha256": "c399671d7705f99330c9cb18bc0f942dd4f104b0e1c8565cbbc42bf472c69809",
+    "public_from_scratch_training_executed": false,
+    "scope": "Completed author v2 experiments; not a new training run of this public export.",
+    "status": "passed_full_formal_integrity"
+  },
+  "formal_cuda_experiments_complete": true,
+  "formal_cuda_experiments_executed_by_packager": false,
+  "incremental_controller_progress_check": {
+    "check_record_name": "controller_progress_check.json",
+    "check_record_sha256": "b9eec92ba554da5b2f8ed815703491da131f2ceda31988ec1ae51e30cb2e7d84",
+    "date": "2026-10-25",
+    "full_suite_and_CPU_flow_rerun": false,
+    "live_suite": {
+      "passed": 8,
+      "seconds": 2.35
+    },
+    "public_suite": {
+      "passed": 19,
+      "seconds": 6.16
+    },
+    "scope": "Streaming, whitelist, complete logging, deadline preservation, owned-group cleanup, nonzero errors and existing public protections. Fake child processes only; no formal GPU job was launched or interrupted.",
+    "status": "passed_fake_process_checks",
+    "verified_files_sha256": {
+      "revision_runner.py": "961acfea799b35a41ccc80cc1d6db09a056610a3d5a6e287eeaefb6757e5a135",
+      "tests/test_public_package.py": "2ea48c0878f1b092d8ec347fafee3c046f48eba706c80afbfd60a3282ab32933",
+      "tests/test_revision_progress.py": "b01560179636503f930cc63c0c603282aff2650e327afcd4e4c854ad0a172c1b"
+    }
+  },
+  "incremental_runtime_accounting_check": {
+    "check_count": 5,
+    "checks": [
+      "interrupted and resumed stage wall times summed",
+      "pre-migration4611seconds counted once",
+      "new ablation fits included",
+      "reused ablation weight copy not counted as new fit",
+      "diagnostic adaptation not counted once per variance"
+    ],
+    "date": "2026-10-25",
+    "execution_scope": "Author-side actual runtime-accounting check, independently inspected and tied to the exact exported formatter hash.",
+    "formatter_sha256": "3139b53c04ba3210c180e3d8ad32b74257caaff60c04a050a56925e6f839bcc4",
+    "full_package_suite_or_cpu_flow_rerun": false,
+    "scope_limit": "Covers runtime accounting only. It does not claim full experiment completion, final table generation, or a rerun of the previous 80-test package suite.",
+    "status": "passed",
+    "verification_record_name": "runtime_accounting_check.json",
+    "verification_record_sha256": "9535472cdbffea358cb4cf6ef411870848f7d601d5e42e5c127c9316976cf0ef"
+  },
+  "incremental_verified_files_sha256": {
+    "revision_runner.py": "961acfea799b35a41ccc80cc1d6db09a056610a3d5a6e287eeaefb6757e5a135",
+    "revision_tables.py": "3139b53c04ba3210c180e3d8ad32b74257caaff60c04a050a56925e6f839bcc4",
+    "tests/test_public_package.py": "2ea48c0878f1b092d8ec347fafee3c046f48eba706c80afbfd60a3282ab32933",
+    "tests/test_revision_progress.py": "b01560179636503f930cc63c0c603282aff2650e327afcd4e4c854ad0a172c1b"
+  },
+  "last_incremental_refresh_utc": "2026-10-25T09:49:14.431398+00:00",
+  "limitations": [
+    "CPU smoke results are functional checks and cannot populate formal manuscript tables.",
+    "Native MPS and CUDA-specific tests are skipped when unavailable.",
+    "Windows CPU integration is verified; native Windows formal GPU/MPS and full child-tree deadline termination are unvalidated. WSL/Linux is the reference formal platform.",
+    "A two-step GPU repeat probe does not establish bitwise deterministic training or full-dataset identical GPU behavior.",
+    "Release licensing remains a rights-holder decision.",
+    "Current public full-suite verification covers CPU fixture tests in separate fresh processes; the historical CPU end-to-end and resume checks retain their original date and smaller snapshot scope.",
+    "The completed formal author GPU study is distinct from a public-from-scratch GPU training/evaluation execution."
+  ],
+  "porphyry_release_evidence": {
+    "actual_author_subset10_executed": true,
+    "full_exported_suite_rerun_by_installer": false,
+    "independent_release_review_passed": true,
+    "original_report_sha256": {
+      "actual10": "71db9a6f07fbb3dcd825c22fdec210e23369693baf71ba1c2ab1798fdb96fb46",
+      "independent_review": "b00096e079a207b984cd7971698dad3c22083f546760b358a30d245073815be8",
+      "reference150": "d73d78974df80ce0270909a5d759f731d4cf028c4ae03219fa2a5c0fe2a013e3"
+    },
+    "public_from_scratch_training_executed": false,
+    "public_full150_executed": false,
+    "release_registry_sha256": "b36d6e79385ed7bba394d2daa48e3eaa1b3c9badc75f75088cfad27479bce053",
+    "saved_author_reference150_verified": true,
+    "source_inventory": {
+      "author_bundle.py": "59d6f8731604e7458c7a6686e80562db94e1a814859d9232920951d35763557b",
+      "author_reference.py": "11ba4cbd3541817b7ebbf17bf5d595cb031e45ad55ee855a65664e62e6c1e457",
+      "conversion_reference.json": "502833c3eab3ac4582e285fafab8efe4152d753e4ca5f3868cd472193244615e",
+      "porphyry_public.py": "35eb6dac91310ebcd442bff5a4303bf0b5dfba017f4f1a67bdac9506f16c7eb8",
+      "portable_evaluation.py": "28e74127e3d71197240d2adbaf81e2a19f91e081a47776c47fc51a8769be5d45",
+      "prepared_data.py": "9ed0797bfecc818b2f2c4596781501628f596bed78f9cd46c2cdc849ed48b930",
+      "release_contract.py": "b961cb9fc3b516e140552284dfb808efe168af666100e585857d07866ff11e22"
+    },
+    "status": "bounded_numeric_evidence_installed"
+  },
+  "previous_full_suite": {
+    "excluded_from_this_prior_suite_claim": [
+      "revision_tables.py runtime-accounting increment",
+      "revision_runner.py streaming-progress increment",
+      "new or updated progress/public-guard test files"
+    ],
+    "passed": 80,
+    "scope": "Exported tests including numerical policy, cache, diagnostic CLI, integrity recomputation, public-only guards, and controller budget targeting.",
+    "seconds": 63.06,
+    "skipped": 2,
+    "snapshot_relation": "Previous complete exported-package test run before the runtime-accounting and controller-progress increments. It was not rerun for these increments."
+  },
+  "public_full_suite": {
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+    "CUDA_VISIBLE_DEVICES": "",
+    "additional_subtests_passed": 28,
+    "command": "python run_tests.py",
+    "log_sha256": "98ca53b4a7518e86e941370271369716833fb1cf3cf648ffb76a02812dc05088",
+    "main_domain": {
+      "passed": 88,
+      "seconds": 50.01,
+      "skipped": 2
+    },
+    "original_shared_process_attempt": {
+      "cause": "No-Torch import checks were collected with Torch tests; CUDA initialization and deterministic evaluation flags contaminated later training/fixture tests.",
+      "errors": 6,
+      "failed": 13,
+      "log_sha256": "9a1f702980bcf6775e075d91dc07e1839c697afcf6e342697ecfc5da905bbe7b",
+      "passed": 153,
+      "skipped": 4,
+      "status": "failed_retained_then_resolved_by_process_isolation"
+    },
+    "passed": 171,
+    "porphyry_domain": {
+      "additional_subtests_passed": 28,
+      "passed": 83,
+      "seconds": 7.89,
+      "skipped": 3
+    },
+    "process_exit_code": 0,
+    "scope": "Fixture-based CPU functionality and rejection tests. CUDA/native MPS/explicit external input checks remain conditional; formal performance derives from the separately audited author run.",
+    "skipped": 5,
+    "status": "passed_CPU_domains_in_fresh_processes"
+  },
+  "repeat_cpu_resume": {
+    "all_prediction_hashes_unchanged": true,
+    "all_training_histories_one_epoch_unchanged": true,
+    "evaluation_flags_all_strict": true,
+    "histories": 6,
+    "phase_names": [
+      "cpu_smoke_ablation_test",
+      "cpu_smoke_ablation_validation",
+      "cpu_smoke_test",
+      "cpu_smoke_training",
+      "cpu_smoke_validation",
+      "uncertainty_test",
+      "uncertainty_val"
+    ],
+    "predictions": 24,
+    "proof_files": 15,
+    "training_flags_all_false": true
+  },
+  "restricted_real_data_audited_or_distributed": false,
+  "status": "v2_prior_full_suite_plus_separate_incremental_checks",
+  "strict_gpu_repeat_probe": {
+    "artifact_sha256": "7d444c97f282ec8ea79cb5a23994bfe6afea760fafe524b82e3d8d4c51d942ca",
+    "backbone_unchanged": true,
+    "binary_disagreements": 0,
+    "cublas_workspace_config": ":4096:8",
+    "deterministic_algorithms": true,
+    "formal_performance_evidence": false,
+    "max_abs_difference": 0.0,
+    "modes": [
+      "joint",
+      "latent"
+    ],
+    "scope": "Narrow same-device reference GPU functional probe; performed by author-side workflow, not a full formal experiment.",
+    "source_sha256": "2bbb423c62e8ca17cd8045d98cc62fcd123d0a0ade27c6dd2ef72cd52c91d5c3",
+    "status": "passed_gpu_functional_probe",
+    "steps": 2
+  },
+  "tested_files_sha256": {
+    "comparisons/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "comparisons/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "comparisons/models/unet.py": "3b0e6cde7141252dbc6dae1894ca34e5edf70c795d18890855e58e4bea895e2a",
+    "config_loader.py": "5beb7bdde2f08f48efebd75c746d37241c4b2041de356c40cdb46969a7ebc62b",
+    "experiment_data.py": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d",
+    "main.py": "574f807d8e30e9ec17ac00474a1ba7ea5a80796f7db7fcacb938a85d747843a2",
+    "model.py": "05f196f35f69355c05c1b023b0306acf99cfabd8652d29772bd079a782812726",
+    "porphyry/author_bundle.py": "59d6f8731604e7458c7a6686e80562db94e1a814859d9232920951d35763557b",
+    "porphyry/author_reference.py": "11ba4cbd3541817b7ebbf17bf5d595cb031e45ad55ee855a65664e62e6c1e457",
+    "porphyry/porphyry_public.py": "35eb6dac91310ebcd442bff5a4303bf0b5dfba017f4f1a67bdac9506f16c7eb8",
+    "porphyry/portable_evaluation.py": "28e74127e3d71197240d2adbaf81e2a19f91e081a47776c47fc51a8769be5d45",
+    "porphyry/prepared_data.py": "9ed0797bfecc818b2f2c4596781501628f596bed78f9cd46c2cdc849ed48b930",
+    "porphyry/release_contract.py": "b961cb9fc3b516e140552284dfb808efe168af666100e585857d07866ff11e22",
+    "porphyry/test_author_reference.py": "ac5c7006c0912c2e2576069a64c99b3b209e76be425bb3b3a7965b055b183327",
+    "porphyry/test_frontend_coupling.py": "27bf3bd73f410167ca960bf50d2f43006e6d14e7f4e7588aa435e2c069753ae3",
+    "porphyry/test_portable_evaluation.py": "28a087ee9d5a633b2ff2e05fd7255a840d3eaebe26597c986d32feca64990036",
+    "porphyry/test_portable_guards.py": "6d4b1b7bc1c92fc9278060656229e58312edcd05abbc16c1dd9290a2affe5384",
+    "porphyry/test_prepared_data.py": "676046fcd34d906eff8ddac837b93fa61240198fe558b8e6a322158ac78aa7d7",
+    "porphyry/test_release_display_v4.py": "41c21a2b2d3cca1c4fe6d065c914de9e0db875106967acf1f93f41700a280608",
+    "public_finish.py": "5e1afce349de53dee09b7e2c474c1905bf5e80740cc2ee6b588877d252291667",
+    "r12_data.py": "99febeb39824e8919d811ae6ca63eba418aee08de46f5fa0420a602f7f502bbd",
+    "r12_sampling.py": "10d5e45a9ccb5a69974a983e4af44e6a2796995c02b508f4ad77b0a1a3b87863",
+    "repro_ablation.py": "9dd80afca9c4c7e1ac03f5accebc45560f19b4c685947905b21cb88a98ba1e0a",
+    "repro_baselines.py": "afa8d61a48bcd5737b239089cdc3c94fd7931bb17f516d9b30bbbad6290a86a4",
+    "repro_cgan.py": "db8ffc585905b3a2a78025331956b7dcb9c2ae2ff17d7877761b3aaf5241fd21",
+    "repro_cli.py": "3270af56e36d89fc8d23fe3d55071310dc9961397c30d7be4480817ec8bef75e",
+    "repro_figures.py": "23d827322cffd18dcb489f29f5bfd73f5139149077acae87691151b2f61a8be0",
+    "repro_hyper_tuning.py": "84bedbb1f2a2238ad0d95c299637af84753ead15c77c59c6060e0e35e24006ed",
+    "repro_metrics.py": "55111cda4f6f1e8a7ee8b933b7db070a7bee2f1ee2c520812b75b1589f3d863a",
+    "repro_pipeline.py": "10ee03a7cde5008ccb52bfe58e9f50b6c9aa9f57e9a4025c121887819815ea40",
+    "repro_report.py": "cbf3fd99f6b69a24decaba01ba3d03e82ab94f0773d4e677105b817e94e92ace",
+    "repro_run_all.py": "f5bece576df217f9b22fdff46b9de7e58652a064fd772c955d56fa6a6119bc2a",
+    "repro_smoke.py": "8977214d4ee1db88f7f05a8c867957c54e7bc68f3c2d2a00eba9d5b6b9b60915",
+    "repro_tuning.py": "a47823c71ebc0406910f2b4e8f7bf95b256ec3cd71258d68b59f5ff46ae168e4",
+    "revision_analysis.py": "cfd9bba0d55204835da4d1496e10148098013c825bada78c25c1dd576a12e0b3",
+    "revision_diagnostics.py": "357bbb508061a1d8fe79a751c255382408ca780b0c15e64d3048ca0b8f9ee8cc",
+    "revision_figures.py": "04c5ad838b5d26bd72fd94d8c9495e570fd62418423b799cb71caaa8ba0759f7",
+    "revision_integrity.py": "b33a0cbb4d7b327df6203217f49d4092b4619afea32d513a919f7c9a5c8da9b6",
+    "revision_numerics.py": "d1d2f19fdaff27a7d83507fb10f93e61e9ae54e85768443366058153e2f343fc",
+    "revision_robustness.py": "0540c491584b64bc2dfbb2575bb3b530b7dc8dfa675338ae14af5da68441b013",
+    "revision_runner.py": "961acfea799b35a41ccc80cc1d6db09a056610a3d5a6e287eeaefb6757e5a135",
+    "revision_smoke.py": "f03c90df05a293cd19c92ceed3bd39de752a0f44aaa1c91105233c11023fea5c",
+    "revision_tables.py": "3139b53c04ba3210c180e3d8ad32b74257caaff60c04a050a56925e6f839bcc4",
+    "run_tests.py": "091b0f1ed09945b1a420e8615f2f70a94f1e8be2f57f8cf358f6f4177b6ec438",
+    "tests/test_evaluation_resume.py": "8fc494e2b80d839aad30226910e17883280e49a98e3b2aa147d06f0a2408c486",
+    "tests/test_experiment_data.py": "c94cfab57d770481f5763f4e3a4e6ba0eb83db60b17e1619b6cc8ac3ce175952",
+    "tests/test_hyper_tuning.py": "eb6568e2b5da622eec5459970c4e6654942701a33f47f402486006e208a91d32",
+    "tests/test_model_adaptation.py": "b4ac8598ef2e5819edcc29a49149cbe02f0a05329812aa2f68d23a8847939f8f",
+    "tests/test_prediction_cache.py": "3429a2762be40fb442525f1053c78b75897a1fc7485e64862acca70c31380969",
+    "tests/test_public_package.py": "2ea48c0878f1b092d8ec347fafee3c046f48eba706c80afbfd60a3282ab32933",
+    "tests/test_repro_integrity.py": "efb06fe5fa332158762ef4ada37434bbf464d5f6e2340c1620107038694eefcc",
+    "tests/test_revision_analysis.py": "b9494ccc8283666ac0093ccdd8903cb7ded980844b78d9b5537c4ad4becc4840",
+    "tests/test_revision_diagnostics.py": "709a7ac1b8b7c7dda93684c747580d1a2ea5b75f80aab5706ba992f7afdb4e47",
+    "tests/test_revision_integrity.py": "f11a4a482af89a3c0f0e512c81488579b5e2a93438ed525043b4570538ee95d1",
+    "tests/test_revision_mps_parallel.py": "2a854542c3aeb99f269cf9283e0d9af2337f6551e43d24ad5fff6cff3e906f81",
+    "tests/test_revision_numerics.py": "09a1b0d21ffd72bf82bf5e9efede563cc21d65104e283c14ad9bcbc1236aa105",
+    "tests/test_revision_progress.py": "b01560179636503f930cc63c0c603282aff2650e327afcd4e4c854ad0a172c1b",
+    "tests/test_revision_robustness.py": "eade50388c66531efc5a599face0cbf1706924cfeadd3385d79fd64df6244911",
+    "tests/test_unet_amp.py": "2a4d989511624d5ff260a984f1860ff87b925445a08e40f6f3ff1288147ce105"
+  }
+}

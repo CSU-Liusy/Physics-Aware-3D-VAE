@@ -1,0 +1,151 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "missing_check_no_write",
+      "exit": 2,
+      "report": {
+        "archived_generator_sha256": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d",
+        "case_ids": [
+          "syn-p000000-v0",
+          "syn-p000499-v2",
+          "syn-p000999-v4"
+        ],
+        "check_only": true,
+        "existing_files_verified": 0,
+        "files_restored": 0,
+        "full_benchmark_selected": false,
+        "manifest_sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+        "missing_files_exactly_replayable": 3,
+        "model_or_training_calls": 0,
+        "numpy_version": "1.26.4",
+        "python_version": "3.10.20",
+        "remote_download_verified": false,
+        "scope": "Frozen data files only; no scientific result or public from-scratch training is verified.",
+        "selected_case_count": 3,
+        "status": "checked_replay_inputs_missing"
+      }
+    },
+    {
+      "check": "three_exact_files_restored",
+      "exit": 0,
+      "report": {
+        "archived_generator_sha256": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d",
+        "case_ids": [
+          "syn-p000000-v0",
+          "syn-p000499-v2",
+          "syn-p000999-v4"
+        ],
+        "check_only": false,
+        "existing_files_verified": 0,
+        "files_restored": 3,
+        "full_benchmark_selected": false,
+        "manifest_sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+        "missing_files_exactly_replayable": 0,
+        "model_or_training_calls": 0,
+        "numpy_version": "1.26.4",
+        "python_version": "3.10.20",
+        "remote_download_verified": false,
+        "scope": "Frozen data files only; no scientific result or public from-scratch training is verified.",
+        "selected_case_count": 3,
+        "status": "selected_inputs_verified"
+      }
+    },
+    {
+      "check": "three_existing_files_verified",
+      "exit": 0,
+      "report": {
+        "archived_generator_sha256": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d",
+        "case_ids": [
+          "syn-p000000-v0",
+          "syn-p000499-v2",
+          "syn-p000999-v4"
+        ],
+        "check_only": true,
+        "existing_files_verified": 3,
+        "files_restored": 0,
+        "full_benchmark_selected": false,
+        "manifest_sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+        "missing_files_exactly_replayable": 0,
+        "model_or_training_calls": 0,
+        "numpy_version": "1.26.4",
+        "python_version": "3.10.20",
+        "remote_download_verified": false,
+        "scope": "Frozen data files only; no scientific result or public from-scratch training is verified.",
+        "selected_case_count": 3,
+        "status": "selected_inputs_verified"
+      }
+    },
+    {
+      "check": "idempotent_no_overwrite",
+      "exit": 0,
+      "report": {
+        "archived_generator_sha256": "0417235ebccba3c7b7f14af8c940f6eb8265bb0def203b1c7932a9b6eac64f5d",
+        "case_ids": [
+          "syn-p000000-v0",
+          "syn-p000499-v2",
+          "syn-p000999-v4"
+        ],
+        "check_only": false,
+        "existing_files_verified": 3,
+        "files_restored": 0,
+        "full_benchmark_selected": false,
+        "manifest_sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+        "missing_files_exactly_replayable": 0,
+        "model_or_training_calls": 0,
+        "numpy_version": "1.26.4",
+        "python_version": "3.10.20",
+        "remote_download_verified": false,
+        "scope": "Frozen data files only; no scientific result or public from-scratch training is verified.",
+        "selected_case_count": 3,
+        "status": "selected_inputs_verified"
+      }
+    },
+    {
+      "check": "existing_wrong_file_rejected",
+      "exit": 1,
+      "report": {
+        "status": "failed",
+        "error": "Existing file differs and will not be replaced: syn-p000499-v2.npy",
+        "model_or_training_calls": 0
+      }
+    },
+    {
+      "check": "tampered_manifest.json_rejected",
+      "exit": 1,
+      "report": {
+        "status": "failed",
+        "error": "Frozen manifest SHA256 mismatch; do not replace the manifest.",
+        "model_or_training_calls": 0
+      }
+    },
+    {
+      "check": "tampered_experiment_data.py_rejected",
+      "exit": 1,
+      "report": {
+        "status": "failed",
+        "error": "Archived generator SHA256 mismatch.",
+        "model_or_training_calls": 0
+      }
+    },
+    {
+      "check": "unknown_case_rejected",
+      "exit": 1,
+      "report": {
+        "status": "failed",
+        "error": "Unknown case IDs: not-a-case",
+        "model_or_training_calls": 0
+      }
+    }
+  ],
+  "selected_cases": [
+    "syn-p000000-v0",
+    "syn-p000499-v2",
+    "syn-p000999-v4"
+  ],
+  "restored_inputs": 3,
+  "full5000_replay_repeated": false,
+  "new_training_or_predictions": false,
+  "frozen_scientific_sources_modified": false,
+  "script_sha256": "c990510272982f102aa3cc4cb4c46eb8b2360fa20efba32140b4e50eca635d60"
+}

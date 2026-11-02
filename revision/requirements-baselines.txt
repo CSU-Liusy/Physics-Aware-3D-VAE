@@ -1,0 +1,5 @@
+# Required only for the full indicator-kriging and Direct-Sampling comparison.
+# scikit-mps 0.6.0 uses np.NaN, removed in NumPy 2.0.
+numpy>=1.26,<2
+gstools>=1.6
+scikit-mps>=0.6.0

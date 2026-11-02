@@ -1,0 +1,42 @@
+{
+  "format": "geovae-current-test-fixture-migration-v1",
+  "utc": "2026-10-28T07:04:49.490912+00:00",
+  "files": {
+    "revision/tests/test_revision_diagnostics.py": {
+      "original_sha256": "709a7ac1b8b7c7dda93684c747580d1a2ea5b75f80aab5706ba992f7afdb4e47",
+      "current_sha256": "01036ead009dd0bd826f481e3c7988244bc9ea8451d4e70961c624b65b6c7a51",
+      "reason": "Replace directory-depth-dependent positive path with external temporary path; retain private aggregate allowlist and both inner/outer route rejection checks.",
+      "scope": "test_fixture_only_no_production_source_change"
+    },
+    "revision/porphyry/test_frontend_coupling.py": {
+      "original_sha256": "27bf3bd73f410167ca960bf50d2f43006e6d14e7f4e7588aa435e2c069753ae3",
+      "current_sha256": "1cd21ab3bbf7b30fe61fd6ec8fe4161f0b5e784d38550cfe5fa0b1f646d644c1",
+      "reason": "Use explicit cold-release fixture for disabled-entry tests and test actual shipped reviewed release, missing prerequisites and no-output behavior separately.",
+      "scope": "test_fixture_only_no_production_source_change"
+    },
+    "revision/porphyry/test_portable_evaluation.py": {
+      "original_sha256": "28a087ee9d5a633b2ff2e05fd7255a840d3eaebe26597c986d32feca64990036",
+      "current_sha256": "77b110c86ab3be0e1aa9faa1fe235440e01bbc06faccb216cc909b91e0f0feee",
+      "reason": "Use explicit cold-release fixture for pre-release backend tests; inspect current bounded release metadata without starting an evaluator.",
+      "scope": "test_fixture_only_no_production_source_change"
+    },
+    "revision/porphyry/test_portable_guards.py": {
+      "original_sha256": "6d4b1b7bc1c92fc9278060656229e58312edcd05abbc16c1dd9290a2affe5384",
+      "current_sha256": "c34ab333acf4c439b2b0fdeba8b8abb765811219e41a42e93d75fa0df98c2b73",
+      "reason": "Separate cold-release readiness assertions from actual reviewed release and missing-prerequisite assertions.",
+      "scope": "test_fixture_only_no_production_source_change"
+    }
+  },
+  "initial_final_path_failed_tests": 8,
+  "failing_tests_deselected_or_tolerance_relaxed": false,
+  "historical_export_provenance_modified": false,
+  "production_portable_source_inventory_modified": false,
+  "source_inventory_scope": "Seven production portable files and the scientific core remain byte-identical; tests are outside those frozen identities.",
+  "new_current_release_tests_added": 6,
+  "initial_failure_log_sha256": "bc4f21769d78ce653bee48cc05c8e88c67264a43554de5b5267bd4fdd07ffb89",
+  "targeted_correction_records_sha256": {
+    "current_private_test_correction.json": "7479c51dbf5ce272a92a03e52b5b5958b7e184ecdf90f63a0de5941dd66dc880",
+    "current_test_fixture_corrections.json": "024829b9b904929c970bf195e295604e99dcceb632d55bd7c75d4018b8617eb8"
+  },
+  "note": "The old inner EXPORT and VERIFICATION are historical receipts. For the four current test-file hashes use this map and the outer REPOSITORY_MANIFEST/VERIFICATION."
+}
