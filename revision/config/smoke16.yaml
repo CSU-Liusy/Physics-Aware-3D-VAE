@@ -1,0 +1,32 @@
+# CPU smoke-test only. Never use this configuration for manuscript results.
+grid_size: [16, 16, 16]
+latent_dim: 16
+base_channels: 4
+use_transformer: true
+use_relative_position: true
+unet_features: 4
+cgan_base_channels: 4
+num_holes: 2
+samples_per_hole: 4
+mask_seed: 42
+device: cpu
+microbatch: 2
+effective_batch: 4
+num_workers: 0
+amp: false
+epochs: 2
+patience: 2
+lr: 0.0001
+weight_decay: 0.00001
+lambda_observed: 5.0
+beta: 0.1
+kl_warmup_epochs: 2
+threshold: 0.5
+test_time_steps: 2
+test_time_lr: 0.03
+test_time_lora_lr: 0.001
+test_time_prior_weight: 0.01
+test_time_lora_weight: 0.01
+test_time_lora_rank: 2
+cgan_lambda_recon: 10.0
+cgan_eval_realizations: 1

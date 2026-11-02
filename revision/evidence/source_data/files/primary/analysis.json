@@ -1,0 +1,60 @@
+{
+  "analysis_script_sha256": "cfd9bba0d55204835da4d1496e10148098013c825bada78c25c1dd576a12e0b3",
+  "bootstrap": {
+    "estimator": "equal-parent mean of case/variant/mask/model-seed means",
+    "interval": "2.5th and 97.5th percentile of parent-resampled means",
+    "replicates": 2000,
+    "seed": 20261025,
+    "unit": "generator_parent"
+  },
+  "calibration_policy": "Blind voxels only. Deep-model predictions pooled across model seeds; classical copies counted once. Voxel counts are not independent experimental sample sizes.",
+  "case_count": 750,
+  "classical_seed_policy": "Check prediction hashes equal across model seeds; retain once in marginal statistics.",
+  "config_sha256": "6df8991b1ef3f55d1513c3eb07321f38de1ebf6ab4edf713ae1ec2d146820602",
+  "distance_missing_policy": "Undefined for either empty surface; count and report separately, never impute zero.",
+  "distance_unit": "voxel",
+  "evaluation_provenance": [
+    {
+      "evaluation_id": "evaluation_0",
+      "intent_sha256": "13d6ae21c4283651f5931b0e467196d91a032796fb7413ea679e154187d364ce",
+      "per_case_sha256": "4506cd8bf85424e506ccab3c3026dea6ead44b101fd892e582fd5812c361c691",
+      "seed": 11,
+      "summary_sha256": "990f173a67a8d4beb4145c371ec7172ac20ad0cd05420d215889a2e30ae960b3"
+    },
+    {
+      "evaluation_id": "evaluation_1",
+      "intent_sha256": "207aaca245741f6a154b9b0f8a99a10c1c022ea38fdc61d16c26b17a6998dab2",
+      "per_case_sha256": "0bd919bef81dfbcfb4343eb8827585279523cdfed7b14dbc6d124942706b7367",
+      "seed": 23,
+      "summary_sha256": "0824b55a372641c5f1b0ae75d1c4e4b6aa360ad61eeb53898ee351199285fc56"
+    },
+    {
+      "evaluation_id": "evaluation_2",
+      "intent_sha256": "2046cda47aaa418e61f1cb37b36aedd73d9a15cbbaf2f4222e39164ce79007fe",
+      "per_case_sha256": "b9546b0976b66909ff26cceba3d0497af67a56e88957032c621603e1388a3fcf",
+      "seed": 37,
+      "summary_sha256": "edab311522c9b9ca30829f11cb5355be7e748bd57daae00ccfeb45e593efb14c"
+    }
+  ],
+  "manifest_sha256": "48ec0924b76a1cca26715bb77566646dacb5fe9a3252471f8e4690aae8e01030",
+  "methods": [
+    "idw",
+    "rbf",
+    "ik",
+    "mps",
+    "unet",
+    "base_vae",
+    "cgan",
+    "geovae",
+    "geovae_latent",
+    "geovae_joint"
+  ],
+  "public_data_policy": "Synthetic probability grids only; private real data are not read by this module.",
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "source_sha256": "2bbb423c62e8ca17cd8045d98cc62fcd123d0a0ade27c6dd2ef72cd52c91d5c3",
+  "status": "complete_primary_reanalysis"
+}

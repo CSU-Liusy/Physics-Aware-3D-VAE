@@ -1,0 +1,21 @@
+{
+  "environments": {
+    "193289b9b3a59d8e17d3a5a3658f0151f12c473a61c3d73c5979af34b2d55d5d": {
+      "gpu": "NVIDIA GeForce RTX 4060 Ti",
+      "packages": {
+        "PyYAML": "6.0.3",
+        "gstools": "1.7.0",
+        "matplotlib": "3.10.9",
+        "numpy": "1.26.4",
+        "scikit-mps": "0.6.0",
+        "scipy": "1.15.3"
+      },
+      "python": "3.10.20",
+      "torch": "2.12.1+cu130",
+      "torch_cuda_build": "13.0"
+    }
+  },
+  "native_genesim_executable_version": null,
+  "native_genesim_version_note": "Only scikit-mps package 0.6.0 is recorded; this does not identify the native GENESIM binary version.",
+  "status": "recorded_training_environment"
+}
