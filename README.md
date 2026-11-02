@@ -146,12 +146,25 @@ The revised benchmark distributed here uses procedural geometric shapes. Its pro
 
 ## Download
 
+### Revised 5,000-Volume Benchmark
 The 5,000 synthesized virtual geological datasets used for the prior learning phase are available through the author's Baidu Netdisk share:
 
 > **Download link:** [https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p](https://pan.baidu.com/s/1yfQY1he1xiwN17aZ6kE0jw?pwd=gq2p)  
 > **Extraction Code:** `gq2p`
 
 Data are downloaded separately and are not included in the GitHub code directory. For the revised workflow, place the 5,000 matching `.npy` inputs in `revision/protocol/grids/`, keeping the supplied `revision/protocol/manifest.json` unchanged. Run the preparation check before training:
+
+### Additional 15,000 Virtual Orebody Objects
+
+The revised benchmark contains 5,000 volumes manually selected from a larger collection of 20,000 virtual orebody objects. The remaining 15,000 objects are released separately as supplementary geometry data.
+
+- **Archive:** `mining_ply_data.zip`
+- **Download:** [Baidu Netdisk](https://pan.baidu.com/s/1R6bvNRcXQahQMayiiiWYHw?pwd=nn8i)
+- **Extraction code:** `nn8i`
+
+These additional objects are outside the revised 5,000-volume benchmark and its training, validation and test partitions. They are provided for supplementary exploration and reuse.
+
+Keep this supplementary archive separate from `revision/protocol/grids/`, which is reserved for the manifest-matched benchmark arrays used by the revised workflow.
 
 ```bash
 python main.py --prepare --out runs/esi_revision_v2
