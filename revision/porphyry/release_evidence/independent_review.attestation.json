@@ -1,0 +1,18 @@
+{
+  "original_internal_report_sha256": "b00096e079a207b984cd7971698dad3c22083f546760b358a30d245073815be8",
+  "public_from_scratch_training_executed": false,
+  "public_full150_executed": false,
+  "reviewed_actual10_report_sha256": "71db9a6f07fbb3dcd825c22fdec210e23369693baf71ba1c2ab1798fdb96fb46",
+  "reviewed_reference150_report_sha256": "d73d78974df80ce0270909a5d759f731d4cf028c4ae03219fa2a5c0fe2a013e3",
+  "status": "passed_release_review",
+  "unresolved_findings": [],
+  "wrapper_source_sha256": {
+    "author_bundle.py": "59d6f8731604e7458c7a6686e80562db94e1a814859d9232920951d35763557b",
+    "author_reference.py": "11ba4cbd3541817b7ebbf17bf5d595cb031e45ad55ee855a65664e62e6c1e457",
+    "conversion_reference.json": "502833c3eab3ac4582e285fafab8efe4152d753e4ca5f3868cd472193244615e",
+    "porphyry_public.py": "35eb6dac91310ebcd442bff5a4303bf0b5dfba017f4f1a67bdac9506f16c7eb8",
+    "portable_evaluation.py": "28e74127e3d71197240d2adbaf81e2a19f91e081a47776c47fc51a8769be5d45",
+    "prepared_data.py": "9ed0797bfecc818b2f2c4596781501628f596bed78f9cd46c2cdc849ed48b930",
+    "release_contract.py": "b961cb9fc3b516e140552284dfb808efe168af666100e585857d07866ff11e22"
+  }
+}

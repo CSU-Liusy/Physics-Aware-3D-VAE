@@ -1,0 +1,45 @@
+{
+  "actual_prediction_rows": 10,
+  "identity_sha256": "3bbc5dae23654daeabbf5a8c0c911da9670620d7e735468f1ef4bd7143f9d192",
+  "original_budget": {
+    "deadline_unix": 1793173317.752363,
+    "hours": 72.0,
+    "started_unix": 1792914117.752363
+  },
+  "original_internal_report_sha256": "71db9a6f07fbb3dcd825c22fdec210e23369693baf71ba1c2ab1798fdb96fb46",
+  "production_saved_audit_sha256": "7f643d986ebbacd72f531219a16ac3837225b7c83e0de6447724e43938d9629b",
+  "public_from_scratch_training_executed": false,
+  "public_full150_executed": false,
+  "registration_sha256": "2aa17022f585711bb212087a6b969fff1255d730a3a36121f84ff9ce78df95c9",
+  "scope": {
+    "case_id": "porphyry_01_cu_ge_0p3",
+    "cu_threshold_percent": 0.3,
+    "expected_predictions": 10,
+    "mask_seed": 42,
+    "methods": [
+      "idw",
+      "rbf",
+      "ik",
+      "mps",
+      "unet",
+      "base_vae",
+      "cgan",
+      "geovae",
+      "geovae_latent",
+      "geovae_joint"
+    ],
+    "model_seed": 11,
+    "purpose": "software_integration_subset",
+    "scientific_full150_execution_claimed": false
+  },
+  "status": "passed_actual_public_subset_parity",
+  "wrapper_source_sha256": {
+    "author_bundle.py": "59d6f8731604e7458c7a6686e80562db94e1a814859d9232920951d35763557b",
+    "author_reference.py": "11ba4cbd3541817b7ebbf17bf5d595cb031e45ad55ee855a65664e62e6c1e457",
+    "conversion_reference.json": "502833c3eab3ac4582e285fafab8efe4152d753e4ca5f3868cd472193244615e",
+    "porphyry_public.py": "35eb6dac91310ebcd442bff5a4303bf0b5dfba017f4f1a67bdac9506f16c7eb8",
+    "portable_evaluation.py": "28e74127e3d71197240d2adbaf81e2a19f91e081a47776c47fc51a8769be5d45",
+    "prepared_data.py": "9ed0797bfecc818b2f2c4596781501628f596bed78f9cd46c2cdc849ed48b930",
+    "release_contract.py": "b961cb9fc3b516e140552284dfb808efe168af666100e585857d07866ff11e22"
+  }
+}

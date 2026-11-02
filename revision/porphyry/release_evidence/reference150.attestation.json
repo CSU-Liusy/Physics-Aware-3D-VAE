@@ -1,0 +1,28 @@
+{
+  "derived_file_sha256": {
+    "descriptive_summary.csv": "cf8ac73a64fe97f072c329a7384dba94f3075a7700517139e30d24dd8df7878b",
+    "recomputed_per_case.csv": "1d6c1c8720a921070757806d5534778a96aeefb99a8888f18260329627c1c5fe",
+    "reliability.csv": "ef934e5d5f13079990e3ac094fef1d609faccd1b0c47409cb337cfae2804d6b6"
+  },
+  "import_identity_sha256": "eb10d63088622e65567e4f788c535182a0e7c800e4a7e9033d6beb3209b0ed72",
+  "new_public_predictions": 0,
+  "original_budget": {
+    "deadline_unix": 1793173317.752363,
+    "hours": 72.0,
+    "started_unix": 1792914117.752363
+  },
+  "original_internal_report_sha256": "d73d78974df80ce0270909a5d759f731d4cf028c4ae03219fa2a5c0fe2a013e3",
+  "public_from_scratch_training_executed": false,
+  "public_prediction_rows": 0,
+  "rows": 150,
+  "status": "passed_author_reference_import",
+  "wrapper_source_sha256": {
+    "author_bundle.py": "59d6f8731604e7458c7a6686e80562db94e1a814859d9232920951d35763557b",
+    "author_reference.py": "11ba4cbd3541817b7ebbf17bf5d595cb031e45ad55ee855a65664e62e6c1e457",
+    "conversion_reference.json": "502833c3eab3ac4582e285fafab8efe4152d753e4ca5f3868cd472193244615e",
+    "porphyry_public.py": "35eb6dac91310ebcd442bff5a4303bf0b5dfba017f4f1a67bdac9506f16c7eb8",
+    "portable_evaluation.py": "28e74127e3d71197240d2adbaf81e2a19f91e081a47776c47fc51a8769be5d45",
+    "prepared_data.py": "9ed0797bfecc818b2f2c4596781501628f596bed78f9cd46c2cdc849ed48b930",
+    "release_contract.py": "b961cb9fc3b516e140552284dfb808efe168af666100e585857d07866ff11e22"
+  }
+}
